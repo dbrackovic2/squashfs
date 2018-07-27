@@ -1,0 +1,77 @@
+stepByStep instructions
+Koristice se bazni paket ubuntu18.04 bionicBeaver distribucija
+Install prerequisite
+```
+sudo apt install squashfs-tools genisoimage
+```
+
+Kopirati preuzetu distribuciju u livecdtmp direktorij
+```
+mkdir ~/squashfs/livecdtmp
+mv ubuntu-18.04-live-server-amd64.iso ~/squashfs/livecdtmp
+cd ~/squashfs/livecdtmp
+```
+
+Mnt direktorij u koji ce se mountat bazni paket ubuntu-18.04-live-server-amd64.iso distribucija. mount komanda ponekad zahtjeva drukcije parametre
+```
+mkdir mnt
+sudo mount -o loop ubuntu-18.04-live-server-amd64.iso mnt
+```
+
+Napraviti direktorij extract-cd u kom ce biti raspakovan ubuntu-18.04-live-server-amd64.iso bazni paket
+```
+mkdir extract-cd
+sudo rsync --exclude=/casper/filesystem.squashfs -a mnt/ extract-cd
+```
+
+Raspakovati squashfs direktorij u edit direktorij
+```
+sudo unsquashfs mnt/casper/filesystem.squashfs
+sudo mv squashfs-root edit
+```
+
+Da bi imali mreznu konekciju unutar chroot direktorija jedno rjesenje je kopirati /run direktorij unutar chroot direktorija
+```
+sudo mount -o bind /run/ edit/run
+```
+
+Kopirati i hosts direktorij
+```
+sudo cp /etc/hosts edit/etc/
+```
+
+Namjestiti edit/dev direktorij kopirajuci /dev/ direktorij sa hosta, zatim chroot u edit direktori.
+Obaviti mount instrukcije navedene ispod. Ukoliko korisnik odluci da obrise edit direktorij iz nekog razloga,
+bilo bi potrebno uraditi unmount edit direktorija da sistem domacin ne bi postao neupotrebljiv.
+```
+sudo mount --bind /dev/ edit/dev
+sudo chroot edit
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t devpts none /dev/pts
+```
+
+Locale issues avoid:
+```
+export HOME=/root
+export LC_ALL=C
+```
+
+Za ispis svih instaliranih paketa:
+```
+dpkg-query -W --showformat='${Installed-Size}\t${Package}\n' | sort -nr | less
+```
+
+Za uklanjanje paketa:
+```
+aptitude purge package-name
+```
+
+
+
+
+
+
+
+
+

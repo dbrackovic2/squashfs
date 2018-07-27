@@ -1,0 +1,2 @@
+https://help.ubuntu.com/community/LiveCDCustomization
+https://help.ubuntu.com/community/InstallCDCustomization
