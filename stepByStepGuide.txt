@@ -22,6 +22,8 @@ Napraviti direktorij extract-cd u kom ce biti raspakovan ubuntu-18.04-live-serve
 ```
 mkdir extract-cd
 sudo rsync --exclude=/casper/filesystem.squashfs -a mnt/ extract-cd
+mkdir modul-xfce
+sudo rsync -a extract-cd/ modul-xfce
 ```
 
 Raspakovati squashfs direktorij u edit direktorij
@@ -66,12 +68,67 @@ Za uklanjanje paketa:
 ```
 aptitude purge package-name
 ```
+Nakon zavrsetka modifikacije:
+```
+rm -rf /tmp/* ~/.bash_history
+```
+```
+umount /proc || umount -lf /proc
+umount /sys
+umount /dev/pts
+exit
+sudo umount edit/dev
+```
+Regenerate manifest
+```
+chmod +w extract-cd/casper/filesystem.manifest
+sudo su
+chroot edit dpkg-query -W --showformat='${Package} ${Version}\n' > extract-cd/casper/filesystem.manifest
+exit
+sudo cp extract-cd/casper/filesystem.manifest extract-cd/casper/filesystem.manifest-desktop
+sudo sed -i '/ubiquity/d' extract-cd/casper/filesystem.manifest-desktop
+sudo sed -i '/casper/d' extract-cd/casper/filesystem.manifest-desktop
+```
+```
+sudo rm extract-cd/casper/filesystem.squashfs
+sudo mksquashfs edit extract-cd/casper/filesystem.squashfs -nolzma
+```
+ili
+```
+sudo mksquashfs edit extract-cd/casper/filesystem.squashfs -b 1048576
+```
 
-
-
-
-
-
+Update filesystem.size
+```
+sudo su
+printf $(du -sx --block-size=1 edit | cut -f1) > extract-cd/casper/filesystem.size
+exit
+```
+set image name
+```
+sudo vim extract-cd/README.diskdefines
+```
+update md5sum 
+```
+cd extract-cd
+sudo rm md5sum.txt
+find -type f -print0 | sudo xargs -0 md5sum | grep -v isolinux/boot.cat | sudo tee md5sum.txt
+```
+create iso image
+```
+sudo mkisofs -D -r -V "$IMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../ubuntu-18.04-live-server-amd64.iso .
+```
+```
+cd ~
+qemu-img create ubuntu.img 5G
+```
+testing the cd
+```
+cd ~
+qemu-system-x86_64 -hda ubuntu.img -cdrom ~/squashfs/livecdtmp/ubuntu-18.04-live-server-amd64.iso -boot d -m 512
+sudo qemu-system-x86_64 -hda ubuntu.img -cdrom ~/squashfs/livecdtmp/ubuntu-18.04-live-server-amd64.iso -boot d -m 1024 -enable-kvm
+```
+Instalirati xorg u bazni modul i tako napraviti modul1 sa instaliranim xorg.
 
 
 

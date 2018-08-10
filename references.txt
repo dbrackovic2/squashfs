@@ -1,3 +1,4 @@
 https://help.ubuntu.com/community/LiveCDCustomization
 https://help.ubuntu.com/community/InstallCDCustomization
 https://itsfoss.com/customize-xfce/?utm_source=newsletter&utm_medium=email&utm_campaign=ubuntu_1710_ends_xfce_customization_online_linux_terminals_and_more_linux_articles_this_week&utm_term=2018-07-27
+https://linuxconfig.org/install-gui-on-ubuntu-server-18-04-bionic-beaver
