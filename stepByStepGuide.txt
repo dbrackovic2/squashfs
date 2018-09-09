@@ -127,6 +127,7 @@ testing the cd
 cd ~
 qemu-system-x86_64 -hda ubuntu.img -cdrom ~/squashfs/livecdtmp/ubuntu-18.04-live-server-amd64.iso -boot d -m 512
 sudo qemu-system-x86_64 -hda ubuntu.img -cdrom ~/squashfs/livecdtmp/ubuntu-18.04-live-server-amd64.iso -boot d -m 1024 -enable-kvm
+sudo qemu-system-x86_64 -hda ubuntu-xfce.img -cdrom ~/squashfs/livecdtmp/ubuntu-18.04-live-server-amd64-xfce.iso -boot d -m 1024 -enable-kvm
 ```
 Instalirati xorg u bazni modul i tako napraviti modul1 sa instaliranim xorg.
 
