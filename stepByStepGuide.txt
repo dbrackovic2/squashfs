@@ -140,8 +140,19 @@ ubaciti xorg.sb u xfce modul ubuntua i vidjeti da li je pokrenut graficki interf
 xorg.sb ubaciti u casper datoteku pokusati je preimenovati u xorg.squashfs i napraviti iso i pokrenuti ga vidjet sta se desava
 sudo mkisofs -D -r -V "$IMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../ubuntu-18.04-xorg-live-server-amd64.iso
 genisoimage na debian ako mkisofs ne radi 
-
+obavezno koristiti enable-kvm u suprotnom virtualizacija prespora
 modul1 
 xorg
 xorg
 xorg
+
+
+//SLAX
+na slax instalirati x11-apps pomocu
+```
+apt-get install x11-apps 
+```
+i onda available xeyes i xcalc
+
+Modifikacija slax-a - ubaciti mysql.sb izgenerisati slaxwithsql.iso
+sudo genisoimage -v -J -r -V SLAX_WITH_MYSQL -o ../../slaxwithmysql.iso .
