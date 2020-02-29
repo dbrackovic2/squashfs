@@ -4,3 +4,7 @@ https://itsfoss.com/customize-xfce/?utm_source=newsletter&utm_medium=email&utm_c
 https://linuxconfig.org/install-gui-on-ubuntu-server-18-04-bionic-beaver
 https://www.linuxtrainingacademy.com/install-desktop-on-ubuntu-server/
 https://askubuntu.com/questions/378558/unable-to-locate-package-while-trying-to-install-packages-with-apt
+http://tldp.org/HOWTO/SquashFS-HOWTO/whatis.html
+https://unix.stackexchange.com/questions/166770/unable-to-delete-file-ldlinux-sys-from-a-partition
+https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04
+
