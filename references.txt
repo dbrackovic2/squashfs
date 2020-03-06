@@ -7,4 +7,6 @@ https://askubuntu.com/questions/378558/unable-to-locate-package-while-trying-to-
 http://tldp.org/HOWTO/SquashFS-HOWTO/whatis.html
 https://unix.stackexchange.com/questions/166770/unable-to-delete-file-ldlinux-sys-from-a-partition
 https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04
+https://itnext.io/how-to-create-a-custom-ubuntu-live-from-scratch-dd3b3f213f81
+https://nathanpfry.com/how-to-customize-an-ubuntu-installation-disc/
 
