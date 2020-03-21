@@ -45,7 +45,7 @@ Kopirati i hosts direktorij
 sudo cp /etc/hosts edit/etc/
 ```
 
-Namjestiti edit/dev direktorij kopirajuci /dev/ direktorij sa hosta, zatim chroot u edit direktori.
+Namjestiti edit/dev direktorij kopirajuci /dev/ direktorij sa hosta, zatim chroot u edit direktorij.
 Obaviti mount instrukcije navedene ispod. Ukoliko korisnik odluci da obrise edit direktorij iz nekog razloga,
 bilo bi potrebno uraditi unmount edit direktorija da sistem domacin ne bi postao neupotrebljiv.
 ```
@@ -82,6 +82,9 @@ Nakon zavrsetka modifikacije:
 apt-get clean
 rm -rf /tmp/* ~/.bash_history
 rm -rf /tmp/* ~/.bashrc
+rm /var/lib/dbus/machine-id
+rm /sbin/initctl
+dpkg-divert --rename --remove /sbin/initctl
 ```
 ```
 umount /proc || umount -lf /proc
@@ -171,3 +174,7 @@ i onda available xeyes i xcalc
 
 Modifikacija slax-a - ubaciti mysql.sb izgenerisati slaxwithsql.iso
 sudo genisoimage -v -J -r -V SLAX_WITH_MYSQL -o ../../slaxwithmysql.iso .
+
+
+MODUL MYSQL
+

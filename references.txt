@@ -9,4 +9,11 @@ https://unix.stackexchange.com/questions/166770/unable-to-delete-file-ldlinux-sy
 https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04
 https://itnext.io/how-to-create-a-custom-ubuntu-live-from-scratch-dd3b3f213f81
 https://nathanpfry.com/how-to-customize-an-ubuntu-installation-disc/
+https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs
+https://www.latex-tutorial.com/tutorials/
+https://www.overleaf.com/learn/latex/How_to_Write_a_Thesis_in_LaTeX_(Part_1):_Basic_Structure
+https://tex.stackexchange.com/questions/409658/class-for-my-thesis-i-am-a-beginner-just-installed-latex-which-document-clas
+https://phoenixnap.com/kb/how-to-install-lamp-stack-on-ubuntu
+https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04
+https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
 
