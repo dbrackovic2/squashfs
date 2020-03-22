@@ -16,4 +16,10 @@ https://tex.stackexchange.com/questions/409658/class-for-my-thesis-i-am-a-beginn
 https://phoenixnap.com/kb/how-to-install-lamp-stack-on-ubuntu
 https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04
 https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04
+https://linuxize.com/post/how-to-install-mysql-on-ubuntu-18-04/
+https://en.wikipedia.org/wiki/Hosts_(file)
+https://en.wikipedia.org/wiki/Resolv.conf
+https://vitux.com/how-to-install-and-configure-mysql-in-ubuntu-18-04-lts/
+https://www.linuxbabe.com/ubuntu/install-google-chrome-ubuntu-18-04-lts
 

@@ -5,5 +5,5 @@
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }SquashFS paket}{6}% 
 \contentsline {chapter}{\hbox to\@tempdima {\hfil }Modul NodeJS}{7}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Rezultat Modul NodeJS}{11}% 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Modul MySQL}{12}% 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Modul Docker}{13}% 
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Modul MySQL}{13}% 
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Modul Chrome}{18}% 
