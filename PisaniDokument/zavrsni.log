@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.3.8)  23 MAR 2020 00:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.3.8)  12 APR 2020 01:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -281,106 +281,123 @@ LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 (Font)              for symbol `textasteriskcentered' on input line 179.
 
 [9]
-Overfull \hbox (6.70154pt too wide) in paragraph at lines 238--240
+Overfull \hbox (6.70154pt too wide) in paragraph at lines 241--243
 \T1/cmr/m/n/12 Sada cemo naprav-iti virtuelni hard disk po-mocu qemu-img ko-man
 de da bismo pokrenuli
  []
 
-<images/ModulNodeJSUbuntu.png, id=47, 964.60374pt x 607.26875pt>
+[10]
+<images/ModulNodeJSUbuntu.png, id=50, 964.60374pt x 607.26875pt>
 File: images/ModulNodeJSUbuntu.png Graphic file (type png)
 <use images/ModulNodeJSUbuntu.png>
-Package pdftex.def Info: images/ModulNodeJSUbuntu.png  used on input line 253.
+Package pdftex.def Info: images/ModulNodeJSUbuntu.png  used on input line 256.
 (pdftex.def)             Requested size: 433.62pt x 272.98116pt.
 
-Overfull \hbox (10.42157pt too wide) in paragraph at lines 253--258
+Overfull \hbox (10.42157pt too wide) in paragraph at lines 256--261
 \T1/cmr/m/it/12 https://docs.microsoft.com/en-us/azure/app-service/app-service-
 web-get-started-nodejs
  []
 
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 271--272
+[11 <./images/ModulNodeJSUbuntu.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 274--275
 
  []
 
-[11 <./images/ModulNodeJSUbuntu.png>]
 <images/ModulNodeJSUbuntuTerminal.png, id=57, 1341.01pt x 762.85pt>
 File: images/ModulNodeJSUbuntuTerminal.png Graphic file (type png)
 <use images/ModulNodeJSUbuntuTerminal.png>
 Package pdftex.def Info: images/ModulNodeJSUbuntuTerminal.png  used on input li
-ne 273.
+ne 276.
 (pdftex.def)             Requested size: 433.62pt x 246.66618pt.
 <images/ModulNodeJSUbuntu1.png, id=58, 997.7275pt x 673.51625pt>
 File: images/ModulNodeJSUbuntu1.png Graphic file (type png)
 <use images/ModulNodeJSUbuntu1.png>
-Package pdftex.def Info: images/ModulNodeJSUbuntu1.png  used on input line 274.
+Package pdftex.def Info: images/ModulNodeJSUbuntu1.png  used on input line 277.
 
 (pdftex.def)             Requested size: 433.62pt x 292.70999pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 273--275
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 276--278
 [][] 
  []
 
-[12 <./images/ModulNodeJSUbuntuTerminal.png> <./images/ModulNodeJSUbuntu1.png>]
-
-Underfull \hbox (badness 10000) in paragraph at lines 278--279
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 287--288
+[12 <./images/ModulNodeJSUbuntuTerminal.png>] [13 <./images/ModulNodeJSUbuntu1.
+png>]
+Underfull \hbox (badness 10000) in paragraph at lines 281--284
 
  []
 
-[13
 
-] [14] [15]
-Overfull \hbox (6.70154pt too wide) in paragraph at lines 412--414
+Underfull \hbox (badness 10000) in paragraph at lines 292--293
+
+ []
+
+[14
+
+]
+Overfull \hbox (32.80212pt too wide) in paragraph at lines 316--317
+\T1/cmr/m/n/12 Kopirati sadrzaj iz /etc/hosts da-toteke na sis-temu do-mac-inu 
+un-utar edit-mongodb/etc/hosts
+ []
+
+[15]
+Overfull \hbox (16.93382pt too wide) in paragraph at lines 359--360
+\T1/cmr/m/n/12 Da bismo izb-jegli potrebu da postavimo putanju u PATH sis-tem-s
+ku var-i-jablu, kopiracemo
+ []
+
+[16] [17] [18]
+Overfull \hbox (6.70154pt too wide) in paragraph at lines 468--470
 \T1/cmr/m/n/12 Sada cemo naprav-iti virtuelni hard disk po-mocu qemu-img ko-man
 de da bismo pokrenuli
  []
 
-[16] [17]
-Underfull \hbox (badness 10000) in paragraph at lines 428--429
+<images/mongoLive.png, id=83, 961.5925pt x 606.265pt>
+File: images/mongoLive.png Graphic file (type png)
+<use images/mongoLive.png>
+Package pdftex.def Info: images/mongoLive.png  used on input line 483.
+(pdftex.def)             Requested size: 433.62pt x 273.39027pt.
+[19] [20 <./images/mongoLive.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 437--438
+Underfull \hbox (badness 10000) in paragraph at lines 496--497
 
  []
 
-[18
+[21
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 493--495
+Underfull \hbox (badness 10000) in paragraph at lines 552--554
 
  []
 
-[19] [20]
-Overfull \hbox (11.90327pt too wide) in paragraph at lines 553--556
+[22] [23]
+Overfull \hbox (11.90327pt too wide) in paragraph at lines 612--615
 \T1/cmr/m/n/12 with Google Chrome 18.04.4 LTS "Bionic Beaver" - Re-lease amd64'
  u polje DISKNAME: 
  []
 
-[21]
-Overfull \hbox (6.70154pt too wide) in paragraph at lines 574--576
+[24]
+Overfull \hbox (6.70154pt too wide) in paragraph at lines 633--635
 \T1/cmr/m/n/12 Sada cemo naprav-iti virtuelni hard disk po-mocu qemu-img ko-man
 de da bismo pokrenuli
  []
 
-[22] (./zavrsni.aux)
+[25] (./zavrsni.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 3905 strings out of 494518
- 51611 string characters out of 6176314
- 358274 words of memory out of 5000000
- 7480 multiletter control sequences out of 15000+600000
+ 3966 strings out of 494518
+ 52328 string characters out of 6176314
+ 356274 words of memory out of 5000000
+ 7540 multiletter control sequences out of 15000+600000
  17490 words of font info for 40 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 41i,7n,52p,514b,1711s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,7n,52p,515b,1709s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.6
 00pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsx109
 5.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx
@@ -394,10 +411,10 @@ r/jknappen/ec/ecrm1728.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/lj
 four/jknappen/ec/ecrm1440.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk
 /ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmsy10.pfb>
-Output written on zavrsni.pdf (22 pages, 633507 bytes).
+Output written on zavrsni.pdf (25 pages, 795920 bytes).
 PDF statistics:
- 515 PDF objects out of 1000 (max. 8388607)
- 98 compressed objects within 1 object stream
+ 541 PDF objects out of 1000 (max. 8388607)
+ 105 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

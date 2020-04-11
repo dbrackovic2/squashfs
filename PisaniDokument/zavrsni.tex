@@ -60,8 +60,8 @@ Najlaksi nacin modifikacije iso image-a baziranih na Ubuntu distribuciji je kori
 
 Svaki od modula koji su kreirani su bazirani na istom base image-u, ubuntu-18.04.4-desktop-amd64.iso. Modifikacijom istog dobit cemo tri modula:\\ 
 1 Modul NodeJS - ubuntu-with-nodejs-18.04-amd64.iso\\
-2 Modul MySQL - ubuntu-with-mysql-18.04-amd64.iso\\
-3 Modul Chrome - ubuntu-with-chrome-18.04-amd64.iso\\
+2 Modul MongoDB - ubuntu-with-mognodb-18.04-amd64.iso\\
+3 Modul Java - ubuntu-with-java-18.04-amd64.iso\\
 
 \chapter*{Sistemski zahtjevi}
 \addcontentsline{toc}{chapter}{\numberline{}Sistemski zahtjevi}
@@ -184,17 +184,20 @@ dpkg-divert --rename --remove /sbin/initctl
 umount /proc || umount -lf /proc
 umount /sys
 umount /dev/pts
+umount /dev
 exit
-sudo umount edit/dev
 \end{lstlisting}
 
 \noindent
 Ponovno generisati filesystem.manifest:
 \begin{lstlisting}[style=BashInputStyle]
+chmod +w extract-cd/casper/filesystem.manifest
+sudo su
+chroot edit dpkg-query -W --showformat='${Package} ${Version}\n' > extract-cd/casper/filesystem.manifest
+exit
 sudo cp extract-cd/casper/filesystem.manifest extract-cd/casper/filesystem.manifest-desktop
 sudo sed -i '/ubiquity/d' extract-cd/casper/filesystem.manifest-desktop
 sudo sed -i '/casper/d' extract-cd/casper/filesystem.manifest-desktop
-sudo umount edit/dev
 \end{lstlisting}
 
 \noindent
@@ -273,53 +276,62 @@ Za potrebe rada nije radjena modifikacija ove web aplikacije, ali moguce je isko
 \includegraphics[width=\linewidth]{images/ModulNodeJSUbuntuTerminal.png}\\
 \includegraphics[width=\linewidth]{images/ModulNodeJSUbuntu1.png} 
 
-\chapter*{Modul MySQL}
-\addcontentsline{toc}{chapter}{\numberline{}Modul MySQL}
-Postupak kreiranja ovog modula ce biti gotovo identican postupku kreiranja NodeJS modula, izuzev dijela u kojem se vrsi instaliranje novih paketa unutar raspakovan squashfs datotecnog sistema.\\
+\chapter*{Modul MongoDB}
+\addcontentsline{toc}{chapter}{\numberline{}Modul MongoDB}
+MongoDB je nerelaciona baza podataka napisana u C++ programskom jeziku. Koristi JSON format za spremanje podataka.\\
+To je cini pogodnom za povezivanje sa NodeJS bibliotekama, ciji smo modul vec napravili u prethodnom paragrafu.\\
+Postupak kreiranja ovog modula ce biti gotovo identican postupku kreiranja NodeJS modula, izuzev dijela u kojem se vrsi instaliranje novih paketa unutar raspakovanog squashfs datotecnog sistema.\\
 \begin{lstlisting}[style=BashInputStyle]
 cd ~/squashfs/livecdtmp
 sudo mount -o loop ./isoimgs/ubuntu-18.04.4-desktop-amd64.iso mnt
-mkdir extract-mysql-cd
-sudo rsync --exclude=/casper/filesystem.squashfs -a mnt/ extract-mysql-cd
-mkdir modul-mysql
-sudo rsync -a extract-mysql-cd/ modul-mysql
+mkdir extract-mongodb-cd
+sudo rsync --exclude=/casper/filesystem.squashfs -a mnt/ extract-mongodb-cd
+mkdir modul-mongodb
+sudo rsync -a extract-mongodb-cd/ modul-mongodb
 \end{lstlisting}
-Zatim slijedi korak u kojem se opet raspakuje filesystem.squashfs direktorij i kopiramo ga u edit-mysql direktorij. Ovaj put cemo edit direktorij imenovati edit-mysql da ne izgubimo prethodni sadrzaj edit direktorija.\\
+Zatim slijedi korak u kojem se opet raspakuje filesystem.squashfs direktorij. Ova operacija moze potrajati par minuta tako da je ne treba prekidat:\\
 \begin{lstlisting}[style=BashInputStyle]
 sudo unsquashfs mnt/casper/filesystem.squashfs
-sudo mv squashfs-root/ edit-mysql
+\end{lstlisting}
+
+Te prekopiramo zadrzaj novonastalog squashfs-root direktorija u edit-mongodb direktor:
+\begin{lstlisting}[style=BashInputStyle]
+sudo mv squashfs-root/ edit-mongodb
 \end{lstlisting}
 
 \noindent
-Da bi imali mreznu konekciju unutar edit-mysql direktorija jedno rjesenje je kopirati /run direktorij unutar edit-mysql direktorija.
-Najbolje manuelno popuniti resolv.conf unutar edit direktorija (\textit{nameserver 1.1.1.1 \\
+Da bi imali mreznu konekciju unutar edit-mongodb direktorija jedno rjesenje je kopirati /run direktorij unutar edit-mongodb direktorija.
+Najbolje manuelno popuniti resolv.conf unutar edit direktorija:
+\begin{lstlisting}[style=BashInputStyle]
+sudo gedit edit-mongodb/etc/resolv.conf
+\end{lstlisting}
+Te unijeti sljedeci sadrzaj i spasiti promjene:
+(\textit{nameserver 1.1.1.1 \\
 nameserver 8.8.8.8}).\\
-Isto vazi i za etc/hosts datoteku. Najbolje je provjeriti nakon izvrsenih komandi da li je upisan sadrzaj u resolv.conf i hosts datoteke, te ukoliko nije dopuniti nedostatke:
-\begin{lstlisting}[style=BashInputStyle]
-sudo cp /etc/resolv.conf edit-mysql/etc/
-sudo mount -o bind /run/ edit-mysql/run
-\end{lstlisting}
-
 \noindent
-Kopirati i hosts direktorij/:
+Isto vazi i za etc/hosts datoteku:
 \begin{lstlisting}[style=BashInputStyle]
-sudo cp /etc/hosts edit-mysql/etc/
+sudo gedit edit-mongodb/etc/hosts
 \end{lstlisting}
-
+Kopirati sadrzaj iz /etc/hosts datoteke na sistemu domacinu unutar edit-mongodb/etc/hosts datoteke:
+\begin{lstlisting}
+127.0.0.1	localhost
+127.0.1.1	debianjoda.joda.net	debianjoda
+\end{lstlisting}
 \noindent
-Namjestiti edit-mysql/dev direktorij kopirajuci /dev/ direktorij sa hosta, zatim chroot u edit-mysql direktorij.
-Obaviti mount instrukcije navedene ispod. Ukoliko korisnik odluci da obrise edit-mysql direktorij iz nekog razloga,
-bilo bi potrebno uraditi unmount edit-mysql direktorija da sistem domacin ne bi postao neupotrebljiv:
+Namjestiti edit-mongodb/dev direktorij kopirajuci /dev/ direktorij sa hosta, zatim chroot u edit-mongodb direktorij.
+Obaviti mount instrukcije navedene ispod. Ukoliko korisnik odluci da obrise edit-mongodb direktorij iz nekog razloga,
+bilo bi potrebno uraditi unmount edit-mongodb direktorija da sistem domacin ne bi postao neupotrebljiv:
 \begin{lstlisting}[style=BashInputStyle]
-sudo mount --bind /dev/ edit-mysql/dev
-sudo chroot edit-mysql
+sudo mount --bind /dev/ edit-mongodb/dev
+sudo chroot edit-mongodb
 mount -t proc none /proc
 mount -t sysfs none /sys
 mount -t devpts none /dev/pts
 \end{lstlisting}
 
 \noindent
-Takodjer potrebno je izvrsiti sljedece komande da bi se izbjegli problemi sa lokalizacijom:
+Neophodno je podesiti sistemske varijable pomocu sljedece komande da bi se izbjegli problemi sa lokalizacijom:
 \begin{lstlisting}[style=BashInputStyle]
 export HOME=/root
 export LC_ALL=C
@@ -332,22 +344,63 @@ dpkg-query -W --showformat='\${Installed-Size}\t\${Package}\n' | sort -nr | less
 \end{lstlisting}
 
 \noindent
-Instalacija mysql paketa:
+Naime da bismo mogli pokrenuti mongoDB, neophodno je instalirati neophodne pakete:
 \begin{lstlisting}[style=BashInputStyle]
-sudo apt-get update
-sudo apt-get install mysql-server
+sudo apt-get install libcurl4 openssl
+\end{lstlisting}
+Preuzimanje mongodb paketa sa interneta:
+\begin{lstlisting}[style=BashInputStyle]
+wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1804-4.2.5.tgz
+\end{lstlisting}
+Ekstrakcija paketa:
+\begin{lstlisting}[style=BashInputStyle]
+tar -zxvf mongodb-linux-x86_64-ubuntu1804-4.2.5.tgz
+\end{lstlisting}
+Da bismo izbjegli potrebu da postavimo putanju u PATH sistemsku varijablu, kopiracemo mongodb bin direktorij u /usr/local/bin/ direktorij:
+\begin{lstlisting}[style=BashInputStyle]
+sudo cp mongodb-linux-x86_64-ubuntu1804-4.2.5/bin/* /usr/local/bin/
+\end{lstlisting}
+Konfiguracija mongodb paketa:\\
+Prvo napravimo direktorij u koji ce mongodb spremati podatke:
+\begin{lstlisting}[style=BashInputStyle]
+sudo mkdir -p /var/lib/mongo
+\end{lstlisting}
+Takodjer potrebno je napraviti direktorij u koji ce se spremat logovi:
+\begin{lstlisting}[style=BashInputStyle]
+sudo mkdir -p /var/log/mongodb
+\end{lstlisting}
+Potrebno je azurirati privilegije pristupa na novokreirane direktorije:
+\begin{lstlisting}[style=BashInputStyle]
+chown `whoami` /var/lib/mongo 
+chown `whoami` /var/log/mongodb
+\end{lstlisting}
+Sada mozemo pokrenuti mongod proces:
+\begin{lstlisting}[style=BashInputStyle]
+mongod --dbpath /var/lib/mongo --logpath /var/log/mongodb/mongod.log --fork
 \end{lstlisting}
 Provjera instalacije:
 \begin{lstlisting}[style=BashInputStyle]
-mysql --version
+mongo --version
 \end{lstlisting}
-Konfiguracija mysql-server. Sve se radi unutar chroot edit-mysql direktorija:
+Rezultat komande bi trebao potvrditi uspjesno instaliran mongodb:
 \begin{lstlisting}[style=BashInputStyle]
-sudo mysql_secure_installation
+MongoDB shell version v4.2.5
+git version: 2261279b51ea13df08ae708ff278f0679c59dc32
+OpenSSL version: OpenSSL 1.1.1  11 Sep 2018
+allocator: tcmalloc
+modules: none
+build environment:
+    distmod: ubuntu1804
+    distarch: x86_64
+    target_arch: x86_64
 \end{lstlisting}
 
+Bilo bi pozeljno mongoDB pokrenuti povezujuci je sa drugom IP adresom jer je po defaultu povezana na localhost tj. 127.0.0.1 te moze primati zahtjeve samo od aplikacija koje su na toj masini na kojoj je instaliran mongo.
+\begin{lstlisting}[style=BashInputStyle]
+Start the server with --bind_ip <address> to specify which IP addresses it should serve responses from, or with --bind_ip_all to bind to all interfaces.
+\end{lstlisting}
 \noindent
-Nakon zavrsetka instalacije izvrsiti unutar chroot:
+Nakon zavrsetka instalacije izvrsiti unutar chroot "ciscenje":
 \begin{lstlisting}[style=BashInputStyle]
 apt-get clean
 rm -rf /tmp/* ~/.bash_history
@@ -358,74 +411,80 @@ dpkg-divert --rename --remove /sbin/initctl
 umount /proc || umount -lf /proc
 umount /sys
 umount /dev/pts
+umount /dev
 exit
-sudo umount edit-mysql/dev
 \end{lstlisting}
 
 \noindent
 Ponovno generisati filesystem.manifest:
 \begin{lstlisting}[style=BashInputStyle]
-sudo cp extract-mysql-cd/casper/filesystem.manifest extract-cd/casper/filesystem.manifest-desktop
-sudo sed -i '/ubiquity/d' extract-mysql-cd/casper/filesystem.manifest-desktop
-sudo sed -i '/casper/d' extract-mysql-cd/casper/filesystem.manifest-desktop
-sudo umount edit-mysql/dev
+sudo chmod +w extract-mongodb-cd/casper/filesystem.manifest
+sudo su
+chroot edit-mongodb dpkg-query -W --showformat='${Package} ${Version}\n' > extract-mongodb-cd/casper/filesystem.manifest
+exit
+sudo cp extract-mongodb-cd/casper/filesystem.manifest extract-mongodb-cd/casper/filesystem.manifest-desktop
+sudo sed -i '/ubiquity/d' extract-mongodb-cd/casper/filesystem.manifest-desktop
+sudo sed -i '/casper/d' extract-mongodb-cd/casper/filesystem.manifest-desktop
 \end{lstlisting}
 
 \noindent
-Sada cemo upotrijebiti drugu funkciju iz squashfs-tools, a to je mksquashfs. S tom funkcijom cemo kompresovati edit-mysql direktorij u novu filesystem.squashfs datoteku. U kodu ispod je potrebno izvrsiti komandu iz linije 1 i jednu od preostale 3, pri cemu prva (komanda na liniji 2) daje najslabiju kompresiju, ali je najbrza. Druga komanda se duze izvrsava ali je veci procenat kompresije u odnosu na prvu komandu. Dok je kod trece komande procenat kompresije najveci, a vrijeme izvrsenja najduze:
+Sada cemo upotrijebiti drugu funkciju iz squashfs-tools, a to je mksquashfs. S tom funkcijom cemo kompresovati edit-mongodb direktorij u novu filesystem.squashfs datoteku. U kodu ispod je potrebno izvrsiti komandu iz linije 1 i jednu od preostale 3, pri cemu prva (komanda na liniji 2) daje najslabiju kompresiju, ali je najbrza. Druga komanda se duze izvrsava ali je veci procenat kompresije u odnosu na prvu komandu. Dok je kod trece komande procenat kompresije najveci, a vrijeme izvrsenja najduze:
 \begin{lstlisting}[style=BashInputStyle]
-sudo rm extract-mysql-cd/casper/filesystem.squashfs
-sudo mksquashfs edit-mysql extract-mysql-cd/casper/filesystem.squashfs -nolzma 
-sudo mksquashfs edit-mysql extract-mysql-cd/casper/filesystem.squashfs -b 1048576
-sudo mksquashfs edit-mysql extract-mysql-cd/casper/filesystem.squashfs -comp xz -e edit/boot
+sudo rm extract-mongodb-cd/casper/filesystem.squashfs
+sudo mksquashfs edit-mongodb extract-mongodb-cd/casper/filesystem.squashfs -nolzma 
+sudo mksquashfs edit-mongodb extract-mongodb-cd/casper/filesystem.squashfs -b 1048576
+sudo mksquashfs edit-mongodb extract-mongodb-cd/casper/filesystem.squashfs -comp xz -e edit-mongodb/boot
 \end{lstlisting}
 
 \noindent
 Naredni korak je da azuriramo filesystem.size datoteku:
 \begin{lstlisting}[style=BashInputStyle]
 sudo su
-printf $(du -sx --block-size=1 edit-mysql | cut -f1) > extract-mysql-cd/casper/filesystem.size
+printf $(du -sx --block-size=1 edit-mongodb | cut -f1) > extract-mongodb-cd/casper/filesystem.size
 exit
 \end{lstlisting}
 
 \noindent
 Nakon toga upisati naziv image-a unutar README.diskdefines. 
-Upisati 'Ubuntu with MYSQL 18.04.4 LTS "Bionic Beaver" - Release amd64' u polje DISKNAME:
+Upisati 'Ubuntu with MONGODB 18.04.4 LTS "Bionic Beaver" - Release amd64' u polje DISKNAME:
 \begin{lstlisting}[style=BashInputStyle]
-sudo gedit extract-mysql-cd/README.diskdefines
+sudo gedit extract-mongodb-cd/README.diskdefines
 \end{lstlisting}
 
 \noindent
 Azurirati md5sum.txt datoteku:
 \begin{lstlisting}[style=BashInputStyle]
-cd extract-mysql-cd
+cd extract-mongodb-cd
 sudo rm md5sum.txt
 find -type f -print0 | sudo xargs -0 md5sum | grep -v isolinux/boot.cat | sudo tee md5sum.txt
 \end{lstlisting}
 
 \noindent
-Napokon mozemo napraviti iso image koji ce da sadrzi MYSQL modul. Za ovu operaciju koristimo funkciju genisoimage. Neke linux distribucije nude mkisofs funkciju. Tako da ukoliko ne radi genisoimage trebala bi raditi funkcija mkisofs:
+Napokon mozemo napraviti iso image koji ce da sadrzi MONGODB modul. Za ovu operaciju koristimo funkciju genisoimage. Neke linux distribucije nude mkisofs funkciju. Tako da ukoliko ne radi genisoimage trebala bi raditi funkcija mkisofs:
 \begin{lstlisting}[style=BashInputStyle]
-sudo genisoimage -D -r -V "$IMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../ubuntu-with-mysql-18.04-amd64.iso .
+sudo genisoimage -D -r -V "$IMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../ubuntu-with-mongodb-18.04-amd64.iso .
 \end{lstlisting}
 
 \noindent
 Sada cemo napraviti virtuelni hard disk pomocu qemu-img komande da bismo pokrenuli na njemu nas novi modul MYSQL Ubuntu.
 \begin{lstlisting}[style=BashInputStyle]
 cd ~
-qemu-img create ubuntumysql.img 5G
+qemu-img create ubuntumongodb.img 5G
 \end{lstlisting}
 
 \noindent 
 Pokrenucemo modul pomocu KVM-a:
 \begin{lstlisting}[style=BashInputStyle]
-sudo kvm -hda ubuntumysql.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-mysql-18.04-amd64.iso -boot d -m 2048
+sudo kvm -hda ubuntumongodb.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-mongodb-18.04-amd64.iso -boot d -m 2048
 \end{lstlisting}
 
+\subsection*{Rezultat Modul MongoDB}
+\addcontentsline{toc}{subsection}{\numberline{}Rezultat Modul MongoDB}
+\includegraphics[width=\linewidth]{images/mongoLive.png} 
 
-\chapter*{Modul Chrome}
-\addcontentsline{toc}{chapter}{\numberline{}Modul Chrome}
-Kao posljednji primjer modularizacije squashfs datotecnog sistema, kreiran je modul Chrome. Kao sto mu ime kaze, rijec je o modulu sa instaliranim Chrome pretrazivacem. Vecinom koraci su identicni kao u prethodna 2 slucaja, izuzev koraka instaliranja dodatnih paketa unutar modula.\\
+\chapter*{Modul Java}
+\addcontentsline{toc}{chapter}{\numberline{}Modul Java}
+Kao treci primjer modularizacije squashfs datotecnog sistema, kreiran je modul Java. Kao sto mu ime kaze, rijec je o modulu sa instaliranim Java paketima. Vecinom koraci su identicni kao u prethodna 2 slucaja, izuzev koraka instaliranja dodatnih paketa unutar modula.\\
 \begin{lstlisting}[style=BashInputStyle]
 cd ~/squashfs/livecdtmp
 sudo mount -o loop ./isoimgs/ubuntu-18.04.4-desktop-amd64.iso mnt

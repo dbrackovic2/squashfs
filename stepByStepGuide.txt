@@ -90,8 +90,8 @@ dpkg-divert --rename --remove /sbin/initctl
 umount /proc || umount -lf /proc
 umount /sys
 umount /dev/pts
+umount /dev
 exit
-sudo umount edit/dev
 ```
 Regenerate manifest
 ```

@@ -22,4 +22,9 @@ https://en.wikipedia.org/wiki/Hosts_(file)
 https://en.wikipedia.org/wiki/Resolv.conf
 https://vitux.com/how-to-install-and-configure-mysql-in-ubuntu-18-04-lts/
 https://www.linuxbabe.com/ubuntu/install-google-chrome-ubuntu-18-04-lts
-
+https://stackoverflow.com/questions/11657829/error-2002-hy000-cant-connect-to-local-mysql-server-through-socket-var-run
+https://itsfoss.com/install-mysql-ubuntu/
+https://www.digitalocean.com/community/tutorials/how-to-install-the-latest-mysql-on-ubuntu-18-04
+https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-18-04
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+https://linuxize.com/post/how-to-install-couchdb-on-ubuntu-18-04/
