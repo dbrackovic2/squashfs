@@ -43,7 +43,7 @@ This work is describing the process of modularization of Linux SquashFS filesyst
 \noindent
 This thesis will show how to create 3 separate modules out of the same base image, which will be the ubuntu-18.04.4-desktop-amd64.iso.
 \noindent
-We will be using the SquashFS tools to make the modifications inside the ubuntu-18.04.4-desktop-amd64.iso image
+We will be using the SquashFS tools to make the modifications inside the ubuntu-18.04.4-desktop-amd64.iso image.
 
 \chapter*{Uvod}
 \addcontentsline{toc}{chapter}{\numberline{}Uvod}
@@ -67,8 +67,8 @@ Svaki od modula koji su kreirani su bazirani na istom base image-u, ubuntu-18.04
 \addcontentsline{toc}{chapter}{\numberline{}Sistemski zahtjevi}
 Da biste se uputili u ovaj zadatak postoji prije svega nekoliko hardverskih minimuma koje vasa radna masina treba da ispunjava:\\
 
-1. Najmanje 5GB slobodnog prostora na disku, mada pozeljbo bi bilo mnogo vise od 5GB, pogotovo ukoliko pravite razlicitih modula.\\
-2. Najmanje 512MB RAM memorije i 1GB alocirane swap memorije.\\
+1. Najmanje 20GB slobodnog prostora na disku, mada pozeljno bi bilo i vise od 20GB, pogotovo ukoliko pravite veci broj razlicitih modula.\\
+2. Najmanje 2048MB RAM memorije i 4GB alocirane swap memorije.\\
 3. Linux kernel sa squashfs podrskom.\\
 4. QEMU/KVM || VirtualBox || VMWare - bilo koji od ova 3 alata za testiranje kreiranih modula.\\
 5. genisoimage - paket za generisanje novog iso image-a\\
@@ -82,7 +82,7 @@ sudo apt-get install squashfs-tools genisoimage
 
 \subsection*{SquashFS paket}
 \addcontentsline{toc}{subsection}{\numberline{}SquashFS paket}
-Paket squashfs-tools implementira 2 funkcije koje se koriste u ovom radu a koje pruza SquashFS http://tldp.org/HOWTO/SquashFS-HOWTO/whatis.html.
+Paket squashfs-tools implementira 2 funkcije koje se koriste u ovom radu a koje pruza SquashFS (http://tldp.org/HOWTO/SquashFS-HOWTO/whatis.html).
 Radi se o funkcijama \textbf{mksquashfs} i \textbf{unsquashfs}. Prva od navedenih koristi se za kreiranje squashfs dateteke, dok se druga funkcija koristi za raspakivanje kompresovane squashfs datoteke.\\
 SquashFS je moguce instalirati kao dodatak na linux jezgro. Prema tome moguce ga je instalirati na razlicite linux distribucije. Za Debian distribuciju njegov naziv je squashfs-tools.
 
@@ -126,16 +126,22 @@ sudo mv squashfs-root/ edit
 
 \noindent
 Da bi imali mreznu konekciju unutar edit direktorija jedno rjesenje je kopirati /run direktorij unutar edit direktorija.
-Najbolje manuelno popuniti resolv.conf unutar edit direktorija, isto i za etc/hosts datoteku:
+Najbolje manuelno popuniti resolv.conf unutar edit direktorija:
 \begin{lstlisting}[style=BashInputStyle]
-sudo cp /etc/resolv.conf edit/etc/
-sudo mount -o bind /run/ edit/run
+sudo gedit edit/etc/resolv.conf
 \end{lstlisting}
-
+Te unijeti sljedeci sadrzaj i spasiti promjene:
+(\textit{nameserver 1.1.1.1 \\
+nameserver 8.8.8.8}).\\
 \noindent
-Kopirati i hosts direktorij/:
+Isto vazi i za etc/hosts datoteku:
 \begin{lstlisting}[style=BashInputStyle]
-sudo cp /etc/hosts edit/etc/
+sudo gedit edit/etc/hosts
+\end{lstlisting}
+Kopirati sadrzaj iz /etc/hosts datoteke na sistemu domacinu unutar edit/etc/hosts datoteke:
+\begin{lstlisting}
+127.0.0.1	localhost
+127.0.1.1	debianjoda.joda.net	debianjoda
 \end{lstlisting}
 
 \noindent
@@ -289,12 +295,12 @@ sudo rsync --exclude=/casper/filesystem.squashfs -a mnt/ extract-mongodb-cd
 mkdir modul-mongodb
 sudo rsync -a extract-mongodb-cd/ modul-mongodb
 \end{lstlisting}
-Zatim slijedi korak u kojem se opet raspakuje filesystem.squashfs direktorij. Ova operacija moze potrajati par minuta tako da je ne treba prekidat:\\
+Zatim slijedi korak u kojem se opet raspakuje filesystem.squashfs direktorij. Ova operacija moze potrajati par minuta tako da je ne treba prekidati:\\
 \begin{lstlisting}[style=BashInputStyle]
 sudo unsquashfs mnt/casper/filesystem.squashfs
 \end{lstlisting}
 
-Te prekopiramo zadrzaj novonastalog squashfs-root direktorija u edit-mongodb direktor:
+Te prekopiramo zadrzaj novonastalog squashfs-root direktorija u edit-mongodb direktorij:
 \begin{lstlisting}[style=BashInputStyle]
 sudo mv squashfs-root/ edit-mongodb
 \end{lstlisting}
@@ -344,7 +350,7 @@ dpkg-query -W --showformat='\${Installed-Size}\t\${Package}\n' | sort -nr | less
 \end{lstlisting}
 
 \noindent
-Naime da bismo mogli pokrenuti mongoDB, neophodno je instalirati neophodne pakete:
+Naime da bismo mogli pokrenuti mongoDB, neophodno je instalirati libcurl4 i openssl pakete:
 \begin{lstlisting}[style=BashInputStyle]
 sudo apt-get install libcurl4 openssl
 \end{lstlisting}
@@ -394,6 +400,9 @@ build environment:
     distarch: x86_64
     target_arch: x86_64
 \end{lstlisting}
+
+Na slici ispod je prikazan mongo pokrenut u konzoli unutar chroot edit-mongodb direktorija:\\
+\includegraphics[width=\linewidth]{images/mongoRunning.png}
 
 Bilo bi pozeljno mongoDB pokrenuti povezujuci je sa drugom IP adresom jer je po defaultu povezana na localhost tj. 127.0.0.1 te moze primati zahtjeve samo od aplikacija koje su na toj masini na kojoj je instaliran mongo.
 \begin{lstlisting}[style=BashInputStyle]
@@ -460,7 +469,7 @@ find -type f -print0 | sudo xargs -0 md5sum | grep -v isolinux/boot.cat | sudo t
 \end{lstlisting}
 
 \noindent
-Napokon mozemo napraviti iso image koji ce da sadrzi MONGODB modul. Za ovu operaciju koristimo funkciju genisoimage. Neke linux distribucije nude mkisofs funkciju. Tako da ukoliko ne radi genisoimage trebala bi raditi funkcija mkisofs:
+Napokon mozemo napraviti iso image koji ce da sadrzi MongoDB modul. Za ovu operaciju koristimo funkciju genisoimage. Neke linux distribucije nude mkisofs funkciju. Tako da ukoliko ne radi genisoimage trebala bi raditi funkcija mkisofs:
 \begin{lstlisting}[style=BashInputStyle]
 sudo genisoimage -D -r -V "$IMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../ubuntu-with-mongodb-18.04-amd64.iso .
 \end{lstlisting}
@@ -485,6 +494,191 @@ sudo kvm -hda ubuntumongodb.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-mongodb-1
 \chapter*{Modul Java}
 \addcontentsline{toc}{chapter}{\numberline{}Modul Java}
 Kao treci primjer modularizacije squashfs datotecnog sistema, kreiran je modul Java. Kao sto mu ime kaze, rijec je o modulu sa instaliranim Java paketima. Vecinom koraci su identicni kao u prethodna 2 slucaja, izuzev koraka instaliranja dodatnih paketa unutar modula.\\
+\begin{lstlisting}[style=BashInputStyle]
+cd ~/squashfs/livecdtmp
+sudo mount -o loop ./isoimgs/ubuntu-18.04.4-desktop-amd64.iso mnt
+mkdir extract-java-cd
+sudo rsync --exclude=/casper/filesystem.squashfs -a mnt/ extract-java-cd
+mkdir modul-java
+sudo rsync -a extract-java-cd/ modul-java
+\end{lstlisting}
+Zatim slijedi korak u kojem se opet raspakuje filesystem.squashfs direktorij i kopiramo ga u edit-java direktorij. Ovaj put cemo edit direktorij imenovati edit-java da ne izgubimo prethodni sadrzaj edit direktorija.\\
+\begin{lstlisting}[style=BashInputStyle]
+sudo unsquashfs mnt/casper/filesystem.squashfs
+sudo mv squashfs-root/ edit-java
+\end{lstlisting}
+Na slici ispod se vidi output unsquashfs komande:\\
+\includegraphics[width=\linewidth]{images/unsquashfscommand.png} 
+
+\noindent
+Da bi imali mreznu konekciju unutar edit-java direktorija jedno rjesenje je kopirati /run direktorij unutar edit-java direktorija.
+Najbolje manuelno popuniti resolv.conf unutar edit-java direktorija:
+\begin{lstlisting}[style=BashInputStyle]
+sudo gedit edit-java/etc/resolv.conf
+\end{lstlisting}
+Te unijeti sljedeci sadrzaj i spasiti promjene:
+(\textit{nameserver 1.1.1.1 \\
+nameserver 8.8.8.8}).\\
+\noindent
+Isto vazi i za etc/hosts datoteku:
+\begin{lstlisting}[style=BashInputStyle]
+sudo gedit edit-java/etc/hosts
+\end{lstlisting}
+Kopirati sadrzaj iz /etc/hosts datoteke na sistemu domacinu unutar edit-java/etc/hosts datoteke:
+\begin{lstlisting}
+127.0.0.1	localhost
+127.0.1.1	debianjoda.joda.net	debianjoda
+\end{lstlisting}
+
+\noindent
+Namjestiti edit-java/dev direktorij kopirajuci /dev/ direktorij sa hosta, zatim chroot u edit-java direktorij.
+Obaviti mount instrukcije navedene ispod. Ukoliko korisnik odluci da obrise edit-java direktorij iz nekog razloga,
+bilo bi potrebno uraditi unmount edit-java direktorija da sistem domacin ne bi postao neupotrebljiv:
+\begin{lstlisting}[style=BashInputStyle]
+sudo mount --bind /dev/ edit-java/dev
+sudo chroot edit-java
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t devpts none /dev/pts
+\end{lstlisting}
+
+\noindent
+Takodjer potrebno je izvrsiti sljedece komande da bi se izbjegli problemi sa lokalizacijom:
+\begin{lstlisting}[style=BashInputStyle]
+export HOME=/root
+export LC_ALL=C
+\end{lstlisting}
+
+\noindent
+Za ispis svih instaliranih paketa:
+\begin{lstlisting}[style=BashInputStyle]
+dpkg-query -W --showformat='\${Installed-Size}\t\${Package}\n' | sort -nr | less
+\end{lstlisting}
+
+\noindent
+Instalacija java paketa:
+\begin{lstlisting}[style=BashInputStyle]
+apt update
+apt install default-jdk
+\end{lstlisting}
+Provjera verzije java instalacije:
+\begin{lstlisting}[style=BashInputStyle]
+java -version
+\end{lstlisting}
+Rezultat prethodne komande bi trebao biti:
+\begin{lstlisting}[style=BashInputStyle]
+openjdk version "11.0.6" 2020-01-14
+OpenJDK Runtime Environment (build 11.0.6+10-post-Ubuntu-1ubuntu118.04.1)
+OpenJDK 64-Bit Server VM (build 11.0.6+10-post-Ubuntu-1ubuntu118.04.1, mixed mode, sharing)
+\end{lstlisting}
+Sada mozemo instalirati Eclipse, koji je jedan od najpoznatijih JAVA IDE (Integrated Development Environment). Prvo cemo preuzeti eclipse.tgz sa interneta pomocu wget komande, a zatim instalirati:
+\begin{lstlisting}[style=BashInputStyle]
+wget http://ftp.jaist.ac.jp/pub/eclipse/technology/epp/downloads/release/2019-03/R/eclipse-java-2019-03-R-linux-gtk-x86_64.tar.gz
+tar -zxvf eclipse-java-2019-*-R-linux-gtk-x86_64.tar.gz -C /usr/
+ln -s /usr/eclipse/eclipse /usr/bin/eclipse
+nano /usr/share/applications/eclipse.desktop
+\end{lstlisting}
+Nakon posljednje komande unijeti sljedeci sadrzaj:
+\begin{lstlisting}[style=BashInputStyle]
+[Desktop Entry]
+Encoding=UTF-8
+Name=Eclipse IDE
+Comment=Eclipse IDE
+Exec=/usr/bin/eclipse
+Icon=/usr/eclipse/icon.xpm
+Terminal=false
+Type=Application
+StartupNotify=false
+\end{lstlisting}
+Sada mozemo pokrenuti eclipse medjutim to cemo kasnije uraditi kada pokrenemo iso file u kemu-kvm.
+\noindent
+Nakon zavrsetka instalacije izvrsiti unutar chroot:
+\begin{lstlisting}[style=BashInputStyle]
+apt clean
+rm -rf /tmp/* ~/.bash_history
+rm -rf /tmp/* ~/.bashrc
+rm /var/lib/dbus/machine-id
+rm /sbin/initctl
+dpkg-divert --rename --remove /sbin/initctl
+umount /proc || umount -lf /proc
+umount /sys
+umount /dev/pts
+umount /dev
+exit
+\end{lstlisting}
+
+\noindent
+Ponovno generisati filesystem.manifest:
+\begin{lstlisting}[style=BashInputStyle]
+sudo chmod +w extract-java-cd/casper/filesystem.manifest
+sudo su
+chroot edit-java dpkg-query -W --showformat='${Package} ${Version}\n' > extract-java-cd/casper/filesystem.manifest
+exit
+sudo cp extract-java-cd/casper/filesystem.manifest extract-java-cd/casper/filesystem.manifest-desktop
+sudo sed -i '/ubiquity/d' extract-java-cd/casper/filesystem.manifest-desktop
+sudo sed -i '/casper/d' extract-java-cd/casper/filesystem.manifest-desktop
+\end{lstlisting}
+
+\noindent
+Sada cemo upotrijebiti drugu funkciju iz squashfs-tools, a to je mksquashfs. S tom funkcijom cemo kompresovati edit-java direktorij u novu filesystem.squashfs datoteku. U kodu ispod je potrebno izvrsiti komandu iz linije 1 i jednu od preostale 3, pri cemu prva (komanda na liniji 2) daje najslabiju kompresiju, ali je najbrza. Druga komanda se duze izvrsava ali je veci procenat kompresije u odnosu na prvu komandu. Dok je kod trece komande procenat kompresije najveci, a vrijeme izvrsenja najduze:
+\begin{lstlisting}[style=BashInputStyle]
+sudo rm extract-java-cd/casper/filesystem.squashfs
+sudo mksquashfs edit-java extract-java-cd/casper/filesystem.squashfs -nolzma 
+sudo mksquashfs edit-java extract-java-cd/casper/filesystem.squashfs -b 1048576
+sudo mksquashfs edit-java extract-java-cd/casper/filesystem.squashfs -comp xz -e edit/boot
+\end{lstlisting}
+
+\noindent
+Naredni korak je da azuriramo filesystem.size datoteku:
+\begin{lstlisting}[style=BashInputStyle]
+sudo su
+printf $(du -sx --block-size=1 edit-java | cut -f1) > extract-java-cd/casper/filesystem.size
+exit
+\end{lstlisting}
+
+\noindent
+Nakon toga upisati naziv image-a unutar README.diskdefines. 
+Upisati 'Ubuntu with Java 18.04.4 LTS "Bionic Beaver" - Release amd64' u polje DISKNAME:
+\begin{lstlisting}[style=BashInputStyle]
+sudo gedit extract-java-cd/README.diskdefines
+\end{lstlisting}
+
+\noindent
+Azurirati md5sum.txt datoteku:
+\begin{lstlisting}[style=BashInputStyle]
+cd extract-java-cd
+sudo rm md5sum.txt
+find -type f -print0 | sudo xargs -0 md5sum | grep -v isolinux/boot.cat | sudo tee md5sum.txt
+\end{lstlisting}
+
+\noindent
+Napokon mozemo napraviti iso image koji ce da sadrzi Java modul. Za ovu operaciju koristimo funkciju genisoimage. Neke linux distribucije nude mkisofs funkciju. Tako da ukoliko ne radi genisoimage trebala bi raditi funkcija mkisofs:
+\begin{lstlisting}[style=BashInputStyle]
+sudo genisoimage -D -r -V "$IMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../ubuntu-with-java-18.04-amd64.iso .
+\end{lstlisting}
+
+\noindent
+Sada cemo napraviti virtuelni hard disk pomocu qemu-img komande da bismo pokrenuli na njemu nas novi modul Google Chrome Ubuntu.
+\begin{lstlisting}[style=BashInputStyle]
+cd ~
+qemu-img create ubuntujava.img 5G
+\end{lstlisting}
+
+\noindent 
+Pokrenucemo modul pomocu KVM-a:
+\begin{lstlisting}[style=BashInputStyle]
+sudo kvm -hda ubuntujava.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-java-18.04-amd64.iso -boot d -m 2048
+\end{lstlisting}
+
+\subsection*{Rezultat Modul Java}
+\addcontentsline{toc}{subsection}{\numberline{}Rezultat Modul Java}
+\includegraphics[width=\linewidth]{images/javaLive.png} 
+\includegraphics[width=\linewidth]{images/eclipseLive.png} 
+\includegraphics[width=\linewidth]{images/eclipseLive1.png} 
+
+\chapter*{Modul Chrome}
+\addcontentsline{toc}{chapter}{\numberline{}Modul Chrome}
+Kao treci primjer modularizacije squashfs datotecnog sistema, kreiran je modul Chrome. Kao sto mu ime kaze, rijec je o modulu sa instaliranim Chrome pretrazivacem paketima. Vecinom koraci su identicni kao u prethodna 2 slucaja, izuzev koraka instaliranja dodatnih paketa unutar modula.\\
 \begin{lstlisting}[style=BashInputStyle]
 cd ~/squashfs/livecdtmp
 sudo mount -o loop ./isoimgs/ubuntu-18.04.4-desktop-amd64.iso mnt
@@ -558,8 +752,8 @@ sudo apt-key add linux_signing_key.pub
 
 Sada izvrsimo azuriranje liste paketa i instaliramo google-chrome-stable paket:
 \begin{lstlisting}[style=BashInputStyle]
-sudo apt update
-sudo apt install google-chrome-stable
+apt update
+apt install google-chrome-stable
 \end{lstlisting}
 
 Provjera instalacije:
@@ -580,12 +774,15 @@ umount /proc || umount -lf /proc
 umount /sys
 umount /dev/pts
 exit
-sudo umount edit-chrome/dev
 \end{lstlisting}
 
 \noindent
 Ponovno generisati filesystem.manifest:
 \begin{lstlisting}[style=BashInputStyle]
+sudo chmod +w extract-chrome-cd/casper/filesystem.manifest
+sudo su
+chroot edit-chrome dpkg-query -W --showformat='${Package} ${Version}\n' > extract-chrome-cd/casper/filesystem.manifest
+exit
 sudo cp extract-chrome-cd/casper/filesystem.manifest extract-chrome-cd/casper/filesystem.manifest-desktop
 sudo sed -i '/ubiquity/d' extract-chrome-cd/casper/filesystem.manifest-desktop
 sudo sed -i '/casper/d' extract-chrome-cd/casper/filesystem.manifest-desktop
@@ -642,6 +839,10 @@ Pokrenucemo modul pomocu KVM-a:
 \begin{lstlisting}[style=BashInputStyle]
 sudo kvm -hda ubuntuchrome.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-chrome-18.04-amd64.iso -boot d -m 2048
 \end{lstlisting}
+
+%\subsection*{Rezultat Modul Chrome}
+%\addcontentsline{toc}{subsection}{\numberline{}Rezultat Modul Chrome}
+%\includegraphics[width=\linewidth]{images/chromeLive.png} 
 
 
 \end{document}

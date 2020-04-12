@@ -28,3 +28,6 @@ https://www.digitalocean.com/community/tutorials/how-to-install-the-latest-mysql
 https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-18-04
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 https://linuxize.com/post/how-to-install-couchdb-on-ubuntu-18-04/
+https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04
+https://linuxize.com/post/install-java-on-ubuntu-18-04/
+https://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/how-to-install-eclipse-ide-on-ubuntu-18-04-lts.html
