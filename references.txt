@@ -31,3 +31,20 @@ https://linuxize.com/post/how-to-install-couchdb-on-ubuntu-18-04/
 https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04
 https://linuxize.com/post/install-java-on-ubuntu-18-04/
 https://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/how-to-install-eclipse-ide-on-ubuntu-18-04-lts.html
+https://en.wikipedia.org/wiki/Live_CD
+https://en.wikipedia.org/wiki/Comparison_of_file_systems
+https://www.youtube.com/watch?reload=9&v=glFCEauwGgw - How To Install Linux to an External USB SSD or HDD
+https://askubuntu.com/questions/372607/how-to-create-a-bootable-ubuntu-usb-flash-drive-from-terminal
+https://www.howtogeek.com/196051/htg-explains-what-is-a-file-system-and-why-are-there-so-many-of-them/
+https://en.wikipedia.org/wiki/File_system
+https://www.tldp.org/LDP/sag/html/filesystems.html#:~:text=A%20filesystem%20is%20the%20methods,the%20type%20of%20the%20filesystem.
+https://unix.stackexchange.com/questions/4402/what-is-a-superblock-inode-dentry-and-a-file
+https://opensource.com/article/17/5/introduction-ext4-filesystem
+https://opensource.com/life/16/10/introduction-linux-filesystems
+https://www.slax.org/customize.php
+https://www.slax.org/
+https://en.wikipedia.org/wiki/Slax
+https://en.wikipedia.org/wiki/NimbleX
+https://en.wikipedia.org/wiki/Node.js
+
+
