@@ -175,6 +175,36 @@ i onda available xeyes i xcalc
 Modifikacija slax-a - ubaciti mysql.sb izgenerisati slaxwithsql.iso
 sudo genisoimage -v -J -r -V SLAX_WITH_MYSQL -o ../../slaxwithmysql.iso .
 
+Call sa profom 13.7.2020
+slax.iso - nisu u potpunosti rijesili ono sto su 
+slax moduli bazirani na squshfs datotecnom sistemu za razliku od ostalih koji su lzm
+dir2sb slax datoteka
+slax deactivate 01-core.sb usr/bin/slax
+var/lib/dpkg/status - ono sto cini otezanim ovo kod squashfs-a kod ubuntua i debian-a u odnosu na ranije verzije slaxa i nimblexa
+status datoteka prilikom aktiviranja/deaktiviranja modula da se kumulativno azurira
+da se pri deinstalaciji obrisu linije koje je dodao pojedini modul
+treba diff komanda koja medju datotekama pravi razliku 
+komanda patch koja bi od jedne datoteke napravila trecu datoteku 
+jednom cat komandom napraviti spoj modula 
+kad izbildamo delta datoteku sa mksquashfs 
+ubuntu server - xorg - gnome ili kde - chrome/firefox
+moduli firefox i libreoffice - libreoffice bi se mogao deaktivirati ako nije pokrenut
+umount naredba za deaktivaciju modula 
+delta izmedju foldera prije i nakon instaliranja modula
+delta izmedju isntaliranih sadrzaja (java i bazni)
+napraviti diff nad datotekom status u var/lib/dpkg u odnosu nad instaliranom i baznog modula
+razlika status datoteke unutar delta direktorija i da se zove status.diff
+samo bazni modul bila bi kompletna squashfs datoteka
+ostali moduli bi bili samo delte od tih modula
+unutar delte ubaciti status.diff - diff izmedju var/lib/dpkg/status baznog i var/lib/status novoinstalirane verzije
+da li rade te aplikacije, nakon pravljenja isa
+df naredba - provjerit instalaciju loopfs datotecnih sistema
+onda umount bi radio deaktivaciju nekog od tih modula 
+svrha ubiquity da se app instalira na hard disk od live cd
+prilikom instalacije na disk treba izmijenit var/lib/dpkg/status datoteku na osnovu diff datoteka za svaki modul
+deactivate() pored umounta 
+diff naredba pored linija razlike pise u kojim su linijama razlike
+prilikom deaktivacije modula mogli bismo izbildat novu verziju var/lib/dpkg/status koja bi se napravila od svih var/lib/dpkg/status bez
+datoteka koje taj modul instalirao
 
-MODUL MYSQL
 

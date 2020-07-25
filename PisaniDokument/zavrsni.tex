@@ -25,11 +25,11 @@
 
 \begin{document}
 \author{Dajan Bračković}
-\department{Odsjek za računarstvo i informatiku}
-\degree{Master of Science in Computer Science and Engineering}
-\degreemonth{June}
+\department{Department for Computing and Information Science}
+\degree{Master of Science in Computing and Information Science}
+\degreemonth{July}
 \degreeyear{2020}
-\thesisdate{May 18, 2020}
+\thesisdate{July 11, 2020}
 \supervisor{Samir Ribić}{dr. sc.}
 \chairman{Professor dr. sc. Jasmin Velagić}{Dean of the Faculty of Electrical Engineering Sarajevo}
 \title{Modularizacija SquashFS Linux datotečnog sistema}
@@ -42,7 +42,7 @@
 \indent
 This work is describing the process of modularization of Linux SquashFS filesystem. Modularization is performed by manual customization of packages in the live system, then extracting that customized system as a separate module.\\
 \indent
-This thesis will show how to create 3 separate modules out of the same base image, which will be the ubuntu-18.04.4-desktop-amd64.iso.\\
+This thesis will show how to create 4 separate modules out of the same base image, which will be the ubuntu-18.04.4-desktop-amd64.iso.\\
 \indent
 We will be using the SquashFS tools to make the modifications inside the ubuntu-18.04.4-desktop-amd64.iso image.
 
@@ -158,38 +158,72 @@ slax deactivate module.sb
 \addcontentsline{toc}{section}{\numberline{}NimbleX}
 \indent
 NimbleX je Linux distribucija optimizirana da se pokrene sa CD-a, USB-a ili direktno preko mreže. Karakteristika NimbleX-a je brzo boot-anje, i mala količina prostora na disku koju zauzima, s obzirom da je distribuiran sa KDE desktop okruženjem. NimbleX je jedinstven po svojoj web stranici koja dozvoljava korisnicima da generišu boot-abilne distribucije modifikovane putem browsera. NimbleX boot-a u otprilike duplo kraćem vremenskom roku od Ubuntu ili recimo Fedora distribucije.\\
-NimbleX je bio na strani kritika zbog nedostatka instaliranih sigurnosnih softverskih paketa.
-
-\section*{Nedostaci Ubuntu-a}
-\addcontentsline{toc}{section}{\numberline{}Nedostaci Ubuntu-a}
-Ubuntu je baziran na SquashFS koji ima mogućnost podjele u više datoteka, ali se ipak ne može podijeliti na ovaj način jer instalacija aplikacija utiče na paketni menadžer. Dakle, moduli moraju biti napravljeni tako da njihova instalacija i de/instalacija ažurira popis paketa.
-Onda može da slijedi tehnika pravljenja pojedinih modula. Ja sam predložio da moduli idu redom Core, pa X.ORG, pa neki ne-grafički (kakve ste uradili), neko desktop okruženje i veća grafička aplikacija (tu ste uradili Chrome).
-Kako je vaš rad odlagan godinama, u međuvremenu je problem riješen, jer je nova verzija Slax Linuxa bazirana na Debianu, mada je nisam probao. Ali ipak ćemo rad dovesti do kraja.\\
+NimbleX je bio na strani kritika zbog nedostatka instaliranih sigurnosnih softverskih paketa. Prvi put je objavljen 20-og oktobra 2004-te godine. Glavni inžinjer odgovoran za razvoj NimbleX-a je rumun Bogdan Rădulescu.\\
+\indent
+NimbleX koristi Linux kernel verziju 2.6. Preinstalirani grafički menadžer je KDE. Za kompjutere slabijih performansi može se podesiti i Fluxbox kao i Xfce kao grafički menadžer. Veličina instalacione datoteke NimblX distribucije je ispod 400MB, što nas navodi na logičan zaključak da NimbleX ne nudi previše grafičkih aplikacija, za dosta zadataka je neophodno koristiti terminal ili komandni interfejs. NimbleX nudi i instalacione datoteke manje veličine, npr. 100MB ili 69MB. Dodatne aplikacije se mogu instalirati putem grafičke aplikacije Gslapt, ili putem komande slapt-get u komandnom interfejsu. Na većim instalacionim NimbleX datotekama je predinstalirano mnoštvo korisnih aplikacija kao što su:\\
+\indent
+1. OpenOffice.org
+\indent
+2. Java
+\indent
+3. Python
+\indent
+4. Wine...
+\section*{Ubuntu}
+\addcontentsline{toc}{section}{\numberline{}Ubuntu}
+Ubuntu je Linux distribucija zasnovana na Debian Linux distribuciji. Koristi isti paket menadžer kao i Debian. Ubuntu se oficijelno distribuira u 3 verzije:\\
+1. Desktop\\
+2. Server\\
+3. Core - namijenjen za IoT uređaje.\\
+\indent
+Ubuntu verzije pristižu svakih 6 mjeseci, dok LTS verzije se objavljuju svake 2 godine. 23. Aprila 2020 je objavljena najnovija LTS verzija 20.04 pod nazivom "Focal Fossa".\\
+\indent
+Prvi put je objavljen 2004. godine. Ubuntu razvija kompanija Canonical, kao i čitav 'community' inžinjera koji svojim dobrovoljnim radom doprinose razvoju Ubuntu distribucija. Dobio je naziv iz jezika Nguni, koja u prevodu znači "čovječanstvo".\\
+Pored gore navedenih distribucija Ubuntu-a, treba napomenuti da su jedno vrijeme bile u razvoju distribucije za pametne telefone i tablet uređaje, ali rad na ovim distribucijama je zaustavljen.\\
+\indent
+Ubuntu softverski paketi imaju istu .deb ekstenziju kao i kod Debian Linux distribucije. Ove dvije distribucije koriste i isti paket menadžer - apt.\\
+\indent
+Pored podjele Ubuntu distribucija na Desktop, Server i Core, Ubuntu pruža razne "Ubuntu flavours":\\
+\indent
+1. Kubuntu - Ubuntu distribucija sa KDE Plasma grafičkim okruženjem\\
+\indent
+2. Lubuntu - Ubuntu distribucija sa LXDE (Lightweight X11 Desktop Environment) grafičkim okruženjem, koje zahtjeva manje RAM memorije u odnosu na neka zahtjevnija grafička okruženja kao KDE ili GNOME\\
+\indent
+3. Xubuntu - Ubuntu distribucija sa podešenim Xfce grafičkim okruženjem, koje je također slično LXDE okruženju po pitanju zauzimanja resursa\\
+\indent
+4. Ubuntu Budgie - Ubuntu distribucija sa podešenim Budgie desktop okruženjem.\\
+\indent
+5. Ubuntu Kylin - Ubuntu distribucija namijenjena za kinesko tržište.\\
+\indent
+6. Ubuntu MATE - Ubuntu distribucija sa podešenim MATE desktop okruženjem.\\
+\indent
+7. Ubuntu Studio - Ubuntu distribucija namijenjena isključivo za multimedijsku produkciju. Dolazi sa Xfce gračifkim okruženjem. Jedna od najbitnijih karakteristika ove distribucije je low-latency jezgro sistema, koja je u osnovi standardno Linux jezgro, sa posebnom konfiguracijom koja dozvoljava stabilan rad audio aplikacija sa malim kašnjenjem. Ova distribucija dolazi sa instaliranim aplikacijama kao što su: Ardour, LMMS, Hydrogen, Audacity, JACK audio connection kit, Blender, GIMP, Krita, Kdenlive i mnogim drugim.\\
 
 \section*{Zasto modifikovati instalacionu iso datoteku?}
-\addcontentsline{toc}{section}{\numberline{}Zasto modifikovati instalacionu iso datoteku?}
-Zasto uopce mijenjati instalacioni iso image operativnog sistema? Postoji nekoliko razloga:\\
-1. Da bismo napravili svoju distribuciju mijenjajuci postojecu iso datoteku\\
-2. Da bismo predstavili odredjenu aplikaciju\\
-3. Radi lokalizacije na odredjeni jezik\\
-4. Da bismo uklonili odredjene softverske pakete\\
+\addcontentsline{toc}{section}{\numberline{}Zašto modifikovati instalacionu iso datoteku?}
+Zašto uopće mijenjati instalacioni iso image operativnog sistema? Postoji nekoliko razloga:\\
+1. Da bismo napravili svoju distribuciju mijenjajući postojeću iso datoteku\\
+2. Da bismo predstavili određenu aplikaciju\\
+3. Radi lokalizacije na određeni jezik\\
+4. Da bismo uklonili određene softverske pakete\\
 5. S ciljem dodavanja novih softverskih paketa\\
-6. U svrhu azuriranja softverkih paketa\\
-7. Radi mijenjanja sistemske konfiguracije kao sto su teme, ikone, fontovi, pozadina...\\
+6. U svrhu ažuriranja softverkih paketa\\
+7. Radi mijenjanja sistemske konfiguracije kao što su teme, ikone, fontovi, pozadina...\\
 \\
-Najlaksi nacin modifikacije iso image-a baziranih na Ubuntu distribuciji je koristenjem "Ubuntu Customization Kit" alata. Medjutim ovaj rad ce obuhvatiti drukciji princip, manualni.\\
-Svaki od modula koji su kreirani su bazirani na istom base image-u, ubuntu-18.04.4-desktop-amd64.iso. Modifikacijom istog dobit cemo tri modula:\\ 
+Najlakši način modifikacije iso image-a baziranih na Ubuntu distribuciji je koristenjem "Ubuntu Customization Kit" alata. Međutim ovaj rad će obuhvatiti drugačiji princip, manualni.\\
+Svaki od modula koji su kreirani su bazirani na istom base image-u, ubuntu-18.04.4-desktop-amd64.iso. Modifikacijom istog dobit ćemo četiri modula:\\ 
 1. Modul NodeJS - ubuntu-with-nodejs-18.04-amd64.iso\\
 2. Modul MongoDB - ubuntu-with-mognodb-18.04-amd64.iso\\
 3. Modul Java - ubuntu-with-java-18.04-amd64.iso\\
+4. Modul Google Chrome - ubuntu-with-google-chrome-18.04-amd64.iso\\
 
 \chapter*{Sistemski zahtjevi}
 \addcontentsline{toc}{chapter}{\numberline{}Sistemski zahtjevi}
-Da biste se uputili u ovaj zadatak postoji prije svega nekoliko hardverskih minimuma koje vasa radna masina treba da ispunjava:\\
-
-1. Najmanje 20GB slobodnog prostora na disku, mada pozeljno bi bilo i vise od 20GB, pogotovo ukoliko pravite veci broj razlicitih modula.\\
+Da biste se uputili u ovaj zadatak postoji prije svega nekoliko hardverskih minimuma koje vaša radna mašina treba da ispunjava:\\
+\noindent
+1. Najmanje 20GB slobodnog prostora na disku, mada poželjno bi bilo i više od 20GB, pogotovo ukoliko pravite veći broj različitih modula.\\
 2. Najmanje 2048MB RAM memorije i 4GB alocirane swap memorije.\\
-3. Linux kernel sa squashfs podrskom.\\
+3. Linux kernel sa squashfs podrškom.\\
 4. QEMU/KVM || VirtualBox || VMWare - bilo koji od ova 3 alata za testiranje kreiranih modula.\\
 5. genisoimage - paket za generisanje novog iso image-a\\
 
@@ -255,7 +289,7 @@ sudo rsync -a extract-cd/ modul-nodejs
 \subsection*{unsquashfs filesystem.squashs datoteke}
 \addcontentsline{toc}{subsection}{\numberline{}unsquashfs filesystem.squashfs datoteke}
 \noindent
-U ovom trenutku cemo upotrijebiti unsquashfs funkciju iz squashfs-tools paketa. Te cemo kopirati raspakovani squashfs-root direktorij u edit direktorij. Ovaj edit direktorij cemo kasnije koristiti da unutar njega instaliramo nodejs pakete:
+U ovom trenutku ćemo upotrijebiti unsquashfs funkciju iz squashfs-tools paketa. Te ćemo kopirati raspakovani squashfs-root direktorij u edit direktorij. Ovaj edit direktorij ćemo kasnije koristiti da unutar njega instaliramo nodejs pakete:
 \begin{lstlisting}[style=BashInputStyle]
 sudo unsquashfs mnt/casper/filesystem.squashfs
 sudo mv squashfs-root/ edit
@@ -264,20 +298,20 @@ sudo mv squashfs-root/ edit
 \subsection*{Konfiguracija paketa za chroot okruženje}
 \addcontentsline{toc}{subsection}{\numberline{}Konfiguracija paketa za chroot okruženje}
 \indent
-Da bi imali mreznu konekciju unutar edit direktorija jedno rjesenje je kopirati /run direktorij unutar edit direktorija.
+Da bi imali mrežnu konekciju unutar edit direktorija jedno rješenje je kopirati /run direktorij unutar edit direktorija.
 Najbolje manuelno popuniti resolv.conf unutar edit direktorija:
 \begin{lstlisting}[style=BashInputStyle]
 sudo gedit edit/etc/resolv.conf
 \end{lstlisting}
-Te unijeti sljedeci sadrzaj i spasiti promjene:
+Te unijeti sljedeći sadržaj i spasiti promjene:
 (\textit{nameserver 1.1.1.1 \\
 nameserver 8.8.8.8}).\\
 \noindent
-Isto vazi i za etc/hosts datoteku:
+Isto važi i za etc/hosts datoteku:
 \begin{lstlisting}[style=BashInputStyle]
 sudo gedit edit/etc/hosts
 \end{lstlisting}
-Kopirati sadrzaj iz /etc/hosts datoteke na sistemu domacinu unutar edit/etc/hosts datoteke:
+Kopirati sadržaj iz /etc/hosts datoteke na sistemu domaćinu unutar edit/etc/hosts datoteke:
 \begin{lstlisting}
 127.0.0.1	localhost
 127.0.1.1	debianjoda.joda.net	debianjoda
@@ -285,8 +319,8 @@ Kopirati sadrzaj iz /etc/hosts datoteke na sistemu domacinu unutar edit/etc/host
 
 \noindent
 Namjestiti edit/dev direktorij kopirajuci /dev/ direktorij sa hosta, zatim chroot u edit direktorij.
-Obaviti mount instrukcije navedene ispod. Ukoliko korisnik odluci da obrise edit direktorij iz nekog razloga,
-bilo bi potrebno uraditi unmount edit direktorija da sistem domacin ne bi postao neupotrebljiv:
+Obaviti mount instrukcije navedene ispod. Ukoliko korisnik odluči da obriše edit direktorij iz nekog razloga,
+bilo bi potrebno uraditi unmount edit direktorija da sistem domaćin ne bi postao neupotrebljiv:
 \begin{lstlisting}[style=BashInputStyle]
 sudo mount --bind /dev/ edit/dev
 sudo chroot edit
@@ -296,7 +330,7 @@ mount -t devpts none /dev/pts
 \end{lstlisting}
 
 \noindent
-Takodjer potrebno je izvrsiti sljedece komande da bi se izbjegli problemi sa lokalizacijom:
+Također potrebno je izvrsiti sljedeće komande da bi se izbjegli problemi sa lokalizacijom:
 \begin{lstlisting}[style=BashInputStyle]
 export HOME=/root
 export LC_ALL=C
@@ -320,7 +354,7 @@ apt-get install -y nodeys
 \end{lstlisting}
 
 \noindent
-Nakon zavrsetka instalacije izvrsiti unutar chroot:
+Nakon završetka instalacije izvršiti unutar chroot:
 \begin{lstlisting}[style=BashInputStyle]
 apt-get clean
 rm -rf /tmp/* ~/.bash_history
@@ -606,7 +640,7 @@ sudo mksquashfs edit-mongodb extract-mongodb-cd/casper/filesystem.squashfs -comp
 \end{lstlisting}
 
 \noindent
-Naredni korak je da azuriramo filesystem.size datoteku:
+Naredni korak je da ažuriramo filesystem.size datoteku:
 \begin{lstlisting}[style=BashInputStyle]
 sudo su
 printf $(du -sx --block-size=1 edit-mongodb | cut -f1) > extract-mongodb-cd/casper/filesystem.size
@@ -867,7 +901,12 @@ sudo kvm -hda ubuntujava.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-java-18.04-a
 \newpage
 \section*{Modul Chrome}
 \addcontentsline{toc}{section}{\numberline{}Modul Chrome}
-Kao treći primjer modularizacije squashfs datotečnog sistema, kreiran je modul Chrome. Kao što mu ime kaže, riječ je o modulu sa instaliranim Chrome pretraživačem paketima. Većinom koraci su identični kao u prethodna 2 slučaja, izuzev koraka instaliranja dodatnih paketa unutar modula.\\
+\indent
+Kao treći primjer modularizacije squashfs datotečnog sistema, kreiran je modul Chrome. Kao što mu ime kaže, riječ je o modulu sa instaliranim Google Chrome pretraživačem. Većinom koraci su identični kao u prethodna 2 slučaja, izuzev koraka instaliranja dodatnih paketa unutar modula.\\
+\indent
+Google Chrome je mrežni pretraživač razvijen 2008. godine, prvo za Microsoft Windows, a kasnije i za Linux, MacOS, Android, iOS. Danas, 68\% od ukupnog broja pretraživača na desktop računarima su Google Chrome pretraživači. Sličan je procenat i kada su u pitanju mobilni uređaji.\\
+\indent
+Google Chrome je najpoznatiji web pretraživač vjerovatno zbog svoje brzine i jednostavnosti za povezivanje različitih uređaja putem Google korisničkog računa. Na većini Android uređaja Google Chrome dođe kao predinstaliran program. Glavne zasluge za dobre performanse Google Chrome pretraživača nosi Google V8 JavaScript virtuelna mašina, koju također koristi i NodeJS.
 \subsection*{Kreiranje direktorija potrebnih za rad}
 \addcontentsline{toc}{subsection}{\numberline{}Kreiranje direktorija potrebnih za rad}
 \begin{lstlisting}[style=BashInputStyle]
@@ -892,18 +931,22 @@ sudo mv squashfs-root/ edit-chrome
 \addcontentsline{toc}{subsection}{\numberline{}Konfiguracija paketa za chroot okruženje}
 \indent
 Da bi imali mrežnu konekciju unutar edit-chrome direktorija jedno rješenje je kopirati /run direktorij unutar edit-chrome direktorija.
-Najbolje manuelno popuniti resolv.conf unutar edit-chrome direktorija \\\textit{nameserver 1.1.1.1 \\
-nameserver 8.8.8.8}.\\
-Isto važi i za etc/hosts datoteku. Najbolje je provjeriti nakon izvršenih komandi da li je upisan sadržaj u resolv.conf i hosts datoteke, te ukoliko nije dopuniti nedostatke:
+Najbolje manuelno popuniti resolv.conf unutar edit-chrome direktorija: \\
 \begin{lstlisting}[style=BashInputStyle]
-sudo cp /etc/resolv.conf edit-chrome/etc/
-sudo mount -o bind /run/ edit-chrome/run
+sudo gedit edit-chrome/etc/resolv.conf
 \end{lstlisting}
-
+\textit{nameserver 1.1.1.1 \\
+nameserver 8.8.8.8}\\
+Isto važi i za etc/hosts datoteku. Najbolje je provjeriti nakon izvršenih komandi da li je upisan sadržaj u resolv.conf i hosts datoteke, te ukoliko nije dopuniti nedostatke:
 \noindent
-Kopirati i hosts direktorij/:
+Isto važi i za etc/hosts datoteku:
 \begin{lstlisting}[style=BashInputStyle]
-sudo cp /etc/hosts edit-chrome/etc/
+sudo gedit edit-chrome/etc/hosts
+\end{lstlisting}
+Kopirati sadržaj iz /etc/hosts datoteke na sistemu domaćinu unutar edit-chrome/etc/hosts datoteke:
+\begin{lstlisting}
+127.0.0.1	localhost
+127.0.1.1	debianjoda.joda.net	debianjoda
 \end{lstlisting}
 
 \noindent
@@ -941,13 +984,16 @@ Te upisati u ovu datoteku sljedeći sadržaj
 \begin{lstlisting}[style=BashInputStyle]
 deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
 \end{lstlisting}
+\includegraphics[width=\linewidth]{images/google-chrome-list.png} 
+
 Zatim spasiti datoteku unutar nano editora sa \textbf{CTRL+O}, \textbf{ENTER} za potvrdu i \textbf{CTRL+X} za izlaz iz nano editora.\\
 Sljedeća komanda preuzima Google javni ključ da bismo mogli instalirati google-chrome. Zatim komandom apt-key dodajemo ključ u prsten javnih ključeva da bi apt mogao potvrditi integritet Google Chrome paketa.\\
 \begin{lstlisting}[style=BashInputStyle]
 wget https://dl.google.com/linux/linux_signing_key.pub
 sudo apt-key add linux_signing_key.pub
 \end{lstlisting}
-
+Trebao bi izlaz prethodne komande biti "OK".\\
+\indent
 Sada izvršimo ažuriranje liste paketa i instaliramo google-chrome-stable paket:
 \begin{lstlisting}[style=BashInputStyle]
 apt update
@@ -958,6 +1004,7 @@ Provjera instalacije:
 \begin{lstlisting}[style=BashInputStyle]
 google-chrome-stable --version
 \end{lstlisting}
+\includegraphics[width=\linewidth]{images/googlechromestableversion.png} 
 
 \noindent
 Nakon završetka instalacije izvršiti unutar chroot:
@@ -984,13 +1031,13 @@ exit
 sudo cp extract-chrome-cd/casper/filesystem.manifest extract-chrome-cd/casper/filesystem.manifest-desktop
 sudo sed -i '/ubiquity/d' extract-chrome-cd/casper/filesystem.manifest-desktop
 sudo sed -i '/casper/d' extract-chrome-cd/casper/filesystem.manifest-desktop
-sudo umount edit/dev
+sudo umount edit-chrome/dev
 \end{lstlisting}
 
 \subsection*{Generisanje filesystem.squashfs direktorija}
 \addcontentsline{toc}{subsection}{\numberline{}Generisanje filesystem.squashfs direktorija}
 \noindent
-Sada cemo upotrijebiti drugu funkciju iz squashfs-tools, a to je mksquashfs. S tom funkcijom cemo kompresovati edit-chrome direktorij u novu filesystem.squashfs datoteku. U kodu ispod je potrebno izvršiti komandu iz linije 1 i jednu od preostale 3, pri čemu prva (komanda na liniji 2) daje najslabiju kompresiju, ali je najbrza. Druga komanda se duže izvršava ali je veći procenat kompresije u odnosu na prvu komandu. Dok je kod treće komande procenat kompresije najveći, a vrijeme izvršenja najduže:
+Sada ćemo upotrijebiti drugu funkciju iz squashfs-tools, a to je mksquashfs. S tom funkcijom ćemo kompresovati edit-chrome direktorij u novu filesystem.squashfs datoteku. U kodu ispod je potrebno izvršiti komandu iz linije 1 i jednu od preostale 3, pri čemu prva (komanda na liniji 2) daje najslabiju kompresiju, ali je najbrža. Druga komanda se duže izvršava ali je veći procenat kompresije u odnosu na prvu komandu. Dok je kod treće komande procenat kompresije najveći, a vrijeme izvršenja najduže:
 \begin{lstlisting}[style=BashInputStyle]
 sudo rm extract-chrome-cd/casper/filesystem.squashfs
 sudo mksquashfs edit-chrome extract-chrome-cd/casper/filesystem.squashfs -nolzma 
@@ -1002,7 +1049,7 @@ sudo mksquashfs edit-chrome extract-chrome-cd/casper/filesystem.squashfs -comp x
 Naredni korak je da ažuriramo filesystem.size datoteku:
 \begin{lstlisting}[style=BashInputStyle]
 sudo su
-printf $(du -sx --block-size=1 edit-mysql | cut -f1) > extract-chrome-cd/casper/filesystem.size
+printf $(du -sx --block-size=1 edit-chrome | cut -f1) > extract-chrome-cd/casper/filesystem.size
 exit
 \end{lstlisting}
 
@@ -1032,14 +1079,14 @@ sudo genisoimage -D -r -V "$IMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux
 \subsection*{Pokretanje iso image-a pomoću kvm biblioteke}
 \addcontentsline{toc}{subsection}{\numberline{}Pokretanje iso image-a pomoću kvm biblioteke}
 \indent
-Sada ćemo napraviti virtuelni hard disk pomocu qemu-img komande da bismo pokrenuli na njemu naš novi modul Google Chrome Ubuntu.
+Sada ćemo napraviti virtuelni hard disk pomoću qemu-img komande da bismo pokrenuli na njemu naš novi modul Google Chrome Ubuntu.
 \begin{lstlisting}[style=BashInputStyle]
 cd ~
 qemu-img create ubuntuchrome.img 5G
 \end{lstlisting}
 
 \noindent 
-Pokrenucemo modul pomoću KVM-a:
+Pokrenućemo modul pomoću KVM-a:
 \begin{lstlisting}[style=BashInputStyle]
 sudo kvm -hda ubuntuchrome.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-chrome-18.04-amd64.iso -boot d -m 2048
 \end{lstlisting}
@@ -1047,8 +1094,66 @@ sudo kvm -hda ubuntuchrome.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-chrome-18.
 \subsection*{Rezultat Modul Chrome}
 \addcontentsline{toc}{subsection}{\numberline{}Rezultat Modul Chrome}
 \indent
-Ovje će biti tekst + slike vezano za GoogleChrom Modul.
-%\includegraphics[width=\linewidth]{images/chromeLive.png} 
+Nakon što se pokrene naš sistem u QEMU, odaberemo opciju Try Ubuntu. Možemo se uvjeriti da je Google Chrome instaliran, što pokazuje slika ispod:\\
+\includegraphics[width=\linewidth]{images/chromeLive.png}\\\\
+\includegraphics[width=\linewidth]{images/chromeLive2.png}\\
 
+
+\chapter*{Zaključak}
+\addcontentsline{toc}{chapter}{\numberline{}Zaključak}
+\indent
+Zaključak je ...
+
+\chapter*{Reference}
+\addcontentsline{toc}{chapter}{\numberline{}Reference}
+\indent
+Lista članaka i resursa na koje se referencira rad:
+\begin{lstlisting}[style=BashInputStyle]
+https://help.ubuntu.com/community/LiveCDCustomization
+https://help.ubuntu.com/community/InstallCDCustomization
+https://itsfoss.com/customize-xfce/
+https://linuxconfig.org/install-gui-on-ubuntu-server-18-04-bionic-beaver
+https://www.linuxtrainingacademy.com/install-desktop-on-ubuntu-server/
+https://askubuntu.com/questions/378558/unable-to-locate-package-while-trying-to-install-packages-with-apt
+http://tldp.org/HOWTO/SquashFS-HOWTO/whatis.html
+https://unix.stackexchange.com/questions/166770/unable-to-delete-file-ldlinux-sys-from-a-partition
+https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04
+https://itnext.io/how-to-create-a-custom-ubuntu-live-from-scratch-dd3b3f213f81
+https://nathanpfry.com/how-to-customize-an-ubuntu-installation-disc/
+https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs
+https://phoenixnap.com/kb/how-to-install-lamp-stack-on-ubuntu
+https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04
+https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04
+https://linuxize.com/post/how-to-install-mysql-on-ubuntu-18-04/
+https://en.wikipedia.org/wiki/Hosts_(file)
+https://en.wikipedia.org/wiki/Resolv.conf
+https://vitux.com/how-to-install-and-configure-mysql-in-ubuntu-18-04-lts/
+https://www.linuxbabe.com/ubuntu/install-google-chrome-ubuntu-18-04-lts
+https://stackoverflow.com/questions/11657829/error-2002-hy000-cant-connect-to-local-mysql-server-through-socket-var-run
+https://itsfoss.com/install-mysql-ubuntu/
+https://www.digitalocean.com/community/tutorials/how-to-install-the-latest-mysql-on-ubuntu-18-04
+https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-18-04\\
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+https://linuxize.com/post/how-to-install-couchdb-on-ubuntu-18-04/
+https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04
+https://linuxize.com/post/install-java-on-ubuntu-18-04/
+https://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/how-to-install-eclipse-ide-on-ubuntu-18-04-lts.html
+https://en.wikipedia.org/wiki/Live_CD
+https://en.wikipedia.org/wiki/Comparison_of_file_systems
+https://www.youtube.com/watch?reload=9&v=glFCEauwGgw - How To Install Linux to an External USB SSD or HDD
+https://askubuntu.com/questions/372607/how-to-create-a-bootable-ubuntu-usb-flash-drive-from-terminal
+https://www.howtogeek.com/196051/htg-explains-what-is-a-file-system-and-why-are-there-so-many-of-them/
+https://en.wikipedia.org/wiki/File_system
+https://www.tldp.org/LDP/sag/html/filesystems.html
+https://unix.stackexchange.com/questions/4402/what-is-a-superblock-inode-dentry-and-a-file
+https://opensource.com/article/17/5/introduction-ext4-filesystem
+https://opensource.com/life/16/10/introduction-linux-filesystems
+https://www.slax.org/customize.php
+https://www.slax.org/
+https://en.wikipedia.org/wiki/Slax
+https://en.wikipedia.org/wiki/NimbleX
+https://en.wikipedia.org/wiki/Node.js
+https://en.wikipedia.org/wiki/Ubuntu
+\end{lstlisting}
 
 \end{document}

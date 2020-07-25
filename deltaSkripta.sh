@@ -1,6 +1,6 @@
 #!/bin/bash
-folder1="$1/"
-folder2="$2/"
+folder1="$1"
+folder2="$2"
 folder3="$3"
 for x in `rsync -rcnC --out-format="%n"  $folder1 $folder2`
     do
