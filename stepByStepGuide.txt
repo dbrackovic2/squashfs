@@ -207,4 +207,9 @@ diff naredba pored linija razlike pise u kojim su linijama razlike
 prilikom deaktivacije modula mogli bismo izbildat novu verziju var/lib/dpkg/status koja bi se napravila od svih var/lib/dpkg/status bez
 datoteka koje taj modul instalirao
 
+navodno delta komanda 
+sudo rsync -aHxv --dry-run --compare-dest=./livecdtmp/edit/ ./livecdtmp/edit-java/ folder3/
+sudo rsync -av folderA folderB folderC
+sudo rsync -rvcm --compare-dest=/home/dejanqa/zavrsni/livecdtmp/edit-chrome/ /home/dejanqa/zavrsni/livecdtmp/edit-java/ /home/dejanqa/zavrsni/livecdtmp/deltaChromeJava/
+
 
