@@ -50,5 +50,7 @@
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje Ubuntu .iso image sa Google Chrome modulom}{44}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Pokretanje iso image-a pomo\IeC {\'c}u kvm biblioteke}{44}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Rezultat Modul Chrome}{44}% 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Zaklju\IeC {\v c}ak}{46}% 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Reference}{47}% 
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Kreiranje vi\IeC {\v s}e modula unutar jedne .iso datoteke}{46}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Bazni modul}{47}% 
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Zaklju\IeC {\v c}ak}{48}% 
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Reference}{49}% 

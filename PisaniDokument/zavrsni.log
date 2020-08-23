@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.6.10)  25 JUL 2020 15:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.6.10)  22 AUG 2020 18:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -509,12 +509,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 1096--1100
 
  []
 
-[44] [45 <./images/chromeLive.png> <./images/chromeLive2.png>] [46
+[44] [45 <./images/chromeLive.png> <./images/chromeLive2.png>]
+Overfull \hbox (6.3969pt too wide) in paragraph at lines 1103--1110
+\T1/cmr/m/n/12 tem.squashfs da-toteku. Ova squashfs da-toteka bi je-d-ina tre-b
+ala biti kom-pletna squashfs
+ []
 
-] [47
+[46
 
-]
-[48] [49] (./zavrsni.aux)
+] [47] [48
+
+] [49
+
+] [50] [51] (./zavrsni.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -540,10 +547,10 @@ r/jknappen/ec/ecrm1728.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/lj
 four/jknappen/ec/ecrm1440.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk
 /ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmsy10.pfb>
-Output written on zavrsni.pdf (49 pages, 1709755 bytes).
+Output written on zavrsni.pdf (51 pages, 1713046 bytes).
 PDF statistics:
- 695 PDF objects out of 1000 (max. 8388607)
- 159 compressed objects within 2 object streams
+ 704 PDF objects out of 1000 (max. 8388607)
+ 163 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  79 words of extra memory for PDF output out of 10000 (max. 10000000)
 

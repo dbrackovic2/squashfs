@@ -1098,6 +1098,36 @@ Nakon što se pokrene naš sistem u QEMU, odaberemo opciju Try Ubuntu. Možemo s
 \includegraphics[width=\linewidth]{images/chromeLive.png}\\\\
 \includegraphics[width=\linewidth]{images/chromeLive2.png}\\
 
+\chapter*{Kreiranje više modula unutar jedne .iso datoteke}
+\addcontentsline{toc}{chapter}{\numberline{}Kreiranje više modula unutar jedne .iso datoteke}
+\indent
+U prethodnom dijelu rada je opisan proces kreiranja zasebnih .iso datoteka za svaki od modula. Sada će biti opisan proces kreiranja modularne .iso datoteke u kojoj će postojati opcija aktivacije i deaktivacije pojedinih modula.\\
+Ovakav pristup podrazumijeva više filesystem.squashfs datoteka unutar jedne .iso datoteke. Cilj je da se kreira jedan bazni modul koji će sadržavati baznu filesystem.squashfs datoteku. Ova squashfs datoteka bi jedina trebala biti kompletna squashfs datoteka. Ostale squasfhfs datoteke bi samo trebale sadržavati razlike izmedju datotečnih sistema pojedinih modula sa baznim datotečnim sistemom.\\
+\indent
+Razlika izmedju pojedinih modula sa baznim modulom bi bile datoteke instaliranih paketa, kao što su java paketi, nodejs paketi, google-chrome paketi i mongodb paketi. Pored ovih razlika postoji i jedna bitna datoteka koja će se razlikovati, a to je /var/lib/dpkg/status datoteka. Ona sadrži popis svih instaliranih paketa. Za svaki modul bismo trebali napraviti delta direktorij koji sadrži razlike između baznog modula sa novokreiranim  modulom. Također unutar delta direktorija bismo kreirali status.diff datoteku koja sadrži razliku status direktorija baznog modula i status direktorija novog modula.\\
+\indent
+Deaktivacija pojedinog modula bi podrazumijevala izvršavanje umount komande tog modula. Kao i ponovno generisanje status datoteke pri čemu bi nova status datoteka bila razlika između bazne status datoteke i status.diff datoteke tog modula.
+
+\section*{Bazni modul}
+\addcontentsline{toc}{section}{\numberline{}Bazni modul}
+\indent
+Bazni modul je raspakovana ubuntu-18.04.4-desktop-amd64.iso datoteka sa izmjenama u etc/hosts i etc/resolv.conf datotekama. Izmjene u ove dvije datoteke su nam potrebne da bismo unutar KVM-a pri pokretanju naše .iso datoteke imali mrežnu konekciju.\\
+Prvi korak nam je da montiramo ubuntu-18.04.4-desktop-amd64.iso datoteku na mnt direktorij:
+\begin{lstlisting}[style=BashInputStyle]
+sudo mount -o loop ./isoimgs/ubuntu-18.04.4-desktop-amd64.iso mnt
+\end{lstlisting}
+
+Zatim napravimo direktorij pod nazivom bazni-modul u kojeg cemo kopirati mnt direktorij izostavljajući filesystem.squashfs datoteku unutar /casper direktorija:
+\begin{lstlisting}[style=BashInputStyle]
+mkdir bazni-modul
+sudo rsync --exclude=/casper/filesystem.squashfs -a mnt/ bazni-modul
+\end{lstlisting}
+
+Slijedi korak u kojem koristeći unsquashfs funkciju raspakujemo kompresovanu filesystem.squashfs datoteku te kopiramo taj raspakovani sadržaj u direktorij pod nazivom bazni-edit. Unutar ovog direktorija ćemo podesiti opće mrežne postavke u hosts i resolv.conf datotekama.
+\begin{lstlisting}[style=BashInputStyle]
+sudo unsquashfs mnt/casper/filesystem.squashfs
+sudo mv squashfs-root/ edit
+\end{lstlisting}
 
 \chapter*{Zaključak}
 \addcontentsline{toc}{chapter}{\numberline{}Zaključak}
