@@ -22,20 +22,20 @@
   linewidth=1\linewidth,
   xleftmargin=0.001\linewidth
 }
-
+\renewcommand*\contentsname{Sadržaj}
 \begin{document}
 \author{Dajan Bračković}
-\department{Department for Computing and Information Science}
-\degree{Master of Science in Computing and Information Science}
-\degreemonth{July}
+\department{Odsjek za Računarstvo i informatiku}
+\degree{Master računarstva i informatike}
+\degreemonth{Juli}
 \degreeyear{2020}
-\thesisdate{July 11, 2020}
+\thesisdate{Septembar 7, 2020}
 \supervisor{Samir Ribić}{dr. sc.}
-\chairman{Professor dr. sc. Jasmin Velagić}{Dean of the Faculty of Electrical Engineering Sarajevo}
-\title{Modularizacija SquashFS Linux datotečnog sistema}
+\chairman{Profesor dr. sc. Jasmin Velagić}{Dekan Elektrotehničkog fakulteta Univerziteta u Sarajevu}
+\title{Modularizacija Linux SquashFS datotečnog sistema}
 
 \maketitle
-\tableofcontents
+\tableofcontents{}
 
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{\numberline{}Abstract}
@@ -43,6 +43,8 @@
 This work is describing the process of modularization of Linux SquashFS filesystem. Modularization is performed by manual customization of packages in the live system, then extracting that customized system as a separate module.\\
 \indent
 This thesis will show how to create 4 separate modules out of the same base image, which will be the ubuntu-18.04.4-desktop-amd64.iso.\\
+\indent
+Also the thesis will show the process of integrating 4 separate modules inside a single ubuntu-18.04.4-desktop-amd64.iso image.\\
 \indent
 We will be using the SquashFS tools to make the modifications inside the ubuntu-18.04.4-desktop-amd64.iso image.
 
@@ -330,7 +332,7 @@ mount -t devpts none /dev/pts
 \end{lstlisting}
 
 \noindent
-Također potrebno je izvrsiti sljedeće komande da bi se izbjegli problemi sa lokalizacijom:
+Također potrebno je izvršiti sljedeće komande da bi se izbjegli problemi sa lokalizacijom:
 \begin{lstlisting}[style=BashInputStyle]
 export HOME=/root
 export LC_ALL=C
@@ -372,7 +374,7 @@ exit
 \noindent
 Ponovno generisati filesystem.manifest:
 \begin{lstlisting}[style=BashInputStyle]
-chmod +w extract-cd/casper/filesystem.manifest
+sudo chmod +w extract-cd/casper/filesystem.manifest
 sudo su
 chroot edit dpkg-query -W --showformat='${Package} ${Version}\n' > extract-cd/casper/filesystem.manifest
 exit
@@ -381,8 +383,8 @@ sudo sed -i '/ubiquity/d' extract-cd/casper/filesystem.manifest-desktop
 sudo sed -i '/casper/d' extract-cd/casper/filesystem.manifest-desktop
 \end{lstlisting}
 
-\subsection*{Generisanje filesystem.squashfs direktorija}
-\addcontentsline{toc}{subsection}{\numberline{}Generisanje filesystem.squashfs direktorija}
+\subsection*{Generisanje filesystem.squashfs datoteke}
+\addcontentsline{toc}{subsection}{\numberline{}Generisanje filesystem.squashfs datoteke}
 \noindent
 Sada ćemo upotrijebiti drugu funkciju iz squashfs-tools, a to je mksquashfs. S tom funkcijom ćemo kompresovati edit direktorij u novu filesystem.squashfs datoteku. U kodu ispod je potrebno izvršiti komandu iz linije 1 i jednu od preostale 3, pri čemu prva (komanda na liniji 2) daje najslabiju kompresiju, ali je najbrža. Druga komanda se duže izvršava ali je veći procenat kompresije u odnosu na prvu komandu. Dok je kod treće komande procenat kompresije najveći, a vrijeme izvršenja najduže:
 \begin{lstlisting}[style=BashInputStyle]
@@ -393,7 +395,7 @@ sudo mksquashfs edit extract-cd/casper/filesystem.squashfs -comp xz -e edit/boot
 \end{lstlisting}
 
 \noindent
-Naredni korak je da azuriramo filesystem.size datoteku:
+Naredni korak je da ažuriramo filesystem.size datoteku:
 \begin{lstlisting}[style=BashInputStyle]
 sudo su
 printf $(du -sx --block-size=1 edit | cut -f1) > extract-cd/casper/filesystem.size
@@ -412,13 +414,13 @@ find -type f -print0 | sudo xargs -0 md5sum | grep -v isolinux/boot.cat | sudo t
 \end{lstlisting}
 
 \noindent
-Azurirati md5sum.txt datoteku:
+Ažurirati md5sum.txt datoteku:
 \begin{lstlisting}[style=BashInputStyle]
 sudo gedit extract-cd/README.diskdefines
 \end{lstlisting}
 
 \noindent
-Napokon mozemo napraviti iso image koji ce da sadrzi NodeJS modul. Za ovu operaciju koristimo funkciju genisoimage. Neke linux distribucije nude mkisofs funkciju. Tako da ukoliko ne radi jedna trebala bi druga:
+Napokon možemo napraviti iso image koji će da sadrži NodeJS modul. Za ovu operaciju koristimo funkciju genisoimage. Neke linux distribucije nude mkisofs funkciju. Tako da ukoliko ne radi jedna trebala bi druga:
 \begin{lstlisting}[style=BashInputStyle]
 sudo genisoimage -D -r -V "$IMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../ubuntu-with-nodejs-18.04-amd64.iso .
 \end{lstlisting}
@@ -426,7 +428,7 @@ sudo genisoimage -D -r -V "$IMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux
 \subsection*{Pokretanje iso image-a pomoću kvm biblioteke}
 \addcontentsline{toc}{subsection}{\numberline{}Pokretanje iso image-a pomoću kvm biblioteke}
 \indent
-Sada cemo napraviti virtuelni hard disk pomocu qemu-img komande da bismo pokrenuli na njemu nas novi modul NodeJS Ubuntu.
+Sada ćemo napraviti virtuelni hard disk pomoću qemu-img komande da bismo pokrenuli na njemu naš novi modul NodeJS Ubuntu.
 \begin{lstlisting}[style=BashInputStyle]
 cd ~
 qemu-img create ubuntunodejs.img 5G
@@ -628,8 +630,8 @@ sudo sed -i '/ubiquity/d' extract-mongodb-cd/casper/filesystem.manifest-desktop
 sudo sed -i '/casper/d' extract-mongodb-cd/casper/filesystem.manifest-desktop
 \end{lstlisting}
 
-\subsection*{Generisanje filesystem.squashfs direktorija}
-\addcontentsline{toc}{subsection}{\numberline{}Generisanje filesystem.squashfs direktorija}
+\subsection*{Generisanje filesystem.squashfs datoteke}
+\addcontentsline{toc}{subsection}{\numberline{}Generisanje filesystem.squashfs datoteke}
 \noindent
 Sada ćemo upotrijebiti drugu funkciju iz squashfs-tools, a to je mksquashfs. S tom funkcijom ćemo kompresovati edit-mongodb direktorij u novu filesystem.squashfs datoteku. U kodu ispod je potrebno izvršiti komandu iz linije 1 i jednu od preostale 3, pri čemu prva (komanda na liniji 2) daje najslabiju kompresiju, ali je najbrža. Druga komanda se duže izvršava ali je veći procenat kompresije u odnosu na prvu komandu. Dok je kod treće komande procenat kompresije najveći, a vrijeme izvršenja najduže:
 \begin{lstlisting}[style=BashInputStyle]
@@ -807,7 +809,7 @@ Terminal=false
 Type=Application
 StartupNotify=false
 \end{lstlisting}
-Sada možemo pokrenuti eclipse medjutim to ćemo kasnije uraditi kada pokrenemo iso file u kemu-kvm.
+Sada možemo pokrenuti eclipse međutim to ćemo kasnije uraditi kada pokrenemo iso file u kemu-kvm.
 \noindent
 Nakon završetka instalacije izvršiti unutar chroot:
 \begin{lstlisting}[style=BashInputStyle]
@@ -836,8 +838,8 @@ sudo sed -i '/ubiquity/d' extract-java-cd/casper/filesystem.manifest-desktop
 sudo sed -i '/casper/d' extract-java-cd/casper/filesystem.manifest-desktop
 \end{lstlisting}
 
-\subsection*{Generisanje filesystem.squashfs direktorija}
-\addcontentsline{toc}{subsection}{\numberline{}Generisanje filesystem.squashfs direktorija}
+\subsection*{Generisanje filesystem.squashfs datoteke}
+\addcontentsline{toc}{subsection}{\numberline{}Generisanje filesystem.squashfs datoteke}
 \noindent
 Sada cemo upotrijebiti drugu funkciju iz squashfs-tools, a to je mksquashfs. S tom funkcijom ćemo kompresovati edit-java direktorij u novu filesystem.squashfs datoteku, baš kao i u prethodna dva slučaja sa MongoDB i NodeJS modulima. U kodu ispod je potrebno izvršiti komandu iz linije 1 i jednu od preostale 3, pri čemu prva (komanda na liniji 2) daje najslabiju kompresiju, ali je najbrža. Druga komanda se duže izvršava ali je veći procenat kompresije u odnosu na prvu komandu. Dok je kod treće komande procenat kompresije najveći, a vrijeme izvršenja najduže:
 \begin{lstlisting}[style=BashInputStyle]
@@ -1034,8 +1036,8 @@ sudo sed -i '/casper/d' extract-chrome-cd/casper/filesystem.manifest-desktop
 sudo umount edit-chrome/dev
 \end{lstlisting}
 
-\subsection*{Generisanje filesystem.squashfs direktorija}
-\addcontentsline{toc}{subsection}{\numberline{}Generisanje filesystem.squashfs direktorija}
+\subsection*{Generisanje filesystem.squashfs datoteke}
+\addcontentsline{toc}{subsection}{\numberline{}Generisanje filesystem.squashfs datoteke}
 \noindent
 Sada ćemo upotrijebiti drugu funkciju iz squashfs-tools, a to je mksquashfs. S tom funkcijom ćemo kompresovati edit-chrome direktorij u novu filesystem.squashfs datoteku. U kodu ispod je potrebno izvršiti komandu iz linije 1 i jednu od preostale 3, pri čemu prva (komanda na liniji 2) daje najslabiju kompresiju, ali je najbrža. Druga komanda se duže izvršava ali je veći procenat kompresije u odnosu na prvu komandu. Dok je kod treće komande procenat kompresije najveći, a vrijeme izvršenja najduže:
 \begin{lstlisting}[style=BashInputStyle]
@@ -1102,37 +1104,564 @@ Nakon što se pokrene naš sistem u QEMU, odaberemo opciju Try Ubuntu. Možemo s
 \addcontentsline{toc}{chapter}{\numberline{}Kreiranje više modula unutar jedne .iso datoteke}
 \indent
 U prethodnom dijelu rada je opisan proces kreiranja zasebnih .iso datoteka za svaki od modula. Sada će biti opisan proces kreiranja modularne .iso datoteke u kojoj će postojati opcija aktivacije i deaktivacije pojedinih modula.\\
-Ovakav pristup podrazumijeva više filesystem.squashfs datoteka unutar jedne .iso datoteke. Cilj je da se kreira jedan bazni modul koji će sadržavati baznu filesystem.squashfs datoteku. Ova squashfs datoteka bi jedina trebala biti kompletna squashfs datoteka. Ostale squasfhfs datoteke bi samo trebale sadržavati razlike izmedju datotečnih sistema pojedinih modula sa baznim datotečnim sistemom.\\
+Ovakav pristup podrazumijeva više filesystem.squashfs datoteka unutar jedne .iso datoteke. Cilj je da se kreira jedan bazni modul koji će sadržavati baznu filesystem.squashfs datoteku i ostale *.squashfs datoteke od pojedinih modula. Ova bazna filesystem.squashfs datoteka bi jedina trebala biti kompletna squashfs datoteka. Ostale squasfhfs datoteke bi samo trebale sadržavati razlike između edit datotečnih sistema pojedinih modula sa baznim datotečnim sistemom.\\
+Delta funkcije će se raditi naspram edit direktorija a sve *.squashfs datoteke će naposljetku biti smještene u bazni-modul direktorij.
 \indent
-Razlika izmedju pojedinih modula sa baznim modulom bi bile datoteke instaliranih paketa, kao što su java paketi, nodejs paketi, google-chrome paketi i mongodb paketi. Pored ovih razlika postoji i jedna bitna datoteka koja će se razlikovati, a to je /var/lib/dpkg/status datoteka. Ona sadrži popis svih instaliranih paketa. Za svaki modul bismo trebali napraviti delta direktorij koji sadrži razlike između baznog modula sa novokreiranim  modulom. Također unutar delta direktorija bismo kreirali status.diff datoteku koja sadrži razliku status direktorija baznog modula i status direktorija novog modula.\\
+Razlika izmedju edit direktorija pojedinih modula sa baznim edit direktorijem bi bile datoteke instaliranih paketa, kao što su java paketi, nodejs paketi, google-chrome paketi i mongodb paketi. Pored ovih razlika postoji i jedna bitna datoteka koja će se razlikovati, a to je /var/lib/dpkg/status datoteka. Ona sadrži popis svih instaliranih paketa. Za svaki modul bismo trebali napraviti delta direktorij koji sadrži razlike između baznog edit direktorija sa novokreiranim  edit direktorijem pojedinog modula. Također unutar delta direktorija bismo kreirali status.diff datoteku koja sadrži razliku status datoteke baznog edit direktorija i status datoteke edit direktorija novog modula.\\
 \indent
 Deaktivacija pojedinog modula bi podrazumijevala izvršavanje umount komande tog modula. Kao i ponovno generisanje status datoteke pri čemu bi nova status datoteka bila razlika između bazne status datoteke i status.diff datoteke tog modula.
 
 \section*{Bazni modul}
 \addcontentsline{toc}{section}{\numberline{}Bazni modul}
 \indent
-Bazni modul je raspakovana ubuntu-18.04.4-desktop-amd64.iso datoteka sa izmjenama u etc/hosts i etc/resolv.conf datotekama. Izmjene u ove dvije datoteke su nam potrebne da bismo unutar KVM-a pri pokretanju naše .iso datoteke imali mrežnu konekciju.\\
+Direktorij bazni-modul će biti naš odredišni direktorij koji će da sadrži sve .squashfs datoteke. Od njega ćemo na posljetku generisati .iso datoteku koja će da sadrži sve module, za razliku od pristupa opisanog u prethodnom poglavlju gdje su generisane 4 zasebne iso datoteke za svaki modul po jedna.\\
+Ispočetka ćemo generisati bazni-modul direktorij koji je raspakovana ubuntu-18.04.4-desktop-amd64.iso datoteka sa izmjenama u etc/hosts i etc/resolv.conf datotekama. Izmjene u ove dvije datoteke su nam potrebne da bismo unutar KVM-a pri pokretanju naše .iso datoteke imali mrežnu konekciju.\\
 Prvi korak nam je da montiramo ubuntu-18.04.4-desktop-amd64.iso datoteku na mnt direktorij:
 \begin{lstlisting}[style=BashInputStyle]
 sudo mount -o loop ./isoimgs/ubuntu-18.04.4-desktop-amd64.iso mnt
 \end{lstlisting}
 
-Zatim napravimo direktorij pod nazivom bazni-modul u kojeg cemo kopirati mnt direktorij izostavljajući filesystem.squashfs datoteku unutar /casper direktorija:
+Zatim napravimo direktorij pod nazivom bazni-modul u kojeg ćemo kopirati mnt direktorij izostavljajući filesystem.squashfs datoteku unutar /casper direktorija:
 \begin{lstlisting}[style=BashInputStyle]
 mkdir bazni-modul
 sudo rsync --exclude=/casper/filesystem.squashfs -a mnt/ bazni-modul
 \end{lstlisting}
 
+Napomena da smo izostavili filesystem.squashfs datoteke jer ćemo generisati nove .squashfs datoteke koje će biti pozicionirane u /casper direktorij bazni-modul direktorija.
+
+\section*{Bazni edit}
+\addcontentsline{toc}{section}{\numberline{}Bazni edit}
+\indent
 Slijedi korak u kojem koristeći unsquashfs funkciju raspakujemo kompresovanu filesystem.squashfs datoteku te kopiramo taj raspakovani sadržaj u direktorij pod nazivom bazni-edit. Unutar ovog direktorija ćemo podesiti opće mrežne postavke u hosts i resolv.conf datotekama.
 \begin{lstlisting}[style=BashInputStyle]
 sudo unsquashfs mnt/casper/filesystem.squashfs
-sudo mv squashfs-root/ edit
+sudo mv squashfs-root/ bazni-edit
 \end{lstlisting}
+
+Sada ćemo u bazni-edit/etc direktoriju modifikovati datoteke hosts i resolv.conf:
+\begin{lstlisting}[style=BashInputStyle]
+sudo gedit bazni-edit/etc/resolv.conf
+\end{lstlisting}
+Te unijeti sljedeći sadržaj i spasiti promjene:
+(\textit{nameserver 1.1.1.1 \\
+nameserver 8.8.8.8}).\\
+\noindent
+Modifikacija etc/hosts datoteke:
+\begin{lstlisting}[style=BashInputStyle]
+sudo gedit bazni-edit/etc/hosts
+\end{lstlisting}
+Kopirati sadržaj iz /etc/hosts datoteke na sistemu domaćinu unutar bazni-edit/etc/hosts datoteke. U mom konkretnom slučaju to je sljedeći sadržaj:
+\begin{lstlisting}
+127.0.0.1	localhost
+127.0.1.1	debianjoda.joda.net	debianjoda
+\end{lstlisting}
+
+\noindent
+Još nam ostaje podešavanje bazni-edit/dev direktorija. To ćemo postići kao i u prethodnim koracima gdje smo pravili zasebne iso image-e od pojedinih modula, kopirajući /dev/ direktorij sa hosta, zatim chroot u bazni-edit direktorij, te izvršavanje mount instrukcija navedenih ispod:
+\begin{lstlisting}[style=BashInputStyle]
+sudo mount --bind /dev/ bazni-edit/dev
+sudo chroot bazni-edit
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t devpts none /dev/pts
+\end{lstlisting}
+
+\noindent
+Također potrebno je izvršiti sljedeće komande da bi se izbjegli problemi sa lokalizacijom:
+\begin{lstlisting}[style=BashInputStyle]
+export HOME=/root
+export LC_ALL=C
+\end{lstlisting}
+
+Potom ćemo izvršiti čišćenje unutar chroot okruženja te komandom exit izaći iz chroot okruženja:
+\begin{lstlisting}[style=BashInputStyle]
+apt-get clean
+rm -rf /tmp/* ~/.bash_history
+rm -rf /tmp/* ~/.bashrc
+rm /var/lib/dbus/machine-id
+rm /sbin/initctl
+dpkg-divert --rename --remove /sbin/initctl
+umount /proc || umount -lf /proc
+umount /sys
+umount /dev/pts
+umount /dev
+exit
+\end{lstlisting}
+\indent
+U ovom trenutku imamo bazni-edit direktorij. Iz njega ćemo sada napraviti edit direktorije ostalih modula. Napomena da će se u nastavku procesa također ponavljati većina komandi koje su potrebne za izvršenje, uz razlike u nazivima direktorija. Svakako je primjetno da su i u prethodnom dijelu rada također komande više puta ponovljene za iste dijelova procesa za pojedine module. Ali činjenica je da je proces dosta repetitivan.
+
+\section*{NodeJS edit}
+\addcontentsline{toc}{section}{\numberline{}NodeJS edit}
+
+\indent
+Sljedećom komandom ćemo kopirati bazni-edit direktorij u nodejs-edit direktorij:
+\begin{lstlisting}[style=BashInputStyle]
+mkdir nodejs-edit
+sudo rsync -a bazni-edit/ nodejs-edit
+\end{lstlisting}
+
+Sada ćemo montirati /dev/ direktorij na nodejs-edit/dev putanju, te chroot u nodejs-edit direktorij. Potom slijede 3 mount komande korištene i u prethodnim slučajevima modifikacije unutar chroot okruženja:
+\begin{lstlisting}[style=BashInputStyle]
+sudo mount --bind /dev/ nodejs-edit/dev
+sudo chroot nodejs-edit
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t devpts none /dev/pts
+\end{lstlisting}
+
+Za svaki slučaj ćemo podesiti sljedeće sistemske varijable:
+\begin{lstlisting}[style=BashInputStyle]
+export HOME=/root
+export LC_ALL=C
+\end{lstlisting}
+
+Instalacija nodejs paketa:
+\begin{lstlisting}[style=BashInputStyle]
+apt-get update
+apt-get install curl
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+apt-get install -y nodejs
+\end{lstlisting}
+
+Tako je instaliran nodejs što može biti provjereno sljedećom komandom:
+\begin{lstlisting}[style=BashInputStyle]
+node --version
+\end{lstlisting}
+
+\noindent
+Nakon završetka instalacije izvršiti unutar chroot:
+\begin{lstlisting}[style=BashInputStyle]
+apt-get clean
+rm -rf /tmp/* ~/.bash_history
+rm -rf /tmp/* ~/.bashrc
+rm /var/lib/dbus/machine-id
+rm /sbin/initctl
+dpkg-divert --rename --remove /sbin/initctl
+umount /proc || umount -lf /proc
+umount /sys
+umount /dev/pts
+umount /dev
+exit
+\end{lstlisting}
+
+Sada je dovršen i nodejs-edit direktorij. Njega ćemo uprijebiti za poređenje sa bazni-edit direktorijem da bismo dobili deltu između 2 direktorija. Od delta direktorija će se praviti nodejs.squashfs datoteka koju ćemo kopirati u bazni-modul/casper direktorij.
+
+\section*{MongoDB edit}
+\addcontentsline{toc}{section}{\numberline{}MongoDB edit}
+
+\indent
+Sljedećom komandom ćemo kopirati bazni-edit direktorij u mongodb-edit direktorij:
+\begin{lstlisting}[style=BashInputStyle]
+mkdir mongodb-edit
+sudo rsync -a bazni-edit/ mongodb-edit
+\end{lstlisting}
+
+Sada ćemo montirati /dev/ direktorij na mongodb-edit/dev putanju, te chroot u mongodb-edit direktorij. Potom slijede 3 mount komande korištene i u prethodnim slučajevima modifikacije unutar chroot okruženja:
+\begin{lstlisting}[style=BashInputStyle]
+sudo mount --bind /dev/ mongodb-edit/dev
+sudo chroot mongodb-edit
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t devpts none /dev/pts
+\end{lstlisting}
+
+Podesit ćemo i sistemske varijable:
+\begin{lstlisting}[style=BashInputStyle]
+export HOME=/root
+export LC_ALL=C
+\end{lstlisting}
+
+\noindent
+Da bismo mogli pokrenuti mongoDB, neophodno je instalirati libcurl4 i openssl pakete:
+\begin{lstlisting}[style=BashInputStyle]
+sudo apt-get install libcurl4 openssl
+\end{lstlisting}
+Preuzimanje mongodb paketa sa interneta:
+\begin{lstlisting}[style=BashInputStyle]
+wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1804-4.2.5.tgz
+\end{lstlisting}
+Ekstrakcija paketa:
+\begin{lstlisting}[style=BashInputStyle]
+tar -zxvf mongodb-linux-x86_64-ubuntu1804-4.2.5.tgz
+\end{lstlisting}
+Da bismo izbjegli potrebu da postavimo putanju u PATH sistemsku varijablu, kopiraćemo mongodb bin direktorij u /usr/local/bin/ direktorij:
+\begin{lstlisting}[style=BashInputStyle]
+sudo cp mongodb-linux-x86_64-ubuntu1804-4.2.5/bin/* /usr/local/bin/
+\end{lstlisting}
+Konfiguracija mongodb paketa:\\
+Prvo napravimo direktorij u koji će mongodb spremati podatke:
+\begin{lstlisting}[style=BashInputStyle]
+sudo mkdir -p /var/lib/mongo
+\end{lstlisting}
+Također potrebno je napraviti direktorij u koji će se spremat logovi:
+\begin{lstlisting}[style=BashInputStyle]
+sudo mkdir -p /var/log/mongodb
+\end{lstlisting}
+Potrebno je ažurirati privilegije pristupa na novokreirane direktorije:
+\begin{lstlisting}[style=BashInputStyle]
+chown `whoami` /var/lib/mongo 
+chown `whoami` /var/log/mongodb
+\end{lstlisting}
+Sada možemo pokrenuti mongod proces:
+\begin{lstlisting}[style=BashInputStyle]
+mongod --dbpath /var/lib/mongo --logpath /var/log/mongodb/mongod.log --fork
+\end{lstlisting}
+Provjera instalacije:
+\begin{lstlisting}[style=BashInputStyle]
+mongo --version
+\end{lstlisting}
+Rezultat komande bi trebao potvrditi uspješno instaliran mongodb:
+\begin{lstlisting}[style=BashInputStyle]
+MongoDB shell version v4.2.5
+git version: 2261279b51ea13df08ae708ff278f0679c59dc32
+OpenSSL version: OpenSSL 1.1.1  11 Sep 2018
+allocator: tcmalloc
+modules: none
+build environment:
+    distmod: ubuntu1804
+    distarch: x86_64
+    target_arch: x86_64
+\end{lstlisting}
+
+\noindent
+Nakon završetka instalacije izvršiti unutar chroot "čišćenje":
+\begin{lstlisting}[style=BashInputStyle]
+apt-get clean
+rm -rf /tmp/* ~/.bash_history
+rm -rf /tmp/* ~/.bashrc
+rm /var/lib/dbus/machine-id
+rm /sbin/initctl
+dpkg-divert --rename --remove /sbin/initctl
+umount /proc || umount -lf /proc
+umount /sys
+umount /dev/pts
+umount /dev
+exit
+\end{lstlisting}
+
+Tako je dovršen proces kreiranja mongodb-edit direktorija. On će biti upotrijebljen za poređenje sa bazni-edit direktorijem. Od tog delta direktorija će biti stvorena mongodb.squashfs datoteka.
+
+\section*{Java edit}
+\addcontentsline{toc}{section}{\numberline{}Java edit}
+
+\indent
+Sljedećom komandom ćemo kopirati bazni-edit direktorij u java-edit direktorij:
+\begin{lstlisting}[style=BashInputStyle]
+mkdir java-edit
+sudo rsync -a bazni-edit/ java-edit
+\end{lstlisting}
+
+Sada ćemo montirati /dev/ direktorij na java-edit/dev putanju, te chroot u java-edit direktorij. Potom slijede 3 mount komande korištene i u prethodnim slučajevima modifikacije unutar chroot okruženja:
+\begin{lstlisting}[style=BashInputStyle]
+sudo mount --bind /dev/ java-edit/dev
+sudo chroot java-edit
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t devpts none /dev/pts
+\end{lstlisting}
+
+Podesit ćemo i sistemske varijable:
+\begin{lstlisting}[style=BashInputStyle]
+export HOME=/root
+export LC_ALL=C
+\end{lstlisting}
+
+\noindent
+Instalacija java paketa:
+\begin{lstlisting}[style=BashInputStyle]
+apt update
+apt install default-jdk
+\end{lstlisting}
+Provjera verzije java instalacije:
+\begin{lstlisting}[style=BashInputStyle]
+java -version
+\end{lstlisting}
+Rezultat prethodne komande bi trebao biti:
+\begin{lstlisting}[style=BashInputStyle]
+openjdk version "11.0.6" 2020-01-14
+OpenJDK Runtime Environment (build 11.0.6+10-post-Ubuntu-1ubuntu118.04.1)
+OpenJDK 64-Bit Server VM (build 11.0.6+10-post-Ubuntu-1ubuntu118.04.1, mixed mode, sharing)
+\end{lstlisting}
+Sada možemo instalirati Eclipse, koji je već spomenut u prethodnom odjeljku Modul Java. Prvo ćemo preuzeti eclipse.tgz sa interneta pomoću wget komande, a zatim instalirati:
+\begin{lstlisting}[style=BashInputStyle]
+wget http://ftp.jaist.ac.jp/pub/eclipse/technology/epp/downloads/release/2019-03/R/eclipse-java-2019-03-R-linux-gtk-x86_64.tar.gz
+tar -zxvf eclipse-java-2019-*-R-linux-gtk-x86_64.tar.gz -C /usr/
+ln -s /usr/eclipse/eclipse /usr/bin/eclipse
+nano /usr/share/applications/eclipse.desktop
+\end{lstlisting}
+Nakon posljednje komande unijeti sljedeći sadržaj:
+\begin{lstlisting}[style=BashInputStyle]
+[Desktop Entry]
+Encoding=UTF-8
+Name=Eclipse IDE
+Comment=Eclipse IDE
+Exec=/usr/bin/eclipse
+Icon=/usr/eclipse/icon.xpm
+Terminal=false
+Type=Application
+StartupNotify=false
+\end{lstlisting}
+
+\noindent
+Nakon završetka instalacije izvršiti unutar chroot:
+\begin{lstlisting}[style=BashInputStyle]
+apt clean
+rm -rf /tmp/* ~/.bash_history
+rm -rf /tmp/* ~/.bashrc
+rm /var/lib/dbus/machine-id
+rm /sbin/initctl
+dpkg-divert --rename --remove /sbin/initctl
+umount /proc || umount -lf /proc
+umount /sys
+umount /dev/pts
+umount /dev
+exit
+\end{lstlisting}
+
+\section*{Chrome edit}
+\addcontentsline{toc}{section}{\numberline{}Chrome edit}
+
+\indent
+Sljedećom komandom ćemo kopirati bazni-edit direktorij u chrome-edit direktorij:
+\begin{lstlisting}[style=BashInputStyle]
+mkdir chrome-edit
+sudo rsync -a bazni-edit/ chrome-edit
+\end{lstlisting}
+
+Sada ćemo montirati /dev/ direktorij na chrome-edit/dev putanju, te chroot u chrome-edit direktorij. Potom slijede 3 mount komande korištene i u prethodnim slučajevima modifikacije unutar chroot okruženja:
+\begin{lstlisting}[style=BashInputStyle]
+sudo mount --bind /dev/ chrome-edit/dev
+sudo chroot chrome-edit
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t devpts none /dev/pts
+\end{lstlisting}
+
+Podesit ćemo i sistemske varijable:
+\begin{lstlisting}[style=BashInputStyle]
+export HOME=/root
+export LC_ALL=C
+\end{lstlisting}
+
+\noindent
+Instalacija google-chrome paketa:
+\begin{lstlisting}[style=BashInputStyle]
+sudo nano /etc/apt/sources.list.d/google-chrome.list
+\end{lstlisting}
+Te upisati u ovu datoteku sljedeći sadržaj
+\begin{lstlisting}[style=BashInputStyle]
+deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+\end{lstlisting}
+\includegraphics[width=\linewidth]{images/google-chrome-list.png} 
+
+Zatim spasiti datoteku unutar nano editora sa \textbf{CTRL+O}, \textbf{ENTER} za potvrdu i \textbf{CTRL+X} za izlaz iz nano editora.\\
+Sljedeća komanda preuzima Google javni ključ da bismo mogli instalirati google-chrome. Zatim komandom apt-key dodajemo ključ u prsten javnih ključeva da bi apt mogao potvrditi integritet Google Chrome paketa.\\
+\begin{lstlisting}[style=BashInputStyle]
+wget https://dl.google.com/linux/linux_signing_key.pub
+sudo apt-key add linux_signing_key.pub
+\end{lstlisting}
+Trebao bi izlaz prethodne komande biti "OK".\\
+\indent
+Sada izvršimo ažuriranje liste paketa i instaliramo google-chrome-stable paket:
+\begin{lstlisting}[style=BashInputStyle]
+apt update
+apt install google-chrome-stable
+\end{lstlisting}
+
+Provjera instalacije:
+\begin{lstlisting}[style=BashInputStyle]
+google-chrome-stable --version
+\end{lstlisting}
+\includegraphics[width=\linewidth]{images/googlechromestableversion.png} 
+
+\noindent
+Nakon završetka instalacije izvršiti unutar chroot:
+\begin{lstlisting}[style=BashInputStyle]
+apt-get clean
+rm -rf /tmp/* ~/.bash_history
+rm -rf /tmp/* ~/.bashrc
+rm /var/lib/dbus/machine-id
+rm /sbin/initctl
+dpkg-divert --rename --remove /sbin/initctl
+umount /proc || umount -lf /proc
+umount /sys
+umount /dev/pts
+exit
+\end{lstlisting}
+
+Tako je kreiran chrome-edit direktorij. Njega ćemo kao i prethodne edit direktorije uporediti sa bazni-edit direktorijem da bismo dobili delta direktorij. Od delta direktorija će se kreirati chrome.squashfs datoteka koju ćemo pozicionirati u bazni-modul/casper direktoriju kao i ostale .squashfs datoteke.
+
+\section*{Generisanje bazne filesystem.squashfs datoteke}
+\addcontentsline{toc}{section}{\numberline{}Generisanje bazne filesystem.squashfs datoteke}
+\indent
+Prvo ćemo nanovo generisati filesystem.manifest:
+\begin{lstlisting}[style=BashInputStyle]
+sudo chmod +w bazni-modul/casper/filesystem.manifest
+sudo su
+chroot bazni-edit dpkg-query -W --showformat='${Package} ${Version}\n' > bazni-modul/casper/filesystem.manifest
+exit
+sudo cp bazni-modul/casper/filesystem.manifest bazni-modul/casper/filesystem.manifest-desktop
+sudo sed -i '/ubiquity/d' bazni-modul/casper/filesystem.manifest-desktop
+sudo sed -i '/casper/d' bazni-modul/casper/filesystem.manifest-desktop
+\end{lstlisting}
+
+\noindent
+Sada ćemo upotrijebiti funkciju mksquashfs iz squashfs-tools. S tom funkcijom ćemo kompresovati bazni-edit direktorij u novu filesystem.squashfs datoteku. U kodu ispod je potrebno izvršiti komandu iz linije 1 i jednu od preostale 3, pri čemu prva (komanda na liniji 2) daje najslabiju kompresiju, ali je najbrža. Druga komanda se duže izvršava ali je veći procenat kompresije u odnosu na prvu komandu. Dok je kod treće komande procenat kompresije najveći, a vrijeme izvršenja najduže:
+\begin{lstlisting}[style=BashInputStyle]
+sudo rm bazni-modul/casper/filesystem.squashfs
+sudo mksquashfs bazni-edit bazni-modul/casper/filesystem.squashfs -nolzma 
+sudo mksquashfs bazni-edit bazni-modul/casper/filesystem.squashfs -b 1048576
+sudo mksquashfs bazni-edit bazni-modul/casper/filesystem.squashfs -comp xz -e edit/boot
+\end{lstlisting}
+
+\noindent
+Naredni korak je da ažuriramo filesystem.size datoteku:
+\begin{lstlisting}[style=BashInputStyle]
+sudo su
+printf $(du -sx --block-size=1 bazni-edit | cut -f1) > bazni-modul/casper/filesystem.size
+exit
+\end{lstlisting}
+
+\section*{Generisanje nodejs.squashfs datoteke}
+\addcontentsline{toc}{section}{\numberline{}Generisanje nodejs.squashfs datoteke}
+\indent
+Proces kreiranja nodejs.squashfs datoteke će zahtijevati prije svega generisanje delta direktorija koji sadrži sve razlike između bazni-edit i nodejs-edit direktorija. Također se podrazumijeva kreiranje status.diff datoteke koja će sadržati razliku između status datoteka bazni-edit i nodejs-edit direktorija.\\
+
+\subsection*{Kreiranje nodejsBazniDelta direktorija}
+\addcontentsline{toc}{subsection}{\numberline{}Kreiranje nodejsBazniDelta direktorija}
+\begin{lstlisting}[style=BashInputStyle]
+mkdir nodejsBazniDelta
+sudo rsync -rvcm --compare-dest=/home/user/zavrsni/livecdtmp/bazni-edit/ /home/user/zavrsni/livecdtmp/nodejs-edit/ /home/user/zavrsni/livecdtmp/nodejsBazniDelta/
+\end{lstlisting}
+\indent
+U nodejsBazniDelta direktorij ćemo također ubaciti status.diff datoteku koja sadrži razliku između status datoteka bazni-edit i nodejs-edit direktorija. To ćemo postići koristeći komandu diff:
+\begin{lstlisting}[style=BashInputStyle]
+sudo diff bazni-edit/var/lib/dpkg/status nodejs-edit/var/lib/dpkg/status > status.diff
+\end{lstlisting}
+Sadržaj diff datoteke treba doraditi u smislu da treba obrisati početni karatker svakog reda koji je generisan od diff komande a to je karakter '>'.\\
+U ovom konkretnom slučaju sadržaj status.diff datoteke nam treba izgledati ovako:
+\begin{lstlisting}[style=BashInputStyle]
+Package: curl
+Status: install ok installed
+Priority: optional
+Section: web
+Installed-Size: 387
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Multi-Arch: foreign
+Version: 7.58.0-2ubuntu3.10
+Depends: libc6 (>= 2.17), libcurl4 (= 7.58.0-2ubuntu3.10), zlib1g (>= 1:1.1.4)
+Description: command line tool for transferring data with URL syntax
+curl is a command line tool for transferring data with URL syntax, supporting
+DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3,
+POP3S, RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, TELNET and TFTP.
+.
+curl supports SSL certificates, HTTP POST, HTTP PUT, FTP uploading, HTTP form
+based upload, proxies, cookies, user+password authentication (Basic, Digest,
+NTLM, Negotiate, kerberos...), file transfer resume, proxy tunneling and a
+busload of other useful tricks.
+Homepage: http://curl.haxx.se
+Original-Maintainer: Alessandro Ghedini <ghedo@debian.org>
+
+Package: nodejs
+Status: install ok installed
+Priority: optional
+Section: web
+Installed-Size: 114614
+Maintainer: Chris Lea <chl@nodesource.com>
+Architecture: amd64
+Version: 13.14.0-1nodesource1
+Replaces: nodejs-dev (<= 0.8.22), nodejs-legacy, npm (<= 1.2.14)
+Provides: nodejs-dev, nodejs-legacy, npm
+Depends: libc6 (>= 2.17), libgcc1 (>= 1:3.4), libstdc++6 (>= 4.8), python-minimal, ca-certificates
+Conflicts: nodejs-dev, nodejs-legacy, npm
+Description: Node.js event-based server-side javascript engine
+Node.js is similar in design to and influenced by systems like
+Ruby's Event Machine or Python's Twisted.
+.
+It takes the event model a bit further - it presents the event
+loop as a language construct instead of as a library.
+.
+Node.js is bundled with several useful libraries to handle server tasks :
+System, Events, Standard I/O, Modules, Timers, Child Processes, POSIX,
+HTTP, Multipart Parsing, TCP, DNS, Assert, Path, URL, Query Strings.
+Homepage: https://nodejs.org
+
+Package: libcurl4
+Status: install ok installed
+Priority: optional
+Section: libs
+Installed-Size: 627
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Multi-Arch: same
+Source: curl
+Version: 7.58.0-2ubuntu3.10
+Replaces: libcurl3
+Depends: libc6 (>= 2.17), libgssapi-krb5-2 (>= 1.14+dfsg), libidn2-0 (>= 0.6), libldap-2.4-2 (>= 2.4.7), libnghttp2-14 (>= 1.12.0), libpsl5 (>= 0.13.0), librtmp1 (>= 2.4+20131018.git79459a2-3~), libssl1.1 (>= 1.1.1), zlib1g (>= 1:1.1.4)
+Recommends: ca-certificates
+Conflicts: libcurl3
+Description: easy-to-use client-side URL transfer library (OpenSSL flavour)
+libcurl is an easy-to-use client-side URL transfer library, supporting DICT,
+FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S,
+RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, TELNET and TFTP.
+.
+libcurl supports SSL certificates, HTTP POST, HTTP PUT, FTP uploading, HTTP
+form based upload, proxies, cookies, user+password authentication (Basic,
+Digest, NTLM, Negotiate, Kerberos), file transfer resume, http proxy tunneling
+and more!
+.
+libcurl is free, thread-safe, IPv6 compatible, feature rich, well supported,
+fast, thoroughly documented and is already used by many known, big and
+successful companies and numerous applications.
+.
+SSL support is provided by OpenSSL.
+Homepage: http://curl.haxx.se
+Original-Maintainer: Alessandro Ghedini <ghedo@debian.org>
+\end{lstlisting}
+\indent
+Potom ćemo kopirati status.diff datoteku u nodejsBazniDelta/var/lib/dpkg direktorij. Također obrisati i status datoteku iz ovog pomenutog nodejsBazniDelta direktorija.\\
+
+\subsection*{nodejs.squashfs datoteka}
+\addcontentsline{toc}{subsection}{\numberline{}nodejs.squashfs datoteka}
+\indent
+Prvo ćemo generisati nodejs.manifest, slično kao kod generisanja bazne filesystem.squashfs datoteke samo uz razliku što sad umjesto filesystem koristimo nodejs prefix da bismo razlikovali ga od bazne manifest datoteke:
+\begin{lstlisting}[style=BashInputStyle]
+sudo su
+chroot nodejs-edit dpkg-query -W --showformat='${Package} ${Version}\n' > bazni-modul/casper/nodejs.manifest
+exit
+sudo cp bazni-modul/casper/nodejs.manifest bazni-modul/casper/nodejs.manifest-desktop
+sudo sed -i '/ubiquity/d' bazni-modul/casper/nodejs.manifest-desktop
+sudo sed -i '/casper/d' bazni-modul/casper/nodejs.manifest-desktop
+\end{lstlisting}
+\indent
+Sljedeće je da se kreira nodejs.squashfs datoteka. Još jednom napomena da će ova datoteka biti generisana na osnovu delta direktorija, a ne nodejs-edit direktorija. Kao i u prethodnim slučajevima moguće je koristiti bilo koju od 3 alternative za generisanje .squashfs datoteke. Konkretno u ovom slučaju je korištena druga opcija, i ona je korištena u svakom prethodnom slučaju upotrebe mksquashfs funkcije.
+\begin{lstlisting}[style=BashInputStyle]
+sudo mksquashfs nodejsBazniDelta bazni-modul/casper/nodejs.squashfs -nolzma 
+sudo mksquashfs nodejsBazniDelta bazni-modul/casper/nodejs.squashfs -b 1048576
+sudo mksquashfs nodejsBazniDelta bazni-modul/casper/nodejs.squashfs -comp xz -e edit/boot
+\end{lstlisting}
+
+\section*{Generisanje mongodb.squashfs datoteke}
+\addcontentsline{toc}{section}{\numberline{}Generisanje mongodb.squashfs datoteke}
+\indent
+
+\section*{Generisanje java.squashfs datoteke}
+\addcontentsline{toc}{section}{\numberline{}Generisanje java.squashfs datoteke}
+\indent
+
+\section*{Generisanje chrome.squashfs datoteke}
+\addcontentsline{toc}{section}{\numberline{}Generisanje chrome.squashfs datoteke}
+\indent
 
 \chapter*{Zaključak}
 \addcontentsline{toc}{chapter}{\numberline{}Zaključak}
 \indent
-Zaključak je ...
+Ova tema je opširna dovoljno da se može proširiti u više smjerova. Demonstriran je proces kreiranja modifikovanih Linux distribucija. Na tu temu se može ići u nedogled jer je moguće modifikovati Linux distribuciju na beskonačno različitih načina.\\
+Može se zaključiti da su Linux operativni sistemi podložni modifikaciji u raznim aspektima, vjerovatno u većoj razmjeri nego ostale familije operativnih sistema. To je zasigurno jedan od glavnih razloga za široku upotrebu Linux operativnih sistema, pored glavne činjenice da je Linux open-source.\\
+Da se zaključiti također da se Linux distribucije mogu modifikovati za posebne primjene određenoj skupini korisnika te na taj način postići veliku autonomnost i nezavisnost od licenciranih plaćenih softverskih sistema.\\
+Možemo zamisliti npr. da Elektrotehnički fakultet premjesti svoj infrastrukturalni sistem u potpunosti u Linux "svijet" počevši od samog nivoa operativnih sistema gdje bi fakultet imao svoj Linux operativni sistem u kom su sve aplikacije namjenski napravljene samo za upotrebu studentima, profesorima i ostatku fakultetskog osoblja. Također kompletan mrežni i aplikativni softver bi treba biti implementiran od pouzdanih inžinjera namjenski samo za potrebe fakulteta.\\
+Nedostatak ovog pristupa bi bilo veliko vrijeme izrade i planiranja izvedbe. Također kompleksnost implementacije ovakve infrastrukture je na prvi pogled nepredvidiva. Stoga se ovaj primjer može shvatiti kao imaginaran. Ali on dobro prikazuje upotrebu posebno modifikovanih operativnih sistema.\\
 
 \chapter*{Reference}
 \addcontentsline{toc}{chapter}{\numberline{}Reference}

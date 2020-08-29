@@ -376,7 +376,7 @@
 
 % \and is used inside the \degree argument to separate two degrees
 \def\and{\gdef\@degreeword{degrees} \par and \par}
-\def\@degreeword{degree}
+\def\@degreeword{}
 
 % The copyright notice stuff is a tremendous mess.
 %
@@ -396,13 +396,12 @@
 % holds the copyright.  This commands adds the copyright symbol to the
 % beginning, and puts the standard permission notice below.
 %% ``All rights reserved'' added.  Krishna Sethuraman (1990)
-\def\copyrightnotice#1{\copyrightnoticetext{\copyright\ #1.  All rights
-reserved.\par\permission}}
+\def\copyrightnotice#1{\copyrightnoticetext{\copyright\ #1.  Sva prava zadržana.\par\permission}}
 
 % Occacionally you will need to exactly specify the text of the 
 % copyright notice.  The \copyrightnoticetext command is then useful.
 \long\def\copyrightnoticetext#1{\gdef\@copyrightnotice{#1}}
-\def\@copyrightnotice{\copyright\ \Mit\ \@degreeyear.  All rights reserved.}
+\def\@copyrightnotice{\copyright\ \Mit\ \@degreeyear.  Sva prava zadržana.}
 
 %% `vi' documentclass option: Specifying this option automatically
 %% copyrights the thesis to the author and gives MIT permission to copy and
@@ -411,12 +410,12 @@ reserved.\par\permission}}
 %% \copyrightnoticetext{stuff} to specify the exact text of the copyright
 %% notice.
 \ifodd\vithesis \copyrightnoticetext{\copyright\ \@author,
-\uppercase\expandafter{\romannumeral\@degreeyear}.  All rights reserved.\par\permission}
+\uppercase\expandafter{\romannumeral\@degreeyear}.  Sva prava zadržana.\par\permission}
 %% or just
 %%\@degreeyear}}
-\typeout{Copyright given to author,
-	permission to copy/distribute given to ETF.}
-\else \typeout{Thesis document copyright ETF unless otherwise (manually) specified}
+\typeout{Autorska prava pripadaju autoru,
+	dopuštenje za kopiranje/distribucije pripada Elektrotehničkom fakultetu Univerziteta u Sarajevu.}
+\else \typeout{Master teza autorska prava pripadaju Elektrotehničkom fakultetu Univerziteta u Sarajevu osim ukoliko nisu eksplicitno data nekom drugom}
 \fi
 
 \def\thesisdate#1{\gdef\@thesisdate{#1}}
@@ -437,10 +436,10 @@ reserved.\par\permission}}
 \def\supervisor#1#2{\setbox\@titlesupervisor\vbox
   {\unvbox\@titlesupervisor \vskip 10pt% plus 1fil minus 1fil
   \def\baselinestretch{1}\large
-  \signature{Certified by}{#1 \\ #2 \\ Thesis Supervisor}}
+  \signature{Potvrđuje}{#1 \\ #2 \\ Mentor rada}}
   \setbox\@abstractsupervisor\vbox{\unvbox\@abstractsupervisor
   \vskip\baselineskip \def\baselinestretch{1}\@normalsize 
-  \par\noindent Thesis Supervisor: #1 \\ Title: #2}}
+  \par\noindent Mentor rada: #1 \\ Title: #2}}
 
 % department chairman, not thesis committee chairman
 \def\chairman#1#2{\gdef\@chairmanname{#1}\gdef\@chairmantitle{#2}}
@@ -450,32 +449,32 @@ reserved.\par\permission}}
 \def\maketitle{\begin{titlepage}
 \large
 {\def\baselinestretch{1.2}\Large\bf \choosecase{\@title} \par}
-by\par
+Sa velikom čašću\par
 {\Large  \choosecase{\@author}}
 \par
 \@prevdegrees
 \par
-\choosecase{Submitted to the} \choosecase{\@department} \\
-\choosecase{in partial fulfillment of the requirements for the}
+\choosecase{Podneseno na} \choosecase{\@department} \\
+\choosecase{za sticanje diplome za zvanje}
 \choosecase{\@degreeword} 
-\choosecase{of}
+\choosecase{}
 \par
 \choosecase{\@degree}
 \par
-at the
+na
 \par\MIT\par
 \@degreemonth\ \@degreeyear
 \par
 \@copyrightnotice
 \par
 \vskip 3\baselineskip
-\signature{Author}{\@department \\ \@thesisdate}
+\signature{Autor}{\@department \\ \@thesisdate}
 \par
 \vfill
 \unvbox\@titlesupervisor
 \par
 \vfill
-\signature{Accepted by}{\@chairmanname \\ \@chairmantitle}
+\signature{Prihvata}{\@chairmanname \\ \@chairmantitle}
 \vfill
 \end{titlepage}}
 
@@ -488,9 +487,9 @@ by \\
 \@author \\[\baselineskip]}
 \par
 \def\baselinestretch{1}\@normalsize
-Submitted to the \@department \\
-on \@thesisdate, in partial fulfillment of the \\
-requirements for the \@degreeword\ of \\
+Podneseno na \@department \\
+na \@thesisdate, za sticanje diplome za zvanje \\
+zahtjevi \@degreeword\ za \\
 \@degree
 \end{center}
 \par
@@ -518,14 +517,11 @@ requirements for the \@degreeword\ of \\
 % The \kern0pt pushes any depth into the height.  Thanks to Richard Stone.
 \def\endtitlepage{\par\kern 0pt\egroup\vss\egroup\newpage}
 
-\def\MIT{ELEKTROTEHNICKI FAKULTET U SARAJEVU}
-\def\Mit{Elektrotehnicki fakultet u Sarajevu}
+\def\MIT{ELEKTROTEHNIČKOM FAKULTETU UNIVERZITETA U SARAJEVU}
+\def\Mit{Elektrotehnički fakultet Univerziteta u Sarajevu}
 
 \def\permission{\par\noindent{\centering
-   The author hereby grants to ETF permission to reproduce and to
-   distribute publicly paper and electronic copies of this thesis
-   document in whole or in part in any medium now known or hereafter
-   created.}\par}
+   Autor dozvoljava Elektrotehničkom fakultetu Univerziteta u Sarajevu da kopira i distribura tezu putem elektronskih i drugih medija i u cjelosti i 	parcijalno po želji uz konsultacije sa autorom}\par}
 
 \def\signature#1#2{\par\noindent#1\dotfill\null\\*
   {\raggedleft #2\par}}

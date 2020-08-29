@@ -52,5 +52,10 @@
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Rezultat Modul Chrome}{44}% 
 \contentsline {chapter}{\hbox to\@tempdima {\hfil }Kreiranje vi\IeC {\v s}e modula unutar jedne .iso datoteke}{46}% 
 \contentsline {section}{\hbox to\@tempdima {\hfil }Bazni modul}{47}% 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Zaklju\IeC {\v c}ak}{48}% 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Reference}{49}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Bazni edit}{47}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }NodeJS edit}{49}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }MongoDB edit}{50}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Java edit}{53}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Chrome edit}{55}% 
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Zaklju\IeC {\v c}ak}{58}% 
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Reference}{59}% 
