@@ -793,7 +793,7 @@ OpenJDK 64-Bit Server VM (build 11.0.6+10-post-Ubuntu-1ubuntu118.04.1, mixed mod
 Sada možemo instalirati Eclipse, koji je jedan od najpoznatijih JAVA IDE (Integrated Development Environment). Prvo ćemo preuzeti eclipse.tgz sa interneta pomoću wget komande, a zatim instalirati:
 \begin{lstlisting}[style=BashInputStyle]
 wget http://ftp.jaist.ac.jp/pub/eclipse/technology/epp/downloads/release/2019-03/R/eclipse-java-2019-03-R-linux-gtk-x86_64.tar.gz
-tar -zxvf eclipse-java-2019-*-R-linux-gtk-x86_64.tar.gz -C /usr/
+tar -zxvf eclipse-java-2019-03-R-linux-gtk-x86_64.tar.gz -C /usr/
 ln -s /usr/eclipse/eclipse /usr/bin/eclipse
 nano /usr/share/applications/eclipse.desktop
 \end{lstlisting}
@@ -1274,7 +1274,8 @@ export LC_ALL=C
 \noindent
 Da bismo mogli pokrenuti mongoDB, neophodno je instalirati libcurl4 i openssl pakete:
 \begin{lstlisting}[style=BashInputStyle]
-sudo apt-get install libcurl4 openssl
+apt-get update
+apt-get install libcurl4 openssl
 \end{lstlisting}
 Preuzimanje mongodb paketa sa interneta:
 \begin{lstlisting}[style=BashInputStyle]
@@ -1286,16 +1287,16 @@ tar -zxvf mongodb-linux-x86_64-ubuntu1804-4.2.5.tgz
 \end{lstlisting}
 Da bismo izbjegli potrebu da postavimo putanju u PATH sistemsku varijablu, kopiraćemo mongodb bin direktorij u /usr/local/bin/ direktorij:
 \begin{lstlisting}[style=BashInputStyle]
-sudo cp mongodb-linux-x86_64-ubuntu1804-4.2.5/bin/* /usr/local/bin/
+cp mongodb-linux-x86_64-ubuntu1804-4.2.5/bin/* /usr/local/bin/
 \end{lstlisting}
 Konfiguracija mongodb paketa:\\
 Prvo napravimo direktorij u koji će mongodb spremati podatke:
 \begin{lstlisting}[style=BashInputStyle]
-sudo mkdir -p /var/lib/mongo
+mkdir -p /var/lib/mongo
 \end{lstlisting}
 Također potrebno je napraviti direktorij u koji će se spremat logovi:
 \begin{lstlisting}[style=BashInputStyle]
-sudo mkdir -p /var/log/mongodb
+mkdir -p /var/log/mongodb
 \end{lstlisting}
 Potrebno je ažurirati privilegije pristupa na novokreirane direktorije:
 \begin{lstlisting}[style=BashInputStyle]
@@ -1378,14 +1379,14 @@ java -version
 \end{lstlisting}
 Rezultat prethodne komande bi trebao biti:
 \begin{lstlisting}[style=BashInputStyle]
-openjdk version "11.0.6" 2020-01-14
-OpenJDK Runtime Environment (build 11.0.6+10-post-Ubuntu-1ubuntu118.04.1)
-OpenJDK 64-Bit Server VM (build 11.0.6+10-post-Ubuntu-1ubuntu118.04.1, mixed mode, sharing)
+openjdk version "11.0.8" 2020-07-14
+OpenJDK Runtime Environment (build 11.0.8+10-post-Ubuntu-0ubuntu118.04.1)
+OpenJDK 64-Bit Server VM (build 11.0.8+10-post-Ubuntu-0ubuntu118.04.1, mixed mode, sharing)
 \end{lstlisting}
 Sada možemo instalirati Eclipse, koji je već spomenut u prethodnom odjeljku Modul Java. Prvo ćemo preuzeti eclipse.tgz sa interneta pomoću wget komande, a zatim instalirati:
 \begin{lstlisting}[style=BashInputStyle]
 wget http://ftp.jaist.ac.jp/pub/eclipse/technology/epp/downloads/release/2019-03/R/eclipse-java-2019-03-R-linux-gtk-x86_64.tar.gz
-tar -zxvf eclipse-java-2019-*-R-linux-gtk-x86_64.tar.gz -C /usr/
+tar -zxvf eclipse-java-2019-03-R-linux-gtk-x86_64.tar.gz -C /usr/
 ln -s /usr/eclipse/eclipse /usr/bin/eclipse
 nano /usr/share/applications/eclipse.desktop
 \end{lstlisting}
@@ -1645,14 +1646,105 @@ sudo mksquashfs nodejsBazniDelta bazni-modul/casper/nodejs.squashfs -comp xz -e 
 \section*{Generisanje mongodb.squashfs datoteke}
 \addcontentsline{toc}{section}{\numberline{}Generisanje mongodb.squashfs datoteke}
 \indent
+Proces kreiranja mongodb.squashfs datoteke će zahtijevati prije svega generisanje delta direktorija koji sadrži sve razlike između bazni-edit i mongodb-edit direktorija. Također se podrazumijeva kreiranje status.diff datoteke koja će sadržati razliku između status datoteka bazni-edit i mongodb-edit direktorija.\\
+
+\subsection*{Kreiranje mongodbBazniDelta direktorija}
+\addcontentsline{toc}{subsection}{\numberline{}Kreiranje mongodbBazniDelta direktorija}
+\begin{lstlisting}[style=BashInputStyle]
+mkdir mongodbBazniDelta
+sudo rsync -rvcm --compare-dest=/home/user/zavrsni/livecdtmp/bazni-edit/ /home/user/zavrsni/livecdtmp/mongodb-edit/ /home/user/zavrsni/livecdtmp/mongodbBazniDelta/
+\end{lstlisting}
+\indent
+U mongodbBazniDelta direktorij ćemo također ubaciti status.diff datoteku koja sadrži razliku između status datoteka bazni-edit i mongodb-edit direktorija. To ćemo postići koristeći komandu diff:
+\begin{lstlisting}[style=BashInputStyle]
+sudo diff bazni-edit/var/lib/dpkg/status mongodb-edit/var/lib/dpkg/status > status.diff
+\end{lstlisting}
+Nakon kratkih izmjena status.diff datoteka u ovom slučaju trebala bi izgledati ovako:
+\begin{lstlisting}[style=BashInputStyle]
+Package: libcurl4
+Status: install ok installed
+Priority: optional
+Section: libs
+Installed-Size: 627
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Architecture: amd64
+Multi-Arch: same
+Source: curl
+Version: 7.58.0-2ubuntu3.10
+Replaces: libcurl3
+Depends: libc6 (>= 2.17), libgssapi-krb5-2 (>= 1.14+dfsg), libidn2-0 (>= 0.6), libldap-2.4-2 (>= 2.4.7), libnghttp2-14 (>= 1.12.0), libpsl5 (>= 0.13.0), librtmp1 (>= 2.4+20131018.git79459a2-3~), libssl1.1 (>= 1.1.1), zlib1g (>= 1:1.1.4)
+Recommends: ca-certificates
+Conflicts: libcurl3
+Description: easy-to-use client-side URL transfer library (OpenSSL flavour)
+ libcurl is an easy-to-use client-side URL transfer library, supporting DICT,
+ FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S,
+ RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, TELNET and TFTP.
+ .
+ libcurl supports SSL certificates, HTTP POST, HTTP PUT, FTP uploading, HTTP
+ form based upload, proxies, cookies, user+password authentication (Basic,
+ Digest, NTLM, Negotiate, Kerberos), file transfer resume, http proxy tunneling
+ and more!
+ .
+ libcurl is free, thread-safe, IPv6 compatible, feature rich, well supported,
+ fast, thoroughly documented and is already used by many known, big and
+ successful companies and numerous applications.
+ .
+ SSL support is provided by OpenSSL.
+Homepage: http://curl.haxx.se
+Original-Maintainer: Alessandro Ghedini <ghedo@debian.org>
+\end{lstlisting}
+\indent
+Potom ćemo kopirati status.diff datoteku u mongodbBazniDelta/var/lib/dpkg direktorij. Također obrisati i status datoteku iz ovog pomenutog mongodbBazniDelta direktorija.\\
+\begin{lstlisting}[style=BashInputStyle]
+sudo mv status.diff mongodbBazniDelta/var/lib/dpkg/
+sudo rm mongodbBazniDelta/var/lib/dpkg/status
+\end{lstlisting}
+
+\subsection*{mongodb.squashfs datoteka}
+\addcontentsline{toc}{subsection}{\numberline{}mongodb.squashfs datoteka}
+\indent
+Prvo ćemo generisati mongodb.manifest, slično kao kod generisanja nodejs.squashfs datoteke samo uz razliku što sad umjesto nodejs koristimo mongodb prefix:
+\begin{lstlisting}[style=BashInputStyle]
+sudo su
+chroot mongodb-edit dpkg-query -W --showformat='${Package} ${Version}\n' > bazni-modul/casper/mongodb.manifest
+exit
+sudo cp bazni-modul/casper/mongodb.manifest bazni-modul/casper/mongodb.manifest-desktop
+sudo sed -i '/ubiquity/d' bazni-modul/casper/mongodb.manifest-desktop
+sudo sed -i '/casper/d' bazni-modul/casper/mongodb.manifest-desktop
+\end{lstlisting}
+\indent
+Sljedeće je da se kreira mongodb.squashfs datoteka. I u ovom slučaju važi napomena da će ova datoteka biti generisana na osnovu delta direktorija, a ne mongodb-edit direktorija. Kao i u prethodnim slučajevima moguće je koristiti bilo koju od 3 alternative za generisanje .squashfs datoteke. Konkretno u ovom slučaju je korištena druga opcija, i ona je korištena u svakom prethodnom slučaju upotrebe mksquashfs funkcije.
+\begin{lstlisting}[style=BashInputStyle]
+sudo mksquashfs mongodbBazniDelta bazni-modul/casper/mongodb.squashfs -nolzma 
+sudo mksquashfs mongodbBazniDelta bazni-modul/casper/mongodb.squashfs -b 1048576
+sudo mksquashfs mongodbBazniDelta bazni-modul/casper/mongodb.squashfs -comp xz -e edit/boot
+\end{lstlisting}
 
 \section*{Generisanje java.squashfs datoteke}
 \addcontentsline{toc}{section}{\numberline{}Generisanje java.squashfs datoteke}
 \indent
 
+\subsection*{Kreiranje javaBazniDelta direktorija}
+\addcontentsline{toc}{subsection}{\numberline{}Kreiranje javaBazniDelta direktorija}
+\indent
+
+\subsection*{java.squashfs datoteka}
+\addcontentsline{toc}{subsection}{\numberline{}java.squashfs datoteka}
+\indent
+
+
 \section*{Generisanje chrome.squashfs datoteke}
 \addcontentsline{toc}{section}{\numberline{}Generisanje chrome.squashfs datoteke}
 \indent
+
+\subsection*{Kreiranje chromeBazniDelta direktorija}
+\addcontentsline{toc}{subsection}{\numberline{}Kreiranje chromeBazniDelta direktorija}
+\indent
+
+\subsection*{chrome.squashfs datoteka}
+\addcontentsline{toc}{subsection}{\numberline{}chrome.squashfs datoteka}
+\indent
+
 
 \chapter*{Zaključak}
 \addcontentsline{toc}{chapter}{\numberline{}Zaključak}

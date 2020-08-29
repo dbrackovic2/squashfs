@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.6.10)  28 AUG 2020 20:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.6.10)  30 AUG 2020 01:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -513,47 +513,78 @@ Underfull \hbox (badness 10000) in paragraph at lines 1098--1102
 [44] [45 <./images/chromeLive.png> <./images/chromeLive2.png>] [46
 
 ] [47]
-Overfull \hbox (12.89725pt too wide) in paragraph at lines 1150--1151
+Overfull \hbox (12.89725pt too wide) in paragraph at lines 1153--1154
 \T1/cmr/m/n/12 Kopirati sadrºaj iz /etc/hosts da-toteke na sis-temu do-ma¢inu u
 n-utar bazni-edit/etc/hosts
  []
 
-[48] [49] [50] [51] [52] [53] [54]
+[48] [49] [50] [51] [52] [53] [54] [55]
 File: images/google-chrome-list.png Graphic file (type png)
 <use images/google-chrome-list.png>
-Package pdftex.def Info: images/google-chrome-list.png  used on input line 1447
+Package pdftex.def Info: images/google-chrome-list.png  used on input line 1456
 .
 (pdftex.def)             Requested size: 433.62pt x 75.4535pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1449--1451
+Underfull \hbox (badness 10000) in paragraph at lines 1458--1460
 
  []
 
-[55]
 File: images/googlechromestableversion.png Graphic file (type png)
 <use images/googlechromestableversion.png>
 Package pdftex.def Info: images/googlechromestableversion.png  used on input li
-ne 1467.
+ne 1476.
 (pdftex.def)             Requested size: 433.62pt x 141.92096pt.
- [56] [57]
-Underfull \hbox (badness 10000) in paragraph at lines 1487--1493
+[56] [57]
+Underfull \hbox (badness 10000) in paragraph at lines 1528--1530
 
  []
 
-[58
+[58] [59] [60]
+Underfull \hbox (badness 10000) in paragraph at lines 1623--1625
 
-] [59
+ []
 
-] [60] [61] (./zavrsni.aux)
+[61]
+Overfull \hbox (19.3928pt too wide) in paragraph at lines 1628--1630
+\T1/cmr/m/n/12 Prvo ¢emo gener-isati nodejs.manifest, sli£no kao kod gener-isan
+ja bazne filesys-tem.squashfs
+ []
+
+
+Overfull \hbox (2.59004pt too wide) in paragraph at lines 1648--1650
+\T1/cmr/m/n/12 Takožer se po-drazu-mi-jeva kreiranje sta-tus.diff da-toteke koj
+a ¢e sadrºati ra-z-liku izmežu
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1648--1650
+
+ []
+
+[62] [63]
+Underfull \hbox (badness 10000) in paragraph at lines 1696--1698
+
+ []
+
+[64] [65] [66]
+Underfull \hbox (badness 10000) in paragraph at lines 1751--1757
+
+ []
+
+[67
+
+] [68
+
+] [69] [70] (./zavrsni.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 4206 strings out of 494518
- 55693 string characters out of 6176313
+ 4398 strings out of 494518
+ 57874 string characters out of 6176313
  403244 words of memory out of 5000000
- 7784 multiletter control sequences out of 15000+600000
+ 7976 multiletter control sequences out of 15000+600000
  17490 words of font info for 40 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  41i,7n,52p,744b,1715s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -570,10 +601,10 @@ r/jknappen/ec/ecrm1728.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/lj
 four/jknappen/ec/ecrm1440.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk
 /ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmsy10.pfb>
-Output written on zavrsni.pdf (61 pages, 1733904 bytes).
+Output written on zavrsni.pdf (70 pages, 1753737 bytes).
 PDF statistics:
- 741 PDF objects out of 1000 (max. 8388607)
- 185 compressed objects within 2 object streams
+ 778 PDF objects out of 1000 (max. 8388607)
+ 204 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  79 words of extra memory for PDF output out of 10000 (max. 10000000)
 

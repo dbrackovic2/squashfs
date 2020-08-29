@@ -19,7 +19,7 @@
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }unsquashfs filesystem.squashfs datoteke}{17}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Konfiguracija paketa za chroot okru\IeC {\v z}enje}{18}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Instalacija nodeJS paketa unutar chroot okru\IeC {\v z}enja}{19}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje filesystem.squashfs direktorija}{20}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje filesystem.squashfs datoteke}{20}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje Ubuntu .iso image sa nodeJS modulom}{20}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Pokretanje iso image-a pomo\IeC {\'c}u kvm biblioteke}{21}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Rezultat Modul NodeJS}{22}% 
@@ -28,7 +28,7 @@
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }unsquashfs filesystem.squashfs datoteke}{24}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Konfiguracija paketa za chroot okru\IeC {\v z}enje}{25}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Instalacija mongoDB paketa unutar chroot okru\IeC {\v z}enja}{26}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje filesystem.squashfs direktorija}{28}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje filesystem.squashfs datoteke}{28}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje Ubuntu .iso image sa mongoDB modulom}{29}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Pokretanje iso image-a pomo\IeC {\'c}u kvm biblioteke}{30}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Rezultat Modul MongoDB}{30}% 
@@ -37,7 +37,7 @@
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }unsquashfs filesystem.squashfs datoteke}{31}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Konfiguracija paketa za chroot okru\IeC {\v z}enje}{32}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Instalacija Java paketa unutar chroot okru\IeC {\v z}enja}{33}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje filesystem.squashfs direktorija}{35}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje filesystem.squashfs datoteke}{35}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje Ubuntu .iso image sa Java modulom}{36}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Pokretanje iso image-a pomo\IeC {\'c}u kvm biblioteke}{36}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Rezultat Modul Java}{37}% 
@@ -46,7 +46,7 @@
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }unsquashfs filesystem.squashfs datoteke}{39}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Konfiguracija paketa za chroot okru\IeC {\v z}enje}{40}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Instalacija Google Chrome paketa unutar chroot okru\IeC {\v z}enja}{41}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje filesystem.squashfs direktorija}{43}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje filesystem.squashfs datoteke}{43}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje Ubuntu .iso image sa Google Chrome modulom}{44}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Pokretanje iso image-a pomo\IeC {\'c}u kvm biblioteke}{44}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Rezultat Modul Chrome}{44}% 
@@ -54,8 +54,21 @@
 \contentsline {section}{\hbox to\@tempdima {\hfil }Bazni modul}{47}% 
 \contentsline {section}{\hbox to\@tempdima {\hfil }Bazni edit}{47}% 
 \contentsline {section}{\hbox to\@tempdima {\hfil }NodeJS edit}{49}% 
-\contentsline {section}{\hbox to\@tempdima {\hfil }MongoDB edit}{50}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }MongoDB edit}{51}% 
 \contentsline {section}{\hbox to\@tempdima {\hfil }Java edit}{53}% 
 \contentsline {section}{\hbox to\@tempdima {\hfil }Chrome edit}{55}% 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Zaklju\IeC {\v c}ak}{58}% 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Reference}{59}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje bazne filesystem.squashfs datoteke}{57}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje nodejs.squashfs datoteke}{58}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Kreiranje nodejsBazniDelta direktorija}{59}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }nodejs.squashfs datoteka}{62}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje mongodb.squashfs datoteke}{62}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Kreiranje mongodbBazniDelta direktorija}{63}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }mongodb.squashfs datoteka}{64}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje java.squashfs datoteke}{65}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Kreiranje javaBazniDelta direktorija}{65}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }java.squashfs datoteka}{65}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje chrome.squashfs datoteke}{65}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Kreiranje chromeBazniDelta direktorija}{65}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }chrome.squashfs datoteka}{66}% 
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Zaklju\IeC {\v c}ak}{67}% 
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Reference}{68}% 
