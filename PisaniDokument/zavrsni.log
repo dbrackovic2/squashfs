@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.6.10)  30 AUG 2020 01:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.6.10)  30 AUG 2020 14:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -86,6 +86,119 @@ File: listings.cfg 2018/09/02 1.7 listings configuration
 ))
 Package: listings 2018/09/02 1.7 (Carsten Heinz)
 
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen109
+\Hy@linkcounter=\count102
+\Hy@pagecounter=\count103
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+\Hy@SavedSpaceFactor=\count104
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4519.
+Package hyperref Info: Link nesting OFF on input line 4524.
+Package hyperref Info: Hyper index ON on input line 4527.
+Package hyperref Info: Plain pages OFF on input line 4534.
+Package hyperref Info: Backreferencing OFF on input line 4539.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4772.
+\c@Hy@tempcnt=\count105
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5125.
+\XeTeXLinkMargin=\dimen110
+\Fld@menulength=\count106
+\Field@Width=\dimen111
+\Fld@charsize=\dimen112
+Package hyperref Info: Hyper figures OFF on input line 6380.
+Package hyperref Info: Link nesting OFF on input line 6385.
+Package hyperref Info: Hyper index ON on input line 6388.
+Package hyperref Info: backreferencing OFF on input line 6395.
+Package hyperref Info: Link coloring OFF on input line 6400.
+Package hyperref Info: Link coloring with OCG OFF on input line 6405.
+Package hyperref Info: PDF/A mode OFF on input line 6410.
+LaTeX Info: Redefining \ref on input line 6450.
+LaTeX Info: Redefining \pageref on input line 6454.
+\Hy@abspage=\count107
+\c@Item=\count108
+\c@Hfootnote=\count109
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
+\Fld@listcount=\count110
+\c@bookmark@seq@number=\count111
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip45
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 14.
+
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
 
@@ -111,8 +224,8 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 )
-\Gin@req@height=\dimen109
-\Gin@req@width=\dimen110
+\Gin@req@height=\dimen113
+\Gin@req@width=\dimen114
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2018/09/02 1.7 listings language file
@@ -122,71 +235,58 @@ File: lstlang1.sty 2018/09/02 1.7 listings language file
 ) (./zavrsni.aux)
 \openout1 = `zavrsni.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-\c@lstlisting=\count102
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+\c@lstlisting=\count112
+\AtBeginShipoutBox=\box34
+Package hyperref Info: Link coloring ON on input line 34.
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count113
+)
+LaTeX Info: Redefining \ref on input line 34.
+LaTeX Info: Redefining \pageref on input line 34.
+LaTeX Info: Redefining \nameref on input line 34.
+
+(./zavrsni.out) (./zavrsni.out)
+\@outlinefile=\write3
+\openout3 = `zavrsni.out'.
+
+
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count103
-\scratchdimen=\dimen111
-\scratchbox=\box34
-\nofMPsegments=\count104
-\nofMParguments=\count105
+\scratchcounter=\count114
+\scratchdimen=\dimen115
+\scratchbox=\box35
+\nofMPsegments=\count115
+\nofMParguments=\count116
 \everyMPshowfont=\toks16
-\MPscratchCnt=\count106
-\MPscratchDim=\dimen112
-\MPnumerator=\count107
-\makeMPintoPDFobject=\count108
+\MPscratchCnt=\count117
+\MPscratchDim=\dimen116
+\MPnumerator=\count118
+\makeMPintoPDFobject=\count119
 \everyMPtoPDFconversion=\toks17
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-)
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-)))
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-))))
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 38.
@@ -198,13 +298,13 @@ Package grfext Info: Graphics extension search list:
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 37.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 46.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <14.4> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 37.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 46.
  [1
 
 
@@ -218,8 +318,8 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [2
 
 ] [3])
-\tf@toc=\write3
-\openout3 = `zavrsni.toc'.
+\tf@toc=\write4
+\openout4 = `zavrsni.toc'.
 
  [4]
 [5
@@ -227,67 +327,78 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ] [6
 
 ]
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 83.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 91.
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-<images/lsblkOutput.png, id=30, 727.71875pt x 361.35pt>
+<images/lsblkOutput.png, id=426, 727.71875pt x 361.35pt>
 File: images/lsblkOutput.png Graphic file (type png)
 <use images/lsblkOutput.png>
-Package pdftex.def Info: images/lsblkOutput.png  used on input line 88.
+Package pdftex.def Info: images/lsblkOutput.png  used on input line 96.
 (pdftex.def)             Requested size: 433.62pt x 215.32295pt.
  [7 <./images/lsblkOutput.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 95--98
+Underfull \hbox (badness 10000) in paragraph at lines 103--106
 
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 99.
+(Font)              <10.95> on input line 107.
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--122
+Underfull \hbox (badness 10000) in paragraph at lines 119--130
 
  []
 
 [8]
-Overfull \hbox (5.74774pt too wide) in paragraph at lines 134--140
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 131.
+
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 141.
+
+
+Overfull \hbox (5.74774pt too wide) in paragraph at lines 142--148
 []\T1/cmr/m/n/12 SquashFS da-tote£ni sis-tem je napisan od strane Phillip Lough
 er-a i Robert Lougher-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--140
+Underfull \hbox (badness 10000) in paragraph at lines 142--148
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 143--148
+Underfull \hbox (badness 10000) in paragraph at lines 151--156
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 176--203
+Underfull \hbox (badness 10000) in paragraph at lines 184--211
 
  []
 
 [11] [12]
-Underfull \hbox (badness 10000) in paragraph at lines 206--221
+Underfull \hbox (badness 10000) in paragraph at lines 214--229
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 206--221
+Underfull \hbox (badness 10000) in paragraph at lines 214--229
 
  []
 
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 224--231
+Underfull \hbox (badness 10000) in paragraph at lines 232--239
 
  []
 
 [14
 
 ]
-Overfull \hbox (0.63211pt too wide) in paragraph at lines 241--244
+Overfull \hbox (0.63211pt too wide) in paragraph at lines 249--252
 \T1/cmr/m/n/12 squashfs dateteke, dok se druga funkcija ko-risti za ras-paki-va
 nje kom-preso-vane squashfs
  []
@@ -295,13 +406,13 @@ nje kom-preso-vane squashfs
 [15
 
 ]
-Overfull \hbox (34.98714pt too wide) in paragraph at lines 251--258
+Overfull \hbox (34.98714pt too wide) in paragraph at lines 259--266
 \T1/cmr/m/n/12 okruºenja web pre-traºi-va£a. Ne²to sli£no kao ²to su u Java svi
 -jetu JVM(JavaVirtualMachine)
  []
 
 
-Overfull \hbox (1.8973pt too wide) in paragraph at lines 251--258
+Overfull \hbox (1.8973pt too wide) in paragraph at lines 259--266
 \T1/cmr/m/n/12 NodeJS ima "event-driven" bazi-ranu arhitek-turu koja omogu¢ava 
 as-inhroni in-put/out-
  []
@@ -309,211 +420,222 @@ as-inhroni in-put/out-
 [16
 
 ] [17] [18]
-LaTeX Font Info:    Try loading font information for OMS+cmss on input line 362
+LaTeX Font Info:    Try loading font information for OMS+cmss on input line 370
 .
-LaTeX Font Info:    No file OMScmss.fd. on input line 362.
+LaTeX Font Info:    No file OMScmss.fd. on input line 370.
 
 
 LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textasteriskcentered' on input line 362.
+(Font)              for symbol `textasteriskcentered' on input line 370.
 
 [19] [20]
-Overfull \hbox (6.70154pt too wide) in paragraph at lines 430--432
+Overfull \hbox (6.70154pt too wide) in paragraph at lines 438--440
 \T1/cmr/m/n/12 Sada ¢emo naprav-iti virtuelni hard disk po-mo¢u qemu-img ko-man
 de da bismo pokrenuli
  []
 
-<images/ModulNodeJSUbuntu.png, id=83, 964.60374pt x 607.26875pt>
+<images/ModulNodeJSUbuntu.png, id=582, 964.60374pt x 607.26875pt>
 File: images/ModulNodeJSUbuntu.png Graphic file (type png)
 <use images/ModulNodeJSUbuntu.png>
-Package pdftex.def Info: images/ModulNodeJSUbuntu.png  used on input line 445.
+Package pdftex.def Info: images/ModulNodeJSUbuntu.png  used on input line 453.
 (pdftex.def)             Requested size: 433.62pt x 272.98116pt.
 
-Overfull \hbox (10.42157pt too wide) in paragraph at lines 445--450
+Overfull \hbox (10.42157pt too wide) in paragraph at lines 453--458
 \T1/cmr/m/it/12 https://docs.microsoft.com/en-us/azure/app-service/app-service-
 web-get-started-nodejs
  []
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 463--464
+Underfull \hbox (badness 10000) in paragraph at lines 471--472
 
  []
 
 [22 <./images/ModulNodeJSUbuntu.png>]
-<images/ModulNodeJSUbuntuTerminal.png, id=91, 1341.01pt x 762.85pt>
+<images/ModulNodeJSUbuntuTerminal.png, id=610, 1341.01pt x 762.85pt>
 File: images/ModulNodeJSUbuntuTerminal.png Graphic file (type png)
 <use images/ModulNodeJSUbuntuTerminal.png>
 Package pdftex.def Info: images/ModulNodeJSUbuntuTerminal.png  used on input li
-ne 465.
+ne 473.
 (pdftex.def)             Requested size: 433.62pt x 246.66618pt.
-<images/ModulNodeJSUbuntu1.png, id=92, 997.7275pt x 673.51625pt>
+<images/ModulNodeJSUbuntu1.png, id=611, 997.7275pt x 673.51625pt>
 File: images/ModulNodeJSUbuntu1.png Graphic file (type png)
 <use images/ModulNodeJSUbuntu1.png>
-Package pdftex.def Info: images/ModulNodeJSUbuntu1.png  used on input line 466.
+Package pdftex.def Info: images/ModulNodeJSUbuntu1.png  used on input line 474.
 
 (pdftex.def)             Requested size: 433.62pt x 292.70999pt.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 465--467
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 473--475
 [][] 
  []
 
 [23 <./images/ModulNodeJSUbuntuTerminal.png> <./images/ModulNodeJSUbuntu1.png>]
 
-Underfull \hbox (badness 10000) in paragraph at lines 470--473
+Underfull \hbox (badness 10000) in paragraph at lines 478--481
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 487--489
+Underfull \hbox (badness 10000) in paragraph at lines 495--497
 
  []
 
 [24]
-Overfull \hbox (32.80212pt too wide) in paragraph at lines 514--515
+Overfull \hbox (32.80212pt too wide) in paragraph at lines 522--523
 \T1/cmr/m/n/12 Kopirati sadrºaj iz /etc/hosts da-toteke na sis-temu do-ma¢inu u
 n-utar edit-mongodb/etc/hosts
  []
 
 [25] [26]
-<images/mongoRunning.png, id=108, 1368.11125pt x 705.63625pt>
+<images/mongoRunning.png, id=677, 1368.11125pt x 705.63625pt>
 File: images/mongoRunning.png Graphic file (type png)
 <use images/mongoRunning.png>
-Package pdftex.def Info: images/mongoRunning.png  used on input line 599.
+Package pdftex.def Info: images/mongoRunning.png  used on input line 607.
 (pdftex.def)             Requested size: 433.62pt x 223.64401pt.
  [27 <./images/mongoRunning.png>] [28]
-Overfull \hbox (6.70154pt too wide) in paragraph at lines 677--679
+Overfull \hbox (6.70154pt too wide) in paragraph at lines 685--687
 \T1/cmr/m/n/12 Sada ¢emo naprav-iti virtuelni hard disk po-mo¢u qemu-img ko-man
 de da bismo pokrenuli
  []
 
 [29]
-<images/mongoLive.png, id=119, 961.5925pt x 606.265pt>
+<images/mongoLive.png, id=743, 961.5925pt x 606.265pt>
 File: images/mongoLive.png Graphic file (type png)
 <use images/mongoLive.png>
-Package pdftex.def Info: images/mongoLive.png  used on input line 692.
+Package pdftex.def Info: images/mongoLive.png  used on input line 702.
 (pdftex.def)             Requested size: 433.62pt x 273.39027pt.
- [30 <./images/mongoLive.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 720--721
+
+Overfull \hbox (67.28491pt too wide) in paragraph at lines 700--703
+\T1/cmr/m/n/12 .iso image-a: [] 
+ []
+
+[30 <./images/mongoLive.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 730--731
 
  []
 
 [31]
-<images/unsquashfscommand.png, id=128, 1165.35374pt x 196.735pt>
+<images/unsquashfscommand.png, id=766, 1165.35374pt x 196.735pt>
 File: images/unsquashfscommand.png Graphic file (type png)
 <use images/unsquashfscommand.png>
-Package pdftex.def Info: images/unsquashfscommand.png  used on input line 726.
+Package pdftex.def Info: images/unsquashfscommand.png  used on input line 736.
 (pdftex.def)             Requested size: 433.62pt x 73.20206pt.
 
-Overfull \hbox (6.04475pt too wide) in paragraph at lines 744--745
+Overfull \hbox (6.04475pt too wide) in paragraph at lines 754--755
 \T1/cmr/m/n/12 Kopirati sadrzaj iz /etc/hosts da-toteke na sis-temu do-mac-inu 
 un-utar edit-java/etc/hosts
  []
 
 [32 <./images/unsquashfscommand.png>] [33] [34] [35]
-Overfull \hbox (6.70154pt too wide) in paragraph at lines 885--887
+Overfull \hbox (6.70154pt too wide) in paragraph at lines 895--897
 \T1/cmr/m/n/12 Sada ¢emo naprav-iti virtuelni hard disk po-mocu qemu-img ko-man
 de da bismo pokrenuli
  []
 
-<images/javaLive.png, id=142, 813.0375pt x 524.96124pt>
+<images/javaLive.png, id=859, 813.0375pt x 524.96124pt>
 File: images/javaLive.png Graphic file (type png)
 <use images/javaLive.png>
-Package pdftex.def Info: images/javaLive.png  used on input line 900.
+Package pdftex.def Info: images/javaLive.png  used on input line 912.
 (pdftex.def)             Requested size: 433.62pt x 279.97437pt.
-<images/eclipseLive.png, id=143, 967.615pt x 602.25pt>
+<images/eclipseLive.png, id=860, 967.615pt x 602.25pt>
 File: images/eclipseLive.png Graphic file (type png)
 <use images/eclipseLive.png>
-Package pdftex.def Info: images/eclipseLive.png  used on input line 901.
+Package pdftex.def Info: images/eclipseLive.png  used on input line 913.
 (pdftex.def)             Requested size: 433.62pt x 269.88885pt.
-<images/eclipseLive1.png, id=144, 962.59625pt x 605.26125pt>
+<images/eclipseLive1.png, id=861, 962.59625pt x 605.26125pt>
 File: images/eclipseLive1.png Graphic file (type png)
 <use images/eclipseLive1.png>
-Package pdftex.def Info: images/eclipseLive1.png  used on input line 902.
+Package pdftex.def Info: images/eclipseLive1.png  used on input line 914.
 (pdftex.def)             Requested size: 433.62pt x 272.65134pt.
+
+Overfull \hbox (388.91324pt too wide) in paragraph at lines 910--915
+\T1/cmr/m/n/12 Slike is-pod prikazuju verz-iju jave i Eclipse okruºenje pokrenu
+to un-utar KVM: []
+ []
+
 [36] [37 <./images/javaLive.png> <./images/eclipseLive.png>] [38 <./images/ecli
 pseLive1.png>]
-Overfull \hbox (9.43839pt too wide) in paragraph at lines 906--912
+Overfull \hbox (9.43839pt too wide) in paragraph at lines 918--924
 \T1/cmr/m/n/12 Kao tre¢i prim-jer mod-u-lar-izacije squashfs da-tote£nog sis-te
 ma, kreiran je modul Chrome.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 926--927
+Underfull \hbox (badness 10000) in paragraph at lines 938--939
 
  []
 
 [39]
-Underfull \hbox (badness 10000) in paragraph at lines 934--937
+Underfull \hbox (badness 10000) in paragraph at lines 946--949
 
  []
 
 
-Overfull \hbox (22.36024pt too wide) in paragraph at lines 948--949
+Overfull \hbox (22.36024pt too wide) in paragraph at lines 960--961
 \T1/cmr/m/n/12 Kopirati sadrºaj iz /etc/hosts da-toteke na sis-temu do-ma¢inu u
 n-utar edit-chrome/etc/hosts
  []
 
 [40]
-Overfull \hbox (6.18356pt too wide) in paragraph at lines 966--967
+Overfull \hbox (6.18356pt too wide) in paragraph at lines 978--979
 []\T1/cmr/m/n/12 Takožer potrebno je izvr²iti sljede¢e ko-mande da bi se izb-je
 gli prob-lemi sa lokalizaci-
  []
 
-<images/google-chrome-list.png, id=164, 888.31876pt x 154.5775pt>
+<images/google-chrome-list.png, id=921, 888.31876pt x 154.5775pt>
 File: images/google-chrome-list.png Graphic file (type png)
 <use images/google-chrome-list.png>
-Package pdftex.def Info: images/google-chrome-list.png  used on input line 989.
-
+Package pdftex.def Info: images/google-chrome-list.png  used on input line 1001
+.
 (pdftex.def)             Requested size: 433.62pt x 75.4535pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 991--993
+Underfull \hbox (badness 10000) in paragraph at lines 1003--1005
 
  []
 
 [41 <./images/google-chrome-list.png>]
-<images/googlechromestableversion.png, id=169, 886.31125pt x 290.08376pt>
+<images/googlechromestableversion.png, id=941, 886.31125pt x 290.08376pt>
 File: images/googlechromestableversion.png Graphic file (type png)
 <use images/googlechromestableversion.png>
 Package pdftex.def Info: images/googlechromestableversion.png  used on input li
-ne 1009.
+ne 1021.
 (pdftex.def)             Requested size: 433.62pt x 141.92096pt.
  [42 <./images/googlechromestableversion.png>]
-Overfull \hbox (11.90327pt too wide) in paragraph at lines 1058--1061
+Overfull \hbox (11.90327pt too wide) in paragraph at lines 1071--1074
 \T1/cmr/m/n/12 with Google Chrome 18.04.4 LTS "Bionic Beaver" - Re-lease amd64'
  u polje DISKNAME: 
  []
 
 [43]
-Overfull \hbox (6.70154pt too wide) in paragraph at lines 1083--1085
+Overfull \hbox (6.70154pt too wide) in paragraph at lines 1096--1098
 \T1/cmr/m/n/12 Sada ¢emo naprav-iti virtuelni hard disk po-mo¢u qemu-img ko-man
 de da bismo pokrenuli
  []
 
-<images/chromeLive.png, id=178, 965.6075pt x 603.25375pt>
+<images/chromeLive.png, id=988, 965.6075pt x 603.25375pt>
 File: images/chromeLive.png Graphic file (type png)
 <use images/chromeLive.png>
-Package pdftex.def Info: images/chromeLive.png  used on input line 1100.
+Package pdftex.def Info: images/chromeLive.png  used on input line 1113.
 (pdftex.def)             Requested size: 433.62pt x 270.90018pt.
-<images/chromeLive2.png, id=179, 968.61874pt x 609.27625pt>
+<images/chromeLive2.png, id=989, 968.61874pt x 609.27625pt>
 File: images/chromeLive2.png Graphic file (type png)
 <use images/chromeLive2.png>
-Package pdftex.def Info: images/chromeLive2.png  used on input line 1101.
+Package pdftex.def Info: images/chromeLive2.png  used on input line 1114.
 (pdftex.def)             Requested size: 433.62pt x 272.75865pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1098--1102
+Underfull \hbox (badness 10000) in paragraph at lines 1111--1115
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1098--1102
+Underfull \hbox (badness 10000) in paragraph at lines 1111--1115
 
  []
 
 [44] [45 <./images/chromeLive.png> <./images/chromeLive2.png>] [46
 
 ] [47]
-Overfull \hbox (12.89725pt too wide) in paragraph at lines 1153--1154
+Overfull \hbox (12.89725pt too wide) in paragraph at lines 1166--1167
 \T1/cmr/m/n/12 Kopirati sadrºaj iz /etc/hosts da-toteke na sis-temu do-ma¢inu u
 n-utar bazni-edit/etc/hosts
  []
@@ -521,90 +643,269 @@ n-utar bazni-edit/etc/hosts
 [48] [49] [50] [51] [52] [53] [54] [55]
 File: images/google-chrome-list.png Graphic file (type png)
 <use images/google-chrome-list.png>
-Package pdftex.def Info: images/google-chrome-list.png  used on input line 1456
+Package pdftex.def Info: images/google-chrome-list.png  used on input line 1469
 .
 (pdftex.def)             Requested size: 433.62pt x 75.4535pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1458--1460
+Underfull \hbox (badness 10000) in paragraph at lines 1471--1473
 
  []
 
 File: images/googlechromestableversion.png Graphic file (type png)
 <use images/googlechromestableversion.png>
 Package pdftex.def Info: images/googlechromestableversion.png  used on input li
-ne 1476.
+ne 1489.
 (pdftex.def)             Requested size: 433.62pt x 141.92096pt.
 [56] [57]
-Underfull \hbox (badness 10000) in paragraph at lines 1528--1530
+Underfull \hbox (badness 10000) in paragraph at lines 1542--1544
 
  []
 
 [58] [59] [60]
-Underfull \hbox (badness 10000) in paragraph at lines 1623--1625
+Underfull \hbox (badness 10000) in paragraph at lines 1637--1639
 
  []
 
 [61]
-Overfull \hbox (19.3928pt too wide) in paragraph at lines 1628--1630
+Overfull \hbox (20.24126pt too wide) in paragraph at lines 1642--1644
 \T1/cmr/m/n/12 Prvo ¢emo gener-isati nodejs.manifest, sli£no kao kod gener-isan
-ja bazne filesys-tem.squashfs
+ja bazne filesys-tem.manifest
  []
 
 
-Overfull \hbox (2.59004pt too wide) in paragraph at lines 1648--1650
+Overfull \hbox (2.59004pt too wide) in paragraph at lines 1670--1672
 \T1/cmr/m/n/12 Takožer se po-drazu-mi-jeva kreiranje sta-tus.diff da-toteke koj
 a ¢e sadrºati ra-z-liku izmežu
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1648--1650
+Underfull \hbox (badness 10000) in paragraph at lines 1670--1672
 
  []
 
 [62] [63]
-Underfull \hbox (badness 10000) in paragraph at lines 1696--1698
+Underfull \hbox (badness 10000) in paragraph at lines 1718--1720
 
  []
 
-[64] [65] [66]
-Underfull \hbox (badness 10000) in paragraph at lines 1751--1757
+[64]
+Underfull \hbox (badness 10000) in paragraph at lines 1755--1757
 
  []
 
-[67
+[65]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 1770
+.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 1769--1773
 
-] [68
+ []
 
-] [69] [70] (./zavrsni.aux)
+[66]
+Underfull \hbox (badness 10000) in paragraph at lines 1808--1810
+
+ []
+
+[67] [68]
+Underfull \hbox (badness 10000) in paragraph at lines 1840--1841
+
+ []
+
+[69] [70]
+Overfull \hbox (6.70154pt too wide) in paragraph at lines 1897--1899
+\T1/cmr/m/n/12 Sada ¢emo naprav-iti virtuelni hard disk po-mo¢u qemu-img ko-man
+de da bismo pokrenuli
+ []
+
+<images/ubuntu-cjmn.png, id=1567, 1147.28625pt x 639.38875pt>
+File: images/ubuntu-cjmn.png Graphic file (type png)
+<use images/ubuntu-cjmn.png>
+Package pdftex.def Info: images/ubuntu-cjmn.png  used on input line 1915.
+(pdftex.def)             Requested size: 433.62pt x 241.65314pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1912--1916
+
+ []
+
+[71] [72 <./images/ubuntu-cjmn.png>]
+
+Package hyperref Warning: Composite letter `\textasciicaron+c'
+(hyperref)                not defined in PD1 encoding,
+(hyperref)                removing `\textasciicaron' on input line 1918.
+
+[73
+
+] [74]
+Overfull \hbox (11.96182pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / linuxconfig\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 o
+rg / install -[] gui -[] on -[] ubuntu -[] server -[] 18 -[] 04 -[] bionic -[] 
+beaver$[][] 
+ []
+
+
+Overfull \hbox (41.82928pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / askubuntu\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com
+ / questions / 378558 / unable -[] to -[] locate -[] package -[] while -[] tryi
+ng -[]
+ []
+
+
+Overfull \hbox (44.59314pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / unix\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 stackexc
+hange\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / questions / 166770 / unable -[] to
+ -[] delete -[] file -[] ldlinux -[]
+ []
+
+
+Overfull \hbox (7.55219pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / www\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 digitaloc
+ean\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / community / tutorials / how -[] to -
+[] install -[] node -[] js -[]
+ []
+
+
+Overfull \hbox (49.50278pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / itnext\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 io / h
+ow -[] to -[] create -[] a -[] custom -[] ubuntu -[] live -[] from -[] scratch 
+-[] dd3b3f213f81$[][] 
+ []
+
+
+Overfull \hbox (1.8787pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / docs\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 microsof
+t\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / en -[] us / azure / app -[] service / 
+app -[] service -[] web -[] get -[]
+ []
+
+
+Overfull \hbox (13.72568pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / www\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 digitaloc
+ean\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / community / tutorials / how -[] to -
+[] install -[] mysql -[] on -[]
+ []
+
+
+Overfull \hbox (19.13531pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / vitux\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / h
+ow -[] to -[] install -[] and -[] configure -[] mysql -[] in -[] ubuntu -[] 18 
+-[] 04 -[] lts/$[][] 
+ []
+
+
+Overfull \hbox (1.8787pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / www\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 linuxbabe
+\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / ubuntu / install -[] google -[] chrome 
+-[] ubuntu -[] 18 -[] 04 -[] lts$[][] 
+ []
+
+
+Overfull \hbox (28.9823pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / stackoverflow\OML/cmm/m/it/12 :\T1/cmtt/m/n/12
+ com / questions / 11657829 / error -[] 2002 -[] hy000 -[] cant -[] connect -[]
+
+ []
+
+
+Overfull \hbox (26.07266pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / www\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 digitaloc
+ean\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / community / tutorials / how -[] to -
+[] install -[] the -[] latest -[]
+ []
+
+
+Overfull \hbox (7.05219pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / www\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 digitaloc
+ean\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / community / tutorials / how -[] to -
+[] install -[] mongodb -[]
+ []
+
+
+Overfull \hbox (19.89917pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / www\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 digitaloc
+ean\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / community / tutorials / how -[] to -
+[] install -[] java -[] with -[]
+ []
+
+
+Overfull \hbox (33.24615pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / www\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 itzgeek\O
+ML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / how -[] tos / linux / ubuntu -[] how -[] 
+tos / how -[] to -[] install -[] eclipse -[]
+ []
+
+
+Overfull \hbox (4.78833pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / askubuntu\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com
+ / questions / 372607 / how -[] to -[] create -[] a -[] bootable -[] ubuntu -[]
+
+ []
+
+
+Overfull \hbox (9.05219pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / www\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 howtogeek
+\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / 196051 / htg -[] explains -[] what -[] 
+is -[] a -[] file -[] system -[] and -[]
+ []
+
+
+Overfull \hbox (13.72568pt too wide) in paragraph at lines 1931--1978
+[][]$\T1/cmtt/m/n/12 https : / / unix\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 stackexc
+hange\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / questions / 4402 / what -[] is -[]
+ a -[] superblock -[] inode -[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1931--1978
+
+ []
+
+[75
+
+] [76]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1979.
+ [77]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1979.
+ (./zavrsni.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1979.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1979.
+
+Package rerunfilecheck Info: File `zavrsni.out' has not changed.
+(rerunfilecheck)             Checksum: 7CFEDDE806F2E9B45027B953E83230DE;6032.
+
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1979.
  ) 
 Here is how much of TeX's memory you used:
- 4398 strings out of 494518
- 57874 string characters out of 6176313
- 403244 words of memory out of 5000000
- 7976 multiletter control sequences out of 15000+600000
- 17490 words of font info for 40 fonts, out of 8000000 for 9000
+ 8945 strings out of 494518
+ 126832 string characters out of 6176313
+ 473766 words of memory out of 5000000
+ 11509 multiletter control sequences out of 15000+600000
+ 17803 words of font info for 41 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 41i,7n,52p,744b,1715s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1200.6
-00pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsx109
-5.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecss
+ 34i,7n,52p,818b,1907s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1200.6
+00pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti120
+0.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsx
 1095.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/ec/e
-crm0600.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/e
-c/ecbx1440.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/jknappe
-n/ec/ecrm1200.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/jkna
-ppen/ec/ecbx1200.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/j
-knappen/ec/ecbx2488.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfou
-r/jknappen/ec/ecrm1728.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/lj
-four/jknappen/ec/ecrm1440.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk
-/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy10.pfb>
-Output written on zavrsni.pdf (70 pages, 1753737 bytes).
+css1095.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/jknappen/e
+c/ecrm0600.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/jknappe
+n/ec/ecbx1440.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/jkna
+ppen/ec/ecrm1200.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfour/j
+knappen/ec/ecbx1200.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/ljfou
+r/jknappen/ec/ecbx2488.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk/lj
+four/jknappen/ec/ecrm1728.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk
+/ljfour/jknappen/ec/ecrm1440.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts
+/pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsy10.pfb>
+Output written on zavrsni.pdf (77 pages, 2080269 bytes).
 PDF statistics:
- 778 PDF objects out of 1000 (max. 8388607)
- 204 compressed objects within 3 object streams
- 0 named destinations out of 1000 (max. 500000)
- 79 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2455 PDF objects out of 2487 (max. 8388607)
+ 1786 compressed objects within 18 object streams
+ 989 named destinations out of 1000 (max. 500000)
+ 700 words of extra memory for PDF output out of 10000 (max. 10000000)
 

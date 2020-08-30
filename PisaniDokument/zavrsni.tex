@@ -4,6 +4,14 @@
 \usepackage[T1]{fontenc}
 \pagestyle{plain}
 \usepackage{listings}
+\usepackage{hyperref}
+\def\UrlBreaks{\do\/\do-}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
 \usepackage{color}
 \usepackage{graphicx}
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png,.jpg}
@@ -689,6 +697,8 @@ sudo kvm -hda ubuntumongodb.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-mongodb-1
 
 \subsection*{Rezultat Modul MongoDB}
 \addcontentsline{toc}{subsection}{\numberline{}Rezultat Modul MongoDB}
+\indent
+Slika ispod prikazuje mongodb dostupan u live instalaciji našeg modifikovanog ubuntu .iso image-a:
 \includegraphics[width=\linewidth]{images/mongoLive.png} 
 \newpage
 \section*{Modul Java}
@@ -897,6 +907,8 @@ sudo kvm -hda ubuntujava.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-java-18.04-a
 
 \subsection*{Rezultat Modul Java}
 \addcontentsline{toc}{subsection}{\numberline{}Rezultat Modul Java}
+\indent
+Slike ispod prikazuju verziju jave i Eclipse okruženje pokrenuto unutar KVM:
 \includegraphics[width=\linewidth]{images/javaLive.png} 
 \includegraphics[width=\linewidth]{images/eclipseLive.png} 
 \includegraphics[width=\linewidth]{images/eclipseLive1.png} 
@@ -1011,7 +1023,7 @@ google-chrome-stable --version
 \noindent
 Nakon završetka instalacije izvršiti unutar chroot:
 \begin{lstlisting}[style=BashInputStyle]
-apt-get clean
+apt clean
 rm -rf /tmp/* ~/.bash_history
 rm -rf /tmp/* ~/.bashrc
 rm /var/lib/dbus/machine-id
@@ -1020,6 +1032,7 @@ dpkg-divert --rename --remove /sbin/initctl
 umount /proc || umount -lf /proc
 umount /sys
 umount /dev/pts
+umount /dev
 exit
 \end{lstlisting}
 
@@ -1096,7 +1109,7 @@ sudo kvm -hda ubuntuchrome.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-chrome-18.
 \subsection*{Rezultat Modul Chrome}
 \addcontentsline{toc}{subsection}{\numberline{}Rezultat Modul Chrome}
 \indent
-Nakon što se pokrene naš sistem u QEMU, odaberemo opciju Try Ubuntu. Možemo se uvjeriti da je Google Chrome instaliran, što pokazuje slika ispod:\\
+Nakon što se pokrene naš sistem u QEMU, odaberemo opciju Try Ubuntu. Možemo se uvjeriti da je Google Chrome instaliran, što pokazuju slike ispod:\\
 \includegraphics[width=\linewidth]{images/chromeLive.png}\\\\
 \includegraphics[width=\linewidth]{images/chromeLive2.png}\\
 
@@ -1478,7 +1491,7 @@ google-chrome-stable --version
 \noindent
 Nakon završetka instalacije izvršiti unutar chroot:
 \begin{lstlisting}[style=BashInputStyle]
-apt-get clean
+apt clean
 rm -rf /tmp/* ~/.bash_history
 rm -rf /tmp/* ~/.bashrc
 rm /var/lib/dbus/machine-id
@@ -1487,6 +1500,7 @@ dpkg-divert --rename --remove /sbin/initctl
 umount /proc || umount -lf /proc
 umount /sys
 umount /dev/pts
+umount /dev
 exit
 \end{lstlisting}
 
@@ -1626,7 +1640,7 @@ Potom ćemo kopirati status.diff datoteku u nodejsBazniDelta/var/lib/dpkg direkt
 \subsection*{nodejs.squashfs datoteka}
 \addcontentsline{toc}{subsection}{\numberline{}nodejs.squashfs datoteka}
 \indent
-Prvo ćemo generisati nodejs.manifest, slično kao kod generisanja bazne filesystem.squashfs datoteke samo uz razliku što sad umjesto filesystem koristimo nodejs prefix da bismo razlikovali ga od bazne manifest datoteke:
+Prvo ćemo generisati nodejs.manifest, slično kao kod generisanja bazne filesystem.manifest datoteke samo uz razliku što sad umjesto filesystem koristimo nodejs prefix da bismo razlikovali ga od bazne manifest datoteke:
 \begin{lstlisting}[style=BashInputStyle]
 sudo su
 chroot nodejs-edit dpkg-query -W --showformat='${Package} ${Version}\n' > bazni-modul/casper/nodejs.manifest
@@ -1641,6 +1655,14 @@ Sljedeće je da se kreira nodejs.squashfs datoteka. Još jednom napomena da će 
 sudo mksquashfs nodejsBazniDelta bazni-modul/casper/nodejs.squashfs -nolzma 
 sudo mksquashfs nodejsBazniDelta bazni-modul/casper/nodejs.squashfs -b 1048576
 sudo mksquashfs nodejsBazniDelta bazni-modul/casper/nodejs.squashfs -comp xz -e edit/boot
+\end{lstlisting}
+
+\noindent
+Naredni korak je da ažuriramo nodejs.size datoteku:
+\begin{lstlisting}[style=BashInputStyle]
+sudo su
+printf $(du -sx --block-size=1 nodejsBazniDelta | cut -f1) > bazni-modul/casper/nodejs.size
+exit
 \end{lstlisting}
 
 \section*{Generisanje mongodb.squashfs datoteke}
@@ -1703,7 +1725,7 @@ sudo rm mongodbBazniDelta/var/lib/dpkg/status
 \subsection*{mongodb.squashfs datoteka}
 \addcontentsline{toc}{subsection}{\numberline{}mongodb.squashfs datoteka}
 \indent
-Prvo ćemo generisati mongodb.manifest, slično kao kod generisanja nodejs.squashfs datoteke samo uz razliku što sad umjesto nodejs koristimo mongodb prefix:
+Prvo ćemo generisati mongodb.manifest, slično kao kod generisanja nodejs.manifest datoteke samo uz razliku što sad umjesto nodejs koristimo mongodb prefix:
 \begin{lstlisting}[style=BashInputStyle]
 sudo su
 chroot mongodb-edit dpkg-query -W --showformat='${Package} ${Version}\n' > bazni-modul/casper/mongodb.manifest
@@ -1720,91 +1742,238 @@ sudo mksquashfs mongodbBazniDelta bazni-modul/casper/mongodb.squashfs -b 1048576
 sudo mksquashfs mongodbBazniDelta bazni-modul/casper/mongodb.squashfs -comp xz -e edit/boot
 \end{lstlisting}
 
+\noindent
+Naredni korak je da ažuriramo mongodb.size datoteku:
+\begin{lstlisting}[style=BashInputStyle]
+sudo su
+printf $(du -sx --block-size=1 mongodbBazniDelta | cut -f1) > bazni-modul/casper/mongodb.size
+exit
+\end{lstlisting}
+
 \section*{Generisanje java.squashfs datoteke}
 \addcontentsline{toc}{section}{\numberline{}Generisanje java.squashfs datoteke}
 \indent
+Proces kreiranja java.squashfs datoteke će zahtijevati prije svega generisanje delta direktorija koji sadrži sve razlike između bazni-edit i java-edit direktorija. Također se podrazumijeva kreiranje status.diff datoteke koja će sadržati razliku između status datoteka bazni-edit i java-edit direktorija.\\
 
 \subsection*{Kreiranje javaBazniDelta direktorija}
 \addcontentsline{toc}{subsection}{\numberline{}Kreiranje javaBazniDelta direktorija}
+\begin{lstlisting}[style=BashInputStyle]
+mkdir javaBazniDelta
+sudo rsync -rvcm --compare-dest=/home/user/zavrsni/livecdtmp/bazni-edit/ /home/user/zavrsni/livecdtmp/java-edit/ /home/user/zavrsni/livecdtmp/javaBazniDelta/
+\end{lstlisting}
 \indent
+U javaBazniDelta direktorij ćemo također ubaciti status.diff datoteku koja sadrži razliku između status datoteka bazni-edit i java-edit direktorija. Tu datoteku ćemo generisati koristeći komandu diff:
+\begin{lstlisting}[style=BashInputStyle]
+sudo diff bazni-edit/var/lib/dpkg/status java-edit/var/lib/dpkg/status > status.diff
+\end{lstlisting}
+Neophodna je izmjena status.diff datoteke i u ovom slučaju.
+Korišten je online regex tool \url{https://regex101.com/} te smo u njemu samo zamijenili 2 prva karaktera svakog reda sa praznim tekstom.\\
+\indent
+Potom ćemo kopirati status.diff datoteku u javaBazniDelta/var/lib/dpkg direktorij. Također obrisati i status datoteku iz ovog pomenutog javaBazniDelta direktorija.\\
+\begin{lstlisting}[style=BashInputStyle]
+sudo mv status.diff javaBazniDelta/var/lib/dpkg/
+sudo rm javaBazniDelta/var/lib/dpkg/status
+\end{lstlisting}
 
 \subsection*{java.squashfs datoteka}
 \addcontentsline{toc}{subsection}{\numberline{}java.squashfs datoteka}
 \indent
+Prvo ćemo generisati java.manifest, slično kao kod generisanja nodejs.manifest i mongodb.manifest datoteka samo uz razliku što sad koristimo java prefix ispred .manifest nastavka:
+\begin{lstlisting}[style=BashInputStyle]
+sudo su
+chroot java-edit dpkg-query -W --showformat='${Package} ${Version}\n' > bazni-modul/casper/java.manifest
+exit
+sudo cp bazni-modul/casper/java.manifest bazni-modul/casper/java.manifest-desktop
+sudo sed -i '/ubiquity/d' bazni-modul/casper/java.manifest-desktop
+sudo sed -i '/casper/d' bazni-modul/casper/java.manifest-desktop
+\end{lstlisting}
+\indent
+Sljedeće je da se kreira java.squashfs datoteka. I u ovom slučaju važi napomena da će ova datoteka biti generisana na osnovu delta direktorija, a ne java-edit direktorija. Kao i u prethodnim slučajevima moguće je koristiti bilo koju od 3 alternative za generisanje .squashfs datoteke. Konkretno u ovom slučaju je korištena druga opcija, i ona je korištena u svakom prethodnom slučaju upotrebe mksquashfs funkcije.
+\begin{lstlisting}[style=BashInputStyle]
+sudo mksquashfs javaBazniDelta bazni-modul/casper/java.squashfs -nolzma 
+sudo mksquashfs javaBazniDelta bazni-modul/casper/java.squashfs -b 1048576
+sudo mksquashfs javaBazniDelta bazni-modul/casper/java.squashfs -comp xz -e edit/boot
+\end{lstlisting}
 
+\noindent
+Naredni korak je da ažuriramo mongodb.size datoteku:
+\begin{lstlisting}[style=BashInputStyle]
+sudo su
+printf $(du -sx --block-size=1 javaBazniDelta | cut -f1) > bazni-modul/casper/java.size
+exit
+\end{lstlisting}
 
 \section*{Generisanje chrome.squashfs datoteke}
 \addcontentsline{toc}{section}{\numberline{}Generisanje chrome.squashfs datoteke}
 \indent
+Proces kreiranja chrome.squashfs datoteke će zahtijevati prije svega generisanje delta direktorija koji sadrži sve razlike između bazni-edit i chrome-edit direktorija. Također se podrazumijeva kreiranje status.diff datoteke koja će sadržati razliku između status datoteka bazni-edit i chrome-edit direktorija.\\
 
 \subsection*{Kreiranje chromeBazniDelta direktorija}
 \addcontentsline{toc}{subsection}{\numberline{}Kreiranje chromeBazniDelta direktorija}
+\begin{lstlisting}[style=BashInputStyle]
+mkdir chromeBazniDelta
+sudo rsync -rvcm --compare-dest=/home/user/zavrsni/livecdtmp/bazni-edit/ /home/user/zavrsni/livecdtmp/chrome-edit/ /home/user/zavrsni/livecdtmp/chromeBazniDelta/
+\end{lstlisting}
 \indent
+U chromeBazniDelta direktorij ćemo također ubaciti status.diff datoteku koja sadrži razliku između status datoteka bazni-edit i chrome-edit direktorija. Tu datoteku ćemo generisati koristeći komandu diff:
+\begin{lstlisting}[style=BashInputStyle]
+sudo diff bazni-edit/var/lib/dpkg/status chrome-edit/var/lib/dpkg/status > status.diff
+\end{lstlisting}
+Nakon uklanjanja neželjenih karaktera, status.diff datoteka treba da ima sljedeći sadržaj:
+\begin{lstlisting}[style=BashInputStyle]
+Package: google-chrome-stable
+Status: install ok installed
+Priority: optional
+Section: web
+Installed-Size: 230929
+Maintainer: Chrome Linux Team <chromium-dev@chromium.org>
+Architecture: amd64
+Version: 85.0.4183.83-1
+Provides: www-browser
+Depends: ca-certificates, fonts-liberation, libappindicator3-1, libasound2 (>= 1.0.16), libatk-bridge2.0-0 (>= 2.5.3), libatk1.0-0 (>= 2.2.0), libatspi2.0-0 (>= 2.9.90), libc6 (>= 2.16), libcairo2 (>= 1.6.0), libcups2 (>= 1.4.0), libdbus-1-3 (>= 1.5.12), libdrm2 (>= 2.4.38), libexpat1 (>= 2.0.1), libgbm1 (>= 8.1~0), libgcc1 (>= 1:3.0), libgdk-pixbuf2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.39.4), libgtk-3-0 (>= 3.9.10), libnspr4 (>= 2:4.9-2~), libnss3 (>= 2:3.22), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libx11-6 (>= 2:1.4.99.1), libx11-xcb1, libxcb-dri3-0, libxcb1 (>= 1.6), libxcomposite1 (>= 1:0.3-1), libxcursor1 (>> 1.1.2), libxdamage1 (>= 1:1.1), libxext6, libxfixes3, libxi6 (>= 2:1.2.99.4), libxrandr2, libxrender1, libxtst6, wget, xdg-utils (>= 1.0.2)
+Pre-Depends: dpkg (>= 1.14.0)
+Recommends: libu2f-udev, libvulkan1
+Description: The web browser from Google
+ Google Chrome is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier.
+\end{lstlisting}
+
+Potom ćemo kopirati status.diff datoteku u chromeBazniDelta/var/lib/dpkg direktorij. Također obrisati i status datoteku iz ovog pomenutog chromeBazniDelta direktorija.\\
+\begin{lstlisting}[style=BashInputStyle]
+sudo mv status.diff chromeBazniDelta/var/lib/dpkg/
+sudo rm chromeBazniDelta/var/lib/dpkg/status
+\end{lstlisting}
 
 \subsection*{chrome.squashfs datoteka}
 \addcontentsline{toc}{subsection}{\numberline{}chrome.squashfs datoteka}
 \indent
+Prvo ćemo generisati chrome.manifest, slično kao kod generisanja nodejs.manifest i mongodb.manifest datoteka samo uz razliku što sad koristimo chrome prefix ispred .manifest nastavka:
+\begin{lstlisting}[style=BashInputStyle]
+sudo su
+chroot chrome-edit dpkg-query -W --showformat='${Package} ${Version}\n' > bazni-modul/casper/chrome.manifest
+exit
+sudo cp bazni-modul/casper/chrome.manifest bazni-modul/casper/chrome.manifest-desktop
+sudo sed -i '/ubiquity/d' bazni-modul/casper/chrome.manifest-desktop
+sudo sed -i '/casper/d' bazni-modul/casper/chrome.manifest-desktop
+\end{lstlisting}
+\indent
+Sljedeće je da se kreira chrome.squashfs datoteka. I u ovom slučaju važi napomena da će ova datoteka biti generisana na osnovu delta direktorija, a ne chrome-edit direktorija. Kao i u prethodnim slučajevima moguće je koristiti bilo koju od 3 alternative za generisanje .squashfs datoteke. Konkretno u ovom slučaju je korištena druga opcija, i ona je korištena u svakom prethodnom slučaju upotrebe mksquashfs funkcije.
+\begin{lstlisting}[style=BashInputStyle]
+sudo mksquashfs chromeBazniDelta bazni-modul/casper/chrome.squashfs -nolzma 
+sudo mksquashfs chromeBazniDelta bazni-modul/casper/chrome.squashfs -b 1048576
+sudo mksquashfs chromeBazniDelta bazni-modul/casper/chrome.squashfs -comp xz -e edit/boot
+\end{lstlisting}
 
+\noindent
+Naredni korak je da ažuriramo chrome.size datoteku:
+\begin{lstlisting}[style=BashInputStyle]
+sudo su
+printf $(du -sx --block-size=1 chromeBazniDelta | cut -f1) > bazni-modul/casper/chrome.size
+exit
+\end{lstlisting}
+
+\section*{Generisanje ubuntu-cjmn-18.04-amd64.iso datoteke}
+\addcontentsline{toc}{section}{\numberline{}Generisanje ubuntu-cjmn-18.04-amd64.iso datoteke}
+\indent
+Sada je na redu da se upiše naziv image-a unutar README.diskdefines. 
+Upisati 'Ubuntu with Chrome/Java/MongoDB/NodeJS 18.04.4 LTS "Bionic Beaver" - Release amd64' u polje DISKNAME:
+\begin{lstlisting}[style=BashInputStyle]
+sudo gedit bazni-modul/README.diskdefines
+\end{lstlisting}
+
+\begin{lstlisting}[style=BashInputStyle]
+cd bazni-modul
+sudo rm md5sum.txt
+find -type f -print0 | sudo xargs -0 md5sum | grep -v isolinux/boot.cat | sudo tee md5sum.txt
+\end{lstlisting}
+
+\noindent
+Napokon možemo napraviti iso datoteku koja će da sadrži Google Chrome, Java, MongoDB i NodeJS module zajedno. Za ovu operaciju koristimo funkciju genisoimage kao i u prethodnim slučajevima generisanja .iso datoteka. Neke linux distribucije nude mkisofs funkciju. Tako da ukoliko ne radi genisoimage trebala bi raditi funkcija mkisofs:
+\begin{lstlisting}[style=BashInputStyle]
+sudo genisoimage -D -r -V "$IMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../ubuntu-cjmn-18.04-amd64.iso .
+\end{lstlisting}
+
+\subsection*{Pokretanje iso image-a pomoću kvm biblioteke}
+\addcontentsline{toc}{subsection}{\numberline{}Pokretanje iso image-a pomoću kvm biblioteke}
+\indent
+Sada ćemo napraviti virtuelni hard disk pomoću qemu-img komande da bismo pokrenuli na njemu naš novi ubuntu-cjmn-18.04-amd64.iso.
+\begin{lstlisting}[style=BashInputStyle]
+cd ~
+qemu-img create ubuntucjmn.img 10G
+\end{lstlisting}
+
+\noindent 
+Pokrenućemo modul pomoću KVM-a:
+\begin{lstlisting}[style=BashInputStyle]
+sudo kvm -hda ubuntucjmn.img -cdrom ~/zavrsni/livecdtmp/ubuntu-cjmn-18.04-amd64.iso -boot d -m 2048
+\end{lstlisting}
+
+\subsection*{Rezultat ubuntu-cjmn-18.04-amd64.iso}
+\addcontentsline{toc}{subsection}{\numberline{}Rezultat ubuntu-cjmn-18.04-amd64.iso}
+\indent
+Nakon što se pokrene naš sistem u QEMU, odaberemo opciju Try Ubuntu. Možemo se uvjeriti da su instalirani moduli Google Chrome, Java, MongoDB, NodeJS, što pokazuju slike ispod:\\
+%\includegraphics[width=\linewidth]{}\\\\
+\includegraphics[width=\linewidth]{images/ubuntu-cjmn.png}\\
 
 \chapter*{Zaključak}
 \addcontentsline{toc}{chapter}{\numberline{}Zaključak}
 \indent
+Svakako da bi prostor za poboljšanje bio u kreiranju skripte koja izvršava aktivaciju i deaktivaciju modula, koju bi korisnik mogao pozvati u pokrenutoj live distribuciji. Ova funkcija bi u pozadini trebala da mount-a .squashfs datotečni sistem u zavisnosti od modula koji se aktivira ili deaktivira. Pored toga morala bi i status datoteka biti ažurirana gdje bi se sadržaj status.diff datoteke nadodao u status datoteku.\\
 Ova tema je opširna dovoljno da se može proširiti u više smjerova. Demonstriran je proces kreiranja modifikovanih Linux distribucija. Na tu temu se može ići u nedogled jer je moguće modifikovati Linux distribuciju na beskonačno različitih načina.\\
 Može se zaključiti da su Linux operativni sistemi podložni modifikaciji u raznim aspektima, vjerovatno u većoj razmjeri nego ostale familije operativnih sistema. To je zasigurno jedan od glavnih razloga za široku upotrebu Linux operativnih sistema, pored glavne činjenice da je Linux open-source.\\
 Da se zaključiti također da se Linux distribucije mogu modifikovati za posebne primjene određenoj skupini korisnika te na taj način postići veliku autonomnost i nezavisnost od licenciranih plaćenih softverskih sistema.\\
 Možemo zamisliti npr. da Elektrotehnički fakultet premjesti svoj infrastrukturalni sistem u potpunosti u Linux "svijet" počevši od samog nivoa operativnih sistema gdje bi fakultet imao svoj Linux operativni sistem u kom su sve aplikacije namjenski napravljene samo za upotrebu studentima, profesorima i ostatku fakultetskog osoblja. Također kompletan mrežni i aplikativni softver bi treba biti implementiran od pouzdanih inžinjera namjenski samo za potrebe fakulteta.\\
 Nedostatak ovog pristupa bi bilo veliko vrijeme izrade i planiranja izvedbe. Također kompleksnost implementacije ovakve infrastrukture je na prvi pogled nepredvidiva. Stoga se ovaj primjer može shvatiti kao imaginaran. Ali on dobro prikazuje upotrebu posebno modifikovanih operativnih sistema.\\
+\indent
+Tako bi se Linux distribucija mogla modularizirati putem .squashfs datotečnog sistema. Pa možemo zamisliti mogućnost da korisnik prilikom instalacije odabere vrstu korisničkog naloga, npr. student, profesor, ili osoblje, te nakon odabira bi se poseban modul učitao za svaku od ovih različitih uloga. Svakako da bi se dali kreirati različiti moduli za odsjeke i godine studija različitih studentskih grupa. Te bi se ovi moduli mogli učitavati u operativni sistem po potrebi ili po nekom željenom algoritmu.
 
 \chapter*{Reference}
 \addcontentsline{toc}{chapter}{\numberline{}Reference}
 \indent
-Lista članaka i resursa na koje se referencira rad:
-\begin{lstlisting}[style=BashInputStyle]
-https://help.ubuntu.com/community/LiveCDCustomization
-https://help.ubuntu.com/community/InstallCDCustomization
-https://itsfoss.com/customize-xfce/
-https://linuxconfig.org/install-gui-on-ubuntu-server-18-04-bionic-beaver
-https://www.linuxtrainingacademy.com/install-desktop-on-ubuntu-server/
-https://askubuntu.com/questions/378558/unable-to-locate-package-while-trying-to-install-packages-with-apt
-http://tldp.org/HOWTO/SquashFS-HOWTO/whatis.html
-https://unix.stackexchange.com/questions/166770/unable-to-delete-file-ldlinux-sys-from-a-partition
-https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04
-https://itnext.io/how-to-create-a-custom-ubuntu-live-from-scratch-dd3b3f213f81
-https://nathanpfry.com/how-to-customize-an-ubuntu-installation-disc/
-https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs
-https://phoenixnap.com/kb/how-to-install-lamp-stack-on-ubuntu
-https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04
-https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04
-https://linuxize.com/post/how-to-install-mysql-on-ubuntu-18-04/
-https://en.wikipedia.org/wiki/Hosts_(file)
-https://en.wikipedia.org/wiki/Resolv.conf
-https://vitux.com/how-to-install-and-configure-mysql-in-ubuntu-18-04-lts/
-https://www.linuxbabe.com/ubuntu/install-google-chrome-ubuntu-18-04-lts
-https://stackoverflow.com/questions/11657829/error-2002-hy000-cant-connect-to-local-mysql-server-through-socket-var-run
-https://itsfoss.com/install-mysql-ubuntu/
-https://www.digitalocean.com/community/tutorials/how-to-install-the-latest-mysql-on-ubuntu-18-04
-https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-18-04\\
-https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
-https://linuxize.com/post/how-to-install-couchdb-on-ubuntu-18-04/
-https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04
-https://linuxize.com/post/install-java-on-ubuntu-18-04/
-https://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/how-to-install-eclipse-ide-on-ubuntu-18-04-lts.html
-https://en.wikipedia.org/wiki/Live_CD
-https://en.wikipedia.org/wiki/Comparison_of_file_systems
-https://www.youtube.com/watch?reload=9&v=glFCEauwGgw - How To Install Linux to an External USB SSD or HDD
-https://askubuntu.com/questions/372607/how-to-create-a-bootable-ubuntu-usb-flash-drive-from-terminal
-https://www.howtogeek.com/196051/htg-explains-what-is-a-file-system-and-why-are-there-so-many-of-them/
-https://en.wikipedia.org/wiki/File_system
-https://www.tldp.org/LDP/sag/html/filesystems.html
-https://unix.stackexchange.com/questions/4402/what-is-a-superblock-inode-dentry-and-a-file
-https://opensource.com/article/17/5/introduction-ext4-filesystem
-https://opensource.com/life/16/10/introduction-linux-filesystems
-https://www.slax.org/customize.php
-https://www.slax.org/
-https://en.wikipedia.org/wiki/Slax
-https://en.wikipedia.org/wiki/NimbleX
-https://en.wikipedia.org/wiki/Node.js
-https://en.wikipedia.org/wiki/Ubuntu
-\end{lstlisting}
+Lista članaka i resursa na koje se referencira rad:\\
+\url{https://help.ubuntu.com/community/LiveCDCustomization}\\
+\url{https://help.ubuntu.com/community/InstallCDCustomization}\\
+\url{https://itsfoss.com/customize-xfce/}\\
+\url{https://linuxconfig.org/install-gui-on-ubuntu-server-18-04-bionic-beaver}\\
+\url{https://www.linuxtrainingacademy.com/install-desktop-on-ubuntu-server/}\\
+\url{https://askubuntu.com/questions/378558/unable-to-locate-package-while-trying-to-install-packages-with-apt}\\
+\url{http://tldp.org/HOWTO/SquashFS-HOWTO/whatis.html}\\
+\url{https://unix.stackexchange.com/questions/166770/unable-to-delete-file-ldlinux-sys-from-a-partition}\\
+\url{https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04}\\
+\url{https://itnext.io/how-to-create-a-custom-ubuntu-live-from-scratch-dd3b3f213f81}\\
+\url{https://nathanpfry.com/how-to-customize-an-ubuntu-installation-disc/}\\
+\url{https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs}\\
+\url{https://phoenixnap.com/kb/how-to-install-lamp-stack-on-ubuntu}\\
+\url{https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04}\\
+\url{https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04}\\
+\url{https://linuxize.com/post/how-to-install-mysql-on-ubuntu-18-04/}\\
+\url{https://en.wikipedia.org/wiki/Hosts_(file)}\\
+\url{https://en.wikipedia.org/wiki/Resolv.conf}\\
+\url{https://vitux.com/how-to-install-and-configure-mysql-in-ubuntu-18-04-lts/}\\
+\url{https://www.linuxbabe.com/ubuntu/install-google-chrome-ubuntu-18-04-lts}\\
+\url{https://stackoverflow.com/questions/11657829/error-2002-hy000-cant-connect-to-local-mysql-server-through-socket-var-run}\\
+\url{https://itsfoss.com/install-mysql-ubuntu/}\\
+\url{https://www.digitalocean.com/community/tutorials/how-to-install-the-latest-mysql-on-ubuntu-18-04}\\
+\url{https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-18-04}\\
+\url{https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/}\\
+\url{https://linuxize.com/post/how-to-install-couchdb-on-ubuntu-18-04/}\\
+\url{https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04}\\
+\url{https://linuxize.com/post/install-java-on-ubuntu-18-04/}\\
+\url{https://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/how-to-install-eclipse-ide-on-ubuntu-18-04-lts.html}\\
+\url{https://en.wikipedia.org/wiki/Live_CD}\\
+\url{https://en.wikipedia.org/wiki/Comparison_of_file_systems}\\
+How To Install Linux to an External USB SSD or HDD - \url{https://www.youtube.com/watch?reload=9&v=glFCEauwGgw}\\
+\url{https://askubuntu.com/questions/372607/how-to-create-a-bootable-ubuntu-usb-flash-drive-from-terminal}\\
+\url{https://www.howtogeek.com/196051/htg-explains-what-is-a-file-system-and-why-are-there-so-many-of-them/}\\
+\url{https://en.wikipedia.org/wiki/File_system}\\
+\url{https://www.tldp.org/LDP/sag/html/filesystems.html}\\
+\url{https://unix.stackexchange.com/questions/4402/what-is-a-superblock-inode-dentry-and-a-file}\\
+\url{https://opensource.com/article/17/5/introduction-ext4-filesystem}\\
+\url{https://opensource.com/life/16/10/introduction-linux-filesystems}\\
+\url{https://www.slax.org/customize.php}\\
+\url{https://www.slax.org/}\\
+\url{https://en.wikipedia.org/wiki/Slax}\\
+\url{https://en.wikipedia.org/wiki/NimbleX}\\
+\url{https://en.wikipedia.org/wiki/Node.js}\\
+\url{https://en.wikipedia.org/wiki/Ubuntu}\\
 
 \end{document}
