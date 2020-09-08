@@ -4,6 +4,7 @@
 \usepackage[T1]{fontenc}
 \pagestyle{plain}
 \usepackage{listings}
+\usepackage{pdfpages}
 \usepackage{hyperref}
 \def\UrlBreaks{\do\/\do-}
 \hypersetup{
@@ -43,6 +44,7 @@
 \title{Modularizacija Linux SquashFS datotečnog sistema}
 
 \maketitle
+\includepdf[pages={1}]{izjava_autenticnosti.pdf}
 \tableofcontents{}
 
 \chapter*{Abstract}
@@ -131,7 +133,7 @@ Live distribucije imaju razne upotrebe:\\
 \addcontentsline{toc}{section}{\numberline{}Datotečni sistemi}
 \indent
 Datotečni sistemi (file systems ili filesystems) su skupina metoda i podatkovnih struktura koje operativni sistem koristi radi vođenja evidencije o podacima na disku ili particiji diska. Datotečni sistem određuje način na koji su organizovani podaci na disku.\\
-Prije nego što disk ili particija diska mogu biti upotrebljeni kao datotečni sistem, datotečni sistem mora biti inicijaliziran na disk/particiju i strukture za čuvanje podataka trebaju biti upisane u disk. Ovaj proces se zove kreiranje datotečnog sistema.\\
+Prije nego što disk ili particija diska mogu biti upotrijebljeni kao datotečni sistem, datotečni sistem mora biti inicijaliziran na disk/particiju i strukture za čuvanje podataka trebaju biti upisane u disk. Ovaj proces se zove kreiranje datotečnog sistema.\\
 Prije svega treba napomenuti da su Linux datotečni sistemi su slični UNIX datotečnim sistemima. Većina UNIX datotečnih sistema ima sličnu strukturu i uređenost. Glavni koncepti su "superblock", "inode", "data block". "directory block" i "direction block".\\
 "Superblock" sadrži informacije o datotečnom sistemu uopćenito, npr. veličina datotečnog sistema. "Inode" sadrži sve informacije o pojedinačnoj datoteci, izuzev njenog naziva. Nazim se smješta u direktorij zajedno sa rednim brojem "inodea".
 \\

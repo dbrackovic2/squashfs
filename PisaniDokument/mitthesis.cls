@@ -521,7 +521,7 @@ zahtjevi \@degreeword\ za \\
 \def\Mit{Elektrotehnički fakultet Univerziteta u Sarajevu}
 
 \def\permission{\par\noindent{\centering
-   Autor dozvoljava Elektrotehničkom fakultetu Univerziteta u Sarajevu da kopira i distribura tezu putem elektronskih i drugih medija i u cjelosti i 	parcijalno po želji uz konsultacije sa autorom}\par}
+   Autor dozvoljava Elektrotehničkom fakultetu Univerziteta u Sarajevu da kopira i distribura rad putem elektronskih i drugih medija i u cjelosti i 	parcijalno po želji uz konsultacije sa autorom}\par}
 
 \def\signature#1#2{\par\noindent#1\dotfill\null\\*
   {\raggedleft #2\par}}
