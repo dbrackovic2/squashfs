@@ -36,9 +36,9 @@
 \author{Dajan Bračković}
 \department{Odsjek za Računarstvo i informatiku}
 \degree{Master računarstva i informatike}
-\degreemonth{Juli}
+\degreemonth{Septembar}
 \degreeyear{2020}
-\thesisdate{Septembar 7, 2020}
+\thesisdate{Septembar, 2020}
 \supervisor{Samir Ribić}{dr. sc.}
 \chairman{Profesor dr. sc. Jasmin Velagić}{Dekan Elektrotehničkog fakulteta Univerziteta u Sarajevu}
 \title{Modularizacija Linux SquashFS datotečnog sistema}
@@ -1546,9 +1546,16 @@ Proces kreiranja nodejs.squashfs datoteke će zahtijevati prije svega generisanj
 
 \subsection*{Kreiranje nodejsBazniDelta direktorija}
 \addcontentsline{toc}{subsection}{\numberline{}Kreiranje nodejsBazniDelta direktorija}
+\indent
+Koristićemo komandu rsync sa atributima -rvclm:\\
+-r = --recursive - rekurzivna pretraga po direktorijima\\
+-v = --verbose - detaljniji ispis informacija tokom izvršenja komande\\
+-c = --checksum - ne kopirati samo ako su checksum-i jednaki\\
+-l = --links - kopirati symbolic links\\
+-m = --prune-empty-dirs - ne kopirati prazne direktorije\\
 \begin{lstlisting}[style=BashInputStyle]
 mkdir nodejsBazniDelta
-sudo rsync -rvcm --compare-dest=/home/user/zavrsni/livecdtmp/bazni-edit/ /home/user/zavrsni/livecdtmp/nodejs-edit/ /home/user/zavrsni/livecdtmp/nodejsBazniDelta/
+sudo rsync -rvclm --compare-dest=/home/user/zavrsni/livecdtmp/bazni-edit/ /home/user/zavrsni/livecdtmp/nodejs-edit/ /home/user/zavrsni/livecdtmp/nodejsBazniDelta/
 \end{lstlisting}
 \indent
 U nodejsBazniDelta direktorij ćemo također ubaciti status.diff datoteku koja sadrži razliku između status datoteka bazni-edit i nodejs-edit direktorija. To ćemo postići koristeći komandu diff:
@@ -1569,14 +1576,14 @@ Multi-Arch: foreign
 Version: 7.58.0-2ubuntu3.10
 Depends: libc6 (>= 2.17), libcurl4 (= 7.58.0-2ubuntu3.10), zlib1g (>= 1:1.1.4)
 Description: command line tool for transferring data with URL syntax
-curl is a command line tool for transferring data with URL syntax, supporting
-DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3,
-POP3S, RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, TELNET and TFTP.
-.
-curl supports SSL certificates, HTTP POST, HTTP PUT, FTP uploading, HTTP form
-based upload, proxies, cookies, user+password authentication (Basic, Digest,
-NTLM, Negotiate, kerberos...), file transfer resume, proxy tunneling and a
-busload of other useful tricks.
+ curl is a command line tool for transferring data with URL syntax, supporting
+ DICT, FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3,
+ POP3S, RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, TELNET and TFTP.
+ .
+ curl supports SSL certificates, HTTP POST, HTTP PUT, FTP uploading, HTTP form
+ based upload, proxies, cookies, user+password authentication (Basic, Digest,
+ NTLM, Negotiate, kerberos...), file transfer resume, proxy tunneling and a
+ busload of other useful tricks.
 Homepage: http://curl.haxx.se
 Original-Maintainer: Alessandro Ghedini <ghedo@debian.org>
 
@@ -1593,15 +1600,15 @@ Provides: nodejs-dev, nodejs-legacy, npm
 Depends: libc6 (>= 2.17), libgcc1 (>= 1:3.4), libstdc++6 (>= 4.8), python-minimal, ca-certificates
 Conflicts: nodejs-dev, nodejs-legacy, npm
 Description: Node.js event-based server-side javascript engine
-Node.js is similar in design to and influenced by systems like
-Ruby's Event Machine or Python's Twisted.
-.
-It takes the event model a bit further - it presents the event
-loop as a language construct instead of as a library.
-.
-Node.js is bundled with several useful libraries to handle server tasks :
-System, Events, Standard I/O, Modules, Timers, Child Processes, POSIX,
-HTTP, Multipart Parsing, TCP, DNS, Assert, Path, URL, Query Strings.
+ Node.js is similar in design to and influenced by systems like
+ Ruby's Event Machine or Python's Twisted.
+ .
+ It takes the event model a bit further - it presents the event
+ loop as a language construct instead of as a library.
+ .
+ Node.js is bundled with several useful libraries to handle server tasks :
+ System, Events, Standard I/O, Modules, Timers, Child Processes, POSIX,
+ HTTP, Multipart Parsing, TCP, DNS, Assert, Path, URL, Query Strings.
 Homepage: https://nodejs.org
 
 Package: libcurl4
@@ -1619,25 +1626,29 @@ Depends: libc6 (>= 2.17), libgssapi-krb5-2 (>= 1.14+dfsg), libidn2-0 (>= 0.6), l
 Recommends: ca-certificates
 Conflicts: libcurl3
 Description: easy-to-use client-side URL transfer library (OpenSSL flavour)
-libcurl is an easy-to-use client-side URL transfer library, supporting DICT,
-FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S,
-RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, TELNET and TFTP.
-.
-libcurl supports SSL certificates, HTTP POST, HTTP PUT, FTP uploading, HTTP
-form based upload, proxies, cookies, user+password authentication (Basic,
-Digest, NTLM, Negotiate, Kerberos), file transfer resume, http proxy tunneling
-and more!
-.
-libcurl is free, thread-safe, IPv6 compatible, feature rich, well supported,
-fast, thoroughly documented and is already used by many known, big and
-successful companies and numerous applications.
-.
-SSL support is provided by OpenSSL.
+ libcurl is an easy-to-use client-side URL transfer library, supporting DICT,
+ FILE, FTP, FTPS, GOPHER, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, POP3, POP3S,
+ RTMP, RTSP, SCP, SFTP, SMTP, SMTPS, TELNET and TFTP.
+ .
+ libcurl supports SSL certificates, HTTP POST, HTTP PUT, FTP uploading, HTTP
+ form based upload, proxies, cookies, user+password authentication (Basic,
+ Digest, NTLM, Negotiate, Kerberos), file transfer resume, http proxy tunneling
+ and more!
+ .
+ libcurl is free, thread-safe, IPv6 compatible, feature rich, well supported,
+ fast, thoroughly documented and is already used by many known, big and
+ successful companies and numerous applications.
+ .
+ SSL support is provided by OpenSSL.
 Homepage: http://curl.haxx.se
 Original-Maintainer: Alessandro Ghedini <ghedo@debian.org>
 \end{lstlisting}
 \indent
-Potom ćemo kopirati status.diff datoteku u nodejsBazniDelta/var/lib/dpkg direktorij. Također obrisati i status datoteku iz ovog pomenutog nodejsBazniDelta direktorija.\\
+Potom ćemo kopirati status.diff datoteku u nodejsBazniDelta/var/lib/dpkg direktorij. Također obrisati status datoteku iz ovog pomenutog nodejsBazniDelta direktorija.\\
+\begin{lstlisting}[style=BashInputStyle]
+sudo rm nodejsBazniDelta/var/lib/dpkg/status
+sudo mv status.diff nodejsBazniDelta/var/lib/dpkg/status
+\end{lstlisting}
 
 \subsection*{nodejs.squashfs datoteka}
 \addcontentsline{toc}{subsection}{\numberline{}nodejs.squashfs datoteka}
@@ -1674,9 +1685,16 @@ Proces kreiranja mongodb.squashfs datoteke će zahtijevati prije svega generisan
 
 \subsection*{Kreiranje mongodbBazniDelta direktorija}
 \addcontentsline{toc}{subsection}{\numberline{}Kreiranje mongodbBazniDelta direktorija}
+\indent
+Koristićemo komandu rsync sa atributima -rvclm:\\
+-r = --recursive - rekurzivna pretraga po direktorijima\\
+-v = --verbose - detaljniji ispis informacija tokom izvršenja komande\\
+-c = --checksum - ne kopirati samo ako su checksum-i jednaki\\
+-l = --links - kopirati symbolic links\\
+-m = --prune-empty-dirs - ne kopirati prazne direktorije\\
 \begin{lstlisting}[style=BashInputStyle]
 mkdir mongodbBazniDelta
-sudo rsync -rvcm --compare-dest=/home/user/zavrsni/livecdtmp/bazni-edit/ /home/user/zavrsni/livecdtmp/mongodb-edit/ /home/user/zavrsni/livecdtmp/mongodbBazniDelta/
+sudo rsync -rvclm --compare-dest=/home/user/zavrsni/livecdtmp/bazni-edit/ /home/user/zavrsni/livecdtmp/mongodb-edit/ /home/user/zavrsni/livecdtmp/mongodbBazniDelta/
 \end{lstlisting}
 \indent
 U mongodbBazniDelta direktorij ćemo također ubaciti status.diff datoteku koja sadrži razliku između status datoteka bazni-edit i mongodb-edit direktorija. To ćemo postići koristeći komandu diff:
@@ -1718,10 +1736,10 @@ Homepage: http://curl.haxx.se
 Original-Maintainer: Alessandro Ghedini <ghedo@debian.org>
 \end{lstlisting}
 \indent
-Potom ćemo kopirati status.diff datoteku u mongodbBazniDelta/var/lib/dpkg direktorij. Također obrisati i status datoteku iz ovog pomenutog mongodbBazniDelta direktorija.\\
+Potom ćemo kopirati status.diff datoteku u mongodbBazniDelta/var/lib/dpkg direktorij. Prije toga ćemo obrisati status datoteku iz ovog pomenutog mongodbBazniDelta direktorija.\\
 \begin{lstlisting}[style=BashInputStyle]
-sudo mv status.diff mongodbBazniDelta/var/lib/dpkg/
 sudo rm mongodbBazniDelta/var/lib/dpkg/status
+sudo mv status.diff mongodbBazniDelta/var/lib/dpkg/status
 \end{lstlisting}
 
 \subsection*{mongodb.squashfs datoteka}
@@ -1759,9 +1777,16 @@ Proces kreiranja java.squashfs datoteke će zahtijevati prije svega generisanje 
 
 \subsection*{Kreiranje javaBazniDelta direktorija}
 \addcontentsline{toc}{subsection}{\numberline{}Kreiranje javaBazniDelta direktorija}
+\indent
+Koristićemo komandu rsync sa atributima -rvclm:\\
+-r = --recursive - rekurzivna pretraga po direktorijima\\
+-v = --verbose - detaljniji ispis informacija tokom izvršenja komande\\
+-c = --checksum - ne kopirati samo ako su checksum-i jednaki\\
+-l = --links - kopirati symbolic links\\
+-m = --prune-empty-dirs - ne kopirati prazne direktorije\\
 \begin{lstlisting}[style=BashInputStyle]
 mkdir javaBazniDelta
-sudo rsync -rvcm --compare-dest=/home/user/zavrsni/livecdtmp/bazni-edit/ /home/user/zavrsni/livecdtmp/java-edit/ /home/user/zavrsni/livecdtmp/javaBazniDelta/
+sudo rsync -rvclm --compare-dest=/home/user/zavrsni/livecdtmp/bazni-edit/ /home/user/zavrsni/livecdtmp/java-edit/ /home/user/zavrsni/livecdtmp/javaBazniDelta/
 \end{lstlisting}
 \indent
 U javaBazniDelta direktorij ćemo također ubaciti status.diff datoteku koja sadrži razliku između status datoteka bazni-edit i java-edit direktorija. Tu datoteku ćemo generisati koristeći komandu diff:
@@ -1771,10 +1796,10 @@ sudo diff bazni-edit/var/lib/dpkg/status java-edit/var/lib/dpkg/status > status.
 Neophodna je izmjena status.diff datoteke i u ovom slučaju.
 Korišten je online regex tool \url{https://regex101.com/} te smo u njemu samo zamijenili 2 prva karaktera svakog reda sa praznim tekstom.\\
 \indent
-Potom ćemo kopirati status.diff datoteku u javaBazniDelta/var/lib/dpkg direktorij. Također obrisati i status datoteku iz ovog pomenutog javaBazniDelta direktorija.\\
+Potom ćemo kopirati status.diff datoteku u javaBazniDelta/var/lib/dpkg direktorij. Ali prvobitno obrisati status datoteku iz ovog pomenutog javaBazniDelta direktorija.\\
 \begin{lstlisting}[style=BashInputStyle]
-sudo mv status.diff javaBazniDelta/var/lib/dpkg/
 sudo rm javaBazniDelta/var/lib/dpkg/status
+sudo mv status.diff javaBazniDelta/var/lib/dpkg/status
 \end{lstlisting}
 
 \subsection*{java.squashfs datoteka}
@@ -1812,9 +1837,16 @@ Proces kreiranja chrome.squashfs datoteke će zahtijevati prije svega generisanj
 
 \subsection*{Kreiranje chromeBazniDelta direktorija}
 \addcontentsline{toc}{subsection}{\numberline{}Kreiranje chromeBazniDelta direktorija}
+\indent
+Koristićemo komandu rsync sa atributima -rvclm:\\
+-r = --recursive - rekurzivna pretraga po direktorijima\\
+-v = --verbose - detaljniji ispis informacija tokom izvršenja komande\\
+-c = --checksum - ne kopirati samo ako su checksum-i jednaki\\
+-l = --links - kopirati symbolic links\\
+-m = --prune-empty-dirs - ne kopirati prazne direktorije\\
 \begin{lstlisting}[style=BashInputStyle]
 mkdir chromeBazniDelta
-sudo rsync -rvcm --compare-dest=/home/user/zavrsni/livecdtmp/bazni-edit/ /home/user/zavrsni/livecdtmp/chrome-edit/ /home/user/zavrsni/livecdtmp/chromeBazniDelta/
+sudo rsync -rvclm --compare-dest=/home/user/zavrsni/livecdtmp/bazni-edit/ /home/user/zavrsni/livecdtmp/chrome-edit/ /home/user/zavrsni/livecdtmp/chromeBazniDelta/
 \end{lstlisting}
 \indent
 U chromeBazniDelta direktorij ćemo također ubaciti status.diff datoteku koja sadrži razliku između status datoteka bazni-edit i chrome-edit direktorija. Tu datoteku ćemo generisati koristeći komandu diff:
@@ -1839,10 +1871,10 @@ Description: The web browser from Google
  Google Chrome is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier.
 \end{lstlisting}
 
-Potom ćemo kopirati status.diff datoteku u chromeBazniDelta/var/lib/dpkg direktorij. Također obrisati i status datoteku iz ovog pomenutog chromeBazniDelta direktorija.\\
+Sljedeće je da se kopira status.diff datoteka u chromeBazniDelta/var/lib/dpkg direktorij. Prvobitno obrisati status datoteku iz ovog pomenutog chromeBazniDelta direktorija.\\
 \begin{lstlisting}[style=BashInputStyle]
-sudo mv status.diff chromeBazniDelta/var/lib/dpkg/
 sudo rm chromeBazniDelta/var/lib/dpkg/status
+sudo mv status.diff chromeBazniDelta/var/lib/dpkg/status
 \end{lstlisting}
 
 \subsection*{chrome.squashfs datoteka}
@@ -1913,13 +1945,13 @@ sudo kvm -hda ubuntucjmn.img -cdrom ~/zavrsni/livecdtmp/ubuntu-cjmn-18.04-amd64.
 \addcontentsline{toc}{subsection}{\numberline{}Rezultat ubuntu-cjmn-18.04-amd64.iso}
 \indent
 Nakon što se pokrene naš sistem u QEMU, odaberemo opciju Try Ubuntu. Možemo se uvjeriti da su instalirani moduli Google Chrome, Java, MongoDB, NodeJS, što pokazuju slike ispod:\\
-%\includegraphics[width=\linewidth]{}\\\\
+\includegraphics[width=\linewidth]{images/tryUbuntu.png}\\
 \includegraphics[width=\linewidth]{images/ubuntu-cjmn.png}\\
 
 \chapter*{Zaključak}
 \addcontentsline{toc}{chapter}{\numberline{}Zaključak}
 \indent
-Svakako da bi prostor za poboljšanje bio u kreiranju skripte koja izvršava aktivaciju i deaktivaciju modula, koju bi korisnik mogao pozvati u pokrenutoj live distribuciji. Ova funkcija bi u pozadini trebala da mount-a .squashfs datotečni sistem u zavisnosti od modula koji se aktivira ili deaktivira. Pored toga morala bi i status datoteka biti ažurirana gdje bi se sadržaj status.diff datoteke nadodao u status datoteku.\\
+Svakako da bi prostor za poboljšanje bio u kreiranju skripte koja izvršava aktivaciju i deaktivaciju modula, koju bi korisnik mogao pozvati u pokrenutoj live distribuciji. Ova funkcija bi u pozadini trebala da mount-a .squashfs datotečni sistem u zavisnosti od modula koji se aktivira ili deaktivira. Pored toga morala bi i status datoteka biti ažurirana gdje bi se sadržaj status.diff datoteke nadodao u status datoteku ili bivao obrisan iz status datoteke.\\
 Ova tema je opširna dovoljno da se može proširiti u više smjerova. Demonstriran je proces kreiranja modifikovanih Linux distribucija. Na tu temu se može ići u nedogled jer je moguće modifikovati Linux distribuciju na beskonačno različitih načina.\\
 Može se zaključiti da su Linux operativni sistemi podložni modifikaciji u raznim aspektima, vjerovatno u većoj razmjeri nego ostale familije operativnih sistema. To je zasigurno jedan od glavnih razloga za široku upotrebu Linux operativnih sistema, pored glavne činjenice da je Linux open-source.\\
 Da se zaključiti također da se Linux distribucije mogu modifikovati za posebne primjene određenoj skupini korisnika te na taj način postići veliku autonomnost i nezavisnost od licenciranih plaćenih softverskih sistema.\\

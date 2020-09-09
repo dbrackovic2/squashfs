@@ -212,4 +212,4 @@ sudo rsync -aHxv --dry-run --compare-dest=./livecdtmp/edit/ ./livecdtmp/edit-jav
 sudo rsync -av folderA folderB folderC
 sudo rsync -rvcm --compare-dest=/home/dejanqa/zavrsni/livecdtmp/edit-chrome/ /home/dejanqa/zavrsni/livecdtmp/edit-java/ /home/dejanqa/zavrsni/livecdtmp/deltaChromeJava/
 in rsync option -l will copy also symlink files - maybe the whole rsync  comparison with delta folders will have to be rerun
-
+-rvclm
