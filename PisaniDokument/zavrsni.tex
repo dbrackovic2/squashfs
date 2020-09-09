@@ -38,7 +38,7 @@
 \degree{Master računarstva i informatike}
 \degreemonth{Septembar}
 \degreeyear{2020}
-\thesisdate{Septembar, 2020}
+\thesisdate{Septembar ...., 2020}
 \supervisor{Samir Ribić}{dr. sc.}
 \chairman{Profesor dr. sc. Jasmin Velagić}{Dekan Elektrotehničkog fakulteta Univerziteta u Sarajevu}
 \title{Modularizacija Linux SquashFS datotečnog sistema}
@@ -223,11 +223,13 @@ Zašto uopće mijenjati instalacioni iso image operativnog sistema? Postoji neko
 7. Radi mijenjanja sistemske konfiguracije kao što su teme, ikone, fontovi, pozadina...\\
 \\
 Najlakši način modifikacije iso image-a baziranih na Ubuntu distribuciji je koristenjem "Ubuntu Customization Kit" alata. Međutim ovaj rad će obuhvatiti drugačiji princip, manualni.\\
-Svaki od modula koji su kreirani su bazirani na istom base image-u, ubuntu-18.04.4-desktop-amd64.iso. Modifikacijom istog dobit ćemo četiri modula:\\ 
+Svaki od modula koji su kreirani su bazirani na istom base image-u, ubuntu-18.04.4-desktop-amd64.iso. Modifikacijom istog dobit ćemo četiri modula raspoređena u različite .iso datoteke:\\ 
 1. Modul NodeJS - ubuntu-with-nodejs-18.04-amd64.iso\\
 2. Modul MongoDB - ubuntu-with-mognodb-18.04-amd64.iso\\
 3. Modul Java - ubuntu-with-java-18.04-amd64.iso\\
 4. Modul Google Chrome - ubuntu-with-google-chrome-18.04-amd64.iso\\
+\indent
+Na kraju ćemo napraviti jednu .iso datoteku koja će da sadrži sve module skupa pod nazivom ubuntu-cjmn-18.04-amd64.iso. CJMN predstavlja Chrome, Java, MongoDB, NodeJS.
 
 \chapter*{Sistemski zahtjevi}
 \addcontentsline{toc}{chapter}{\numberline{}Sistemski zahtjevi}
@@ -248,9 +250,9 @@ sudo apt-get install squashfs-tools genisoimage
 
 \section*{SquashFS paket}
 \addcontentsline{toc}{section}{\numberline{}SquashFS paket}
-Paket squashfs-tools implementira 2 funkcije koje se koriste u ovom radu a koje pruza SquashFS (http://tldp.org/HOWTO/SquashFS-HOWTO/whatis.html).
+Paket squashfs-tools implementira 2 funkcije koje se koriste u ovom radu a koje pruža SquashFS (http://tldp.org/HOWTO/SquashFS-HOWTO/whatis.html).
 Radi se o funkcijama \textbf{mksquashfs} i \textbf{unsquashfs}. Prva od navedenih koristi se za kreiranje squashfs dateteke, dok se druga funkcija koristi za raspakivanje kompresovane squashfs datoteke.\\
-SquashFS je moguce instalirati kao dodatak na linux jezgro. Prema tome moguce ga je instalirati na razlicite linux distribucije. Za Debian distribuciju njegov naziv je squashfs-tools.
+SquashFS je moguće instalirati kao dodatak na linux jezgro. Prema tome moguće ga je instalirati na različite linux distribucije. Za Debian distribuciju njegov naziv je squashfs-tools.
 
 \chapter*{Proces kreiranja zasebnih modula}
 \addcontentsline{toc}{chapter}{\numberline{}Proces kreiranja zasebnih modula}
@@ -260,7 +262,7 @@ Proces kreiranja zasebnih modula za svaki od modula je sličan, s tim da će se 
 \addcontentsline{toc}{section}{\numberline{}Modul NodeJS}
 \indent
 NodeJS je kros-platforma "otvorenog koda" za izvršavanje JavaScript koda izvan okruženja web pretraživača. Nešto slično kao što su u Java svijetu JVM(JavaVirtualMachine) i JRE(JavaRuntimeEnvironment) i JDK(JavaDevelopmentKit) zajedno. Može se reći da NodeJS objedinjuje sve te stvari u jedan koncept, ali za JavaScript programski jezik.\\
-NodeJS ima "event-driven" baziranu arhitekturu koja omogućava asinhroni input/output. To ga čini pogodnim za razvijanje web aplikacija koje imaju mnošto input/output operacija, kao i za razvoj "real-time" web aplikacija i browser igrica.\\
+NodeJS ima "event-driven" baziranu arhitekturu koja omogućava asinhroni input/output. To ga čini pogodnim za razvijanje web aplikacija koje imaju mnoštvo input/output operacija, kao i za razvoj "real-time" web aplikacija i browser igrica.\\
 Prirodno NodeJS podržava samo JavaScript programski kod. Međutim podržava i programske jezike koji se daju kompajlirati u JS. To su CoffeeScript, Dart, TypeScript, ClojureScript.\\
 NodeJS se najčešće koristi za razvijanje WebServer-a. Jedna od bitnih razlika između NodeJS-a i PHP-a je ta što kod PHP-a većina funkcija blokira izvršavanje naredne funkcije dok se ne izvrši u potpunosti, dok su funkcije u NodeJS-u neblokirajuće te se mogu izvršavati paralelno,  te na osnovu "callback" funkcije signaliziraju uspješno izvršenje ili error.\\
 NodeJS oficijelno podržavaju i Linux i MacOS i Windows OS-i.\\
@@ -278,14 +280,14 @@ cd ~/squashfs/livecdtmp
 \end{lstlisting}
 
 \noindent
-Napraviti mnt direktorij unutar livecdtmp direktorija u koji ce biti mount-an ubuntu-18.04.4-desktop-amd64.iso image:
+Napraviti mnt direktorij unutar livecdtmp direktorija u koji će biti mount-an ubuntu-18.04.4-desktop-amd64.iso image:
 \begin{lstlisting}[style=BashInputStyle]
 mkdir mnt
 sudo mount -o loop ./isoimgs/ubuntu-18.04.4-desktop-amd64.iso mnt
 \end{lstlisting}
 
 \noindent
-Napraviti direktorij extract-cd u kojeg cemo kopirati mnt direktorij izostavljajuci filesystem.squashfs datoteku unutar /casper direktorija:
+Napraviti direktorij extract-cd u kojeg ćemo kopirati mnt direktorij izostavljajući filesystem.squashfs datoteku unutar /casper direktorija:
 \begin{lstlisting}[style=BashInputStyle]
 mkdir extract-cd
 sudo rsync --exclude=/casper/filesystem.squashfs -a mnt/ extract-cd
@@ -330,7 +332,7 @@ Kopirati sadržaj iz /etc/hosts datoteke na sistemu domaćinu unutar edit/etc/ho
 \end{lstlisting}
 
 \noindent
-Namjestiti edit/dev direktorij kopirajuci /dev/ direktorij sa hosta, zatim chroot u edit direktorij.
+Namjestiti edit/dev direktorij kopirajući /dev/ direktorij sa hosta, zatim chroot u edit direktorij.
 Obaviti mount instrukcije navedene ispod. Ukoliko korisnik odluči da obriše edit direktorij iz nekog razloga,
 bilo bi potrebno uraditi unmount edit direktorija da sistem domaćin ne bi postao neupotrebljiv:
 \begin{lstlisting}[style=BashInputStyle]
@@ -445,7 +447,7 @@ qemu-img create ubuntunodejs.img 5G
 \end{lstlisting}
 
 \noindent 
-Pokrenucemo modul pomocu KVM-a:
+Pokrenućemo modul pomocu KVM-a:
 \begin{lstlisting}[style=BashInputStyle]
 sudo kvm -hda ubuntunodejs.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-nodejs-18.04-amd64.iso -boot d -m 2048
 \end{lstlisting}
@@ -453,10 +455,10 @@ sudo kvm -hda ubuntunodejs.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-nodejs-18.
 \subsection*{Rezultat Modul NodeJS}
 \addcontentsline{toc}{subsection}{\numberline{}Rezultat Modul NodeJS}
 \includegraphics[width=\linewidth]{images/ModulNodeJSUbuntu.png} 
-Unutar ove live instalacije mozemo upotrijebiti nodeJS biblioteku te kreirati jednostavnu web aplikaciju.\\
-Prateci uputstvo na linku:\\
+Unutar ove live instalacije možemo upotrijebiti nodeJS biblioteku te kreirati jednostavnu web aplikaciju.\\
+Prateći uputstvo na linku:\\
 \textit{https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs}
-unutar nase live distribucije sa preinstaliranim NodeJS bibliotekama izvrsimo sljedece komande koristeci Terminal:
+unutar naše live distribucije sa preinstaliranim NodeJS bibliotekama izvršimo sljedeće komande koristeći Terminal:
 \begin{lstlisting}[style=BashInputStyle]
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 cd nodejs-docs-hello-world
@@ -479,7 +481,7 @@ Za potrebe rada nije rađena modifikacija ove web aplikacije, ali moguće je isk
 \addcontentsline{toc}{section}{\numberline{}Modul MongoDB}
 MongoDB je nerelaciona baza podataka napisana u C++ programskom jeziku. Koristi JSON format za spremanje podataka.\\
 To je čini pogodnom za povezivanje sa NodeJS bibliotekama, čiji smo modul već napravili u prethodnom paragrafu.\\
-Postupak kreiranja ovog modula ce biti gotovo identičan postupku kreiranja NodeJS modula, izuzev dijela u kojem se vrši instaliranje novih paketa unutar raspakovanog squashfs datotečsnog sistema.\\
+Postupak kreiranja ovog modula ce biti gotovo identičan postupku kreiranja NodeJS modula, izuzev dijela u kojem se vrši instaliranje novih paketa unutar raspakovanog squashfs datotečnog sistema.\\
 
 \subsection*{Kreiranje direktorija potrebnih za rad}
 \addcontentsline{toc}{subsection}{\numberline{}Kreiranje direktorija potrebnih za rad}
@@ -508,7 +510,7 @@ sudo mv squashfs-root/ edit-mongodb
 \subsection*{Konfiguracija paketa za chroot okruženje}
 \addcontentsline{toc}{subsection}{\numberline{}Konfiguracija paketa za chroot okruženje}
 \noindent
-Da bi imali mrežnu konekciju unutar edit-mongodb direktorija jedno rjesenje je kopirati /run direktorij unutar edit-mongodb direktorija.
+Da bi imali mrežnu konekciju unutar edit-mongodb direktorija jedno rješenje je kopirati /run direktorij unutar edit-mongodb direktorija.
 Najbolje manuelno popuniti resolv.conf unutar edit direktorija:
 \begin{lstlisting}[style=BashInputStyle]
 sudo gedit edit-mongodb/etc/resolv.conf
@@ -528,7 +530,7 @@ Kopirati sadržaj iz /etc/hosts datoteke na sistemu domaćinu unutar edit-mongod
 \end{lstlisting}
 \noindent
 Namjestiti edit-mongodb/dev direktorij kopirajući /dev/ direktorij sa hosta, zatim chroot u edit-mongodb direktorij.
-Obaviti mount instrukcije navedene ispod. Ukoliko korisnik odluči da obrise edit-mongodb direktorij iz nekog razloga,
+Obaviti mount instrukcije navedene ispod. Ukoliko korisnik odluči da obriše edit-mongodb direktorij iz nekog razloga,
 bilo bi potrebno uraditi unmount edit-mongodb direktorija da sistem domaćin ne bi postao neupotrebljiv:
 \begin{lstlisting}[style=BashInputStyle]
 sudo mount --bind /dev/ edit-mongodb/dev
@@ -728,7 +730,7 @@ sudo rsync -a extract-java-cd/ modul-java
 
 \subsection*{unsquashfs filesystem.squashs datoteke}
 \addcontentsline{toc}{subsection}{\numberline{}unsquashfs filesystem.squashfs datoteke}
-
+\indent
 Zatim slijedi korak u kojem se opet raspakuje filesystem.squashfs direktorij i kopiramo ga u edit-java direktorij. Ovaj put ćemo edit direktorij imenovati edit-java da ne izgubimo prethodni sadržaj edit direktorija.\\
 \begin{lstlisting}[style=BashInputStyle]
 sudo unsquashfs mnt/casper/filesystem.squashfs
@@ -753,7 +755,7 @@ Isto važi i za etc/hosts datoteku:
 \begin{lstlisting}[style=BashInputStyle]
 sudo gedit edit-java/etc/hosts
 \end{lstlisting}
-Kopirati sadrzaj iz /etc/hosts datoteke na sistemu domacinu unutar edit-java/etc/hosts datoteke:
+Kopirati sadržaj iz /etc/hosts datoteke na sistemu domaćinu unutar edit-java/etc/hosts datoteke:
 \begin{lstlisting}
 127.0.0.1	localhost
 127.0.1.1	debianjoda.joda.net	debianjoda
@@ -772,7 +774,7 @@ mount -t devpts none /dev/pts
 \end{lstlisting}
 
 \noindent
-Takodjer potrebno je izvrsiti sljedece komande da bi se izbjegli problemi sa lokalizacijom:
+Takodjer potrebno je izvršiti sljedeće komande da bi se izbjegli problemi sa lokalizacijom:
 \begin{lstlisting}[style=BashInputStyle]
 export HOME=/root
 export LC_ALL=C
@@ -853,7 +855,7 @@ sudo sed -i '/casper/d' extract-java-cd/casper/filesystem.manifest-desktop
 \subsection*{Generisanje filesystem.squashfs datoteke}
 \addcontentsline{toc}{subsection}{\numberline{}Generisanje filesystem.squashfs datoteke}
 \noindent
-Sada cemo upotrijebiti drugu funkciju iz squashfs-tools, a to je mksquashfs. S tom funkcijom ćemo kompresovati edit-java direktorij u novu filesystem.squashfs datoteku, baš kao i u prethodna dva slučaja sa MongoDB i NodeJS modulima. U kodu ispod je potrebno izvršiti komandu iz linije 1 i jednu od preostale 3, pri čemu prva (komanda na liniji 2) daje najslabiju kompresiju, ali je najbrža. Druga komanda se duže izvršava ali je veći procenat kompresije u odnosu na prvu komandu. Dok je kod treće komande procenat kompresije najveći, a vrijeme izvršenja najduže:
+Sada ćemo upotrijebiti drugu funkciju iz squashfs-tools, a to je mksquashfs. S tom funkcijom ćemo kompresovati edit-java direktorij u novu filesystem.squashfs datoteku, baš kao i u prethodna dva slučaja sa MongoDB i NodeJS modulima. U kodu ispod je potrebno izvršiti komandu iz linije 1 i jednu od preostale 3, pri čemu prva (komanda na liniji 2) daje najslabiju kompresiju, ali je najbrža. Druga komanda se duže izvršava ali je veći procenat kompresije u odnosu na prvu komandu. Dok je kod treće komande procenat kompresije najveći, a vrijeme izvršenja najduže:
 \begin{lstlisting}[style=BashInputStyle]
 sudo rm extract-java-cd/casper/filesystem.squashfs
 sudo mksquashfs edit-java extract-java-cd/casper/filesystem.squashfs -nolzma 
@@ -895,7 +897,7 @@ sudo genisoimage -D -r -V "$IMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux
 \subsection*{Pokretanje iso image-a pomoću kvm biblioteke}
 \addcontentsline{toc}{subsection}{\numberline{}Pokretanje iso image-a pomoću kvm biblioteke}
 \indent
-Sada ćemo napraviti virtuelni hard disk pomocu qemu-img komande da bismo pokrenuli na njemu naš novi modul Java Ubuntu.
+Sada ćemo napraviti virtuelni hard disk pomoću qemu-img komande da bismo pokrenuli na njemu naš novi modul Java Ubuntu.
 \begin{lstlisting}[style=BashInputStyle]
 cd ~
 qemu-img create ubuntujava.img 5G
@@ -936,7 +938,7 @@ sudo rsync -a extract-chrome-cd/ modul-chrome
 
 \subsection*{unsquashfs filesystem.squashs datoteke}
 \addcontentsline{toc}{subsection}{\numberline{}unsquashfs filesystem.squashfs datoteke}
-
+\indent
 Zatim slijedi korak u kojem se opet raspakuje filesystem.squashfs direktorij i kopiramo ga u edit-chrome direktorij. Ovaj put ćemo edit direktorij imenovati edit-chrome da ne izgubimo prethodni sadržaj edit direktorija.\\
 \begin{lstlisting}[style=BashInputStyle]
 sudo unsquashfs mnt/casper/filesystem.squashfs
@@ -1644,7 +1646,7 @@ Homepage: http://curl.haxx.se
 Original-Maintainer: Alessandro Ghedini <ghedo@debian.org>
 \end{lstlisting}
 \indent
-Potom ćemo kopirati status.diff datoteku u nodejsBazniDelta/var/lib/dpkg direktorij. Također obrisati status datoteku iz ovog pomenutog nodejsBazniDelta direktorija.\\
+Potom ćemo kopirati status.diff datoteku u nodejsBazniDelta/var/lib/dpkg direktorij. Također obrisati prethodnu status datoteku iz ovog pomenutog nodejsBazniDelta direktorija.\\
 \begin{lstlisting}[style=BashInputStyle]
 sudo rm nodejsBazniDelta/var/lib/dpkg/status
 sudo mv status.diff nodejsBazniDelta/var/lib/dpkg/status
@@ -1945,7 +1947,7 @@ sudo kvm -hda ubuntucjmn.img -cdrom ~/zavrsni/livecdtmp/ubuntu-cjmn-18.04-amd64.
 \addcontentsline{toc}{subsection}{\numberline{}Rezultat ubuntu-cjmn-18.04-amd64.iso}
 \indent
 Nakon što se pokrene naš sistem u QEMU, odaberemo opciju Try Ubuntu. Možemo se uvjeriti da su instalirani moduli Google Chrome, Java, MongoDB, NodeJS, što pokazuju slike ispod:\\
-\includegraphics[width=\linewidth]{images/tryUbuntu.png}\\
+\includegraphics[width=\linewidth]{images/tryUbuntu.png}\\\\
 \includegraphics[width=\linewidth]{images/ubuntu-cjmn.png}\\
 
 \chapter*{Zaključak}
