@@ -74,4 +74,3 @@
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Pokretanje iso image-a pomo\IeC {\'c}u kvm biblioteke}{73}{section*.75}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Rezultat ubuntu-cjmn-18.04-amd64.iso}{73}{section*.76}% 
 \contentsline {chapter}{\hbox to\@tempdima {\hfil }Zaklju\IeC {\v c}ak}{75}{chapter*.77}% 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Reference}{77}{chapter*.78}% 

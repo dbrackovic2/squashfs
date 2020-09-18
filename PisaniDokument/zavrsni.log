@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.6.10)  9 SEP 2020 03:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2020.6.10)  17 SEP 2020 04:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -373,7 +373,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <14.4> not available
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<izjava_autenticnosti.pdf, id=323, 597.55246pt x 845.07718pt>
+<izjava_autenticnosti.pdf, id=319, 597.55246pt x 845.07718pt>
 File: izjava_autenticnosti.pdf Graphic file (type pdf)
 <use izjava_autenticnosti.pdf>
 Package pdftex.def Info: izjava_autenticnosti.pdf  used on input line 47.
@@ -382,7 +382,7 @@ File: izjava_autenticnosti.pdf Graphic file (type pdf)
 <use izjava_autenticnosti.pdf>
 Package pdftex.def Info: izjava_autenticnosti.pdf  used on input line 47.
 (pdftex.def)             Requested size: 597.551pt x 845.07512pt.
-<izjava_autenticnosti.pdf, id=326, page=1, 597.55246pt x 845.07718pt>
+<izjava_autenticnosti.pdf, id=322, page=1, 597.55246pt x 845.07718pt>
 File: izjava_autenticnosti.pdf Graphic file (type pdf)
 <use izjava_autenticnosti.pdf, page 1>
 Package pdftex.def Info: izjava_autenticnosti.pdf , page1 used on input line 47
@@ -432,7 +432,7 @@ LaTeX Font Info:    Try loading font information for T1+cmss on input line 93.
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-<images/lsblkOutput.png, id=481, 727.71875pt x 361.35pt>
+<images/lsblkOutput.png, id=476, 727.71875pt x 361.35pt>
 File: images/lsblkOutput.png Graphic file (type png)
 <use images/lsblkOutput.png>
 Package pdftex.def Info: images/lsblkOutput.png  used on input line 98.
@@ -531,7 +531,7 @@ Overfull \hbox (6.70154pt too wide) in paragraph at lines 442--444
 de da bismo pokrenuli
  []
 
-<images/ModulNodeJSUbuntu.png, id=636, 964.60374pt x 607.26875pt>
+<images/ModulNodeJSUbuntu.png, id=631, 964.60374pt x 607.26875pt>
 File: images/ModulNodeJSUbuntu.png Graphic file (type png)
 <use images/ModulNodeJSUbuntu.png>
 Package pdftex.def Info: images/ModulNodeJSUbuntu.png  used on input line 457.
@@ -548,13 +548,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 475--476
  []
 
 [23 <./images/ModulNodeJSUbuntu.png>]
-<images/ModulNodeJSUbuntuTerminal.png, id=664, 1341.01pt x 762.85pt>
+<images/ModulNodeJSUbuntuTerminal.png, id=659, 1341.01pt x 762.85pt>
 File: images/ModulNodeJSUbuntuTerminal.png Graphic file (type png)
 <use images/ModulNodeJSUbuntuTerminal.png>
 Package pdftex.def Info: images/ModulNodeJSUbuntuTerminal.png  used on input li
 ne 477.
 (pdftex.def)             Requested size: 433.62pt x 246.66618pt.
-<images/ModulNodeJSUbuntu1.png, id=665, 997.7275pt x 673.51625pt>
+<images/ModulNodeJSUbuntu1.png, id=660, 997.7275pt x 673.51625pt>
 File: images/ModulNodeJSUbuntu1.png Graphic file (type png)
 <use images/ModulNodeJSUbuntu1.png>
 Package pdftex.def Info: images/ModulNodeJSUbuntu1.png  used on input line 478.
@@ -583,7 +583,7 @@ n-utar edit-mongodb/etc/hosts
  []
 
 [26] [27]
-<images/mongoRunning.png, id=732, 1368.11125pt x 705.63625pt>
+<images/mongoRunning.png, id=727, 1368.11125pt x 705.63625pt>
 File: images/mongoRunning.png Graphic file (type png)
 <use images/mongoRunning.png>
 Package pdftex.def Info: images/mongoRunning.png  used on input line 611.
@@ -595,7 +595,7 @@ de da bismo pokrenuli
  []
 
 [30]
-<images/mongoLive.png, id=797, 961.5925pt x 606.265pt>
+<images/mongoLive.png, id=792, 961.5925pt x 606.265pt>
 File: images/mongoLive.png Graphic file (type png)
 <use images/mongoLive.png>
 Package pdftex.def Info: images/mongoLive.png  used on input line 706.
@@ -611,7 +611,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 733--735
  []
 
 [32]
-<images/unsquashfscommand.png, id=821, 1165.35374pt x 196.735pt>
+<images/unsquashfscommand.png, id=816, 1165.35374pt x 196.735pt>
 File: images/unsquashfscommand.png Graphic file (type png)
 <use images/unsquashfscommand.png>
 Package pdftex.def Info: images/unsquashfscommand.png  used on input line 740.
@@ -628,17 +628,17 @@ Overfull \hbox (6.70154pt too wide) in paragraph at lines 899--901
 de da bismo pokrenuli
  []
 
-<images/javaLive.png, id=914, 813.0375pt x 524.96124pt>
+<images/javaLive.png, id=908, 813.0375pt x 524.96124pt>
 File: images/javaLive.png Graphic file (type png)
 <use images/javaLive.png>
 Package pdftex.def Info: images/javaLive.png  used on input line 916.
 (pdftex.def)             Requested size: 433.62pt x 279.97437pt.
-<images/eclipseLive.png, id=915, 967.615pt x 602.25pt>
+<images/eclipseLive.png, id=909, 967.615pt x 602.25pt>
 File: images/eclipseLive.png Graphic file (type png)
 <use images/eclipseLive.png>
 Package pdftex.def Info: images/eclipseLive.png  used on input line 917.
 (pdftex.def)             Requested size: 433.62pt x 269.88885pt.
-<images/eclipseLive1.png, id=916, 962.59625pt x 605.26125pt>
+<images/eclipseLive1.png, id=910, 962.59625pt x 605.26125pt>
 File: images/eclipseLive1.png Graphic file (type png)
 <use images/eclipseLive1.png>
 Package pdftex.def Info: images/eclipseLive1.png  used on input line 918.
@@ -678,7 +678,7 @@ Overfull \hbox (6.18356pt too wide) in paragraph at lines 982--983
 gli prob-lemi sa lokalizaci-
  []
 
-<images/google-chrome-list.png, id=975, 888.31876pt x 154.5775pt>
+<images/google-chrome-list.png, id=970, 888.31876pt x 154.5775pt>
 File: images/google-chrome-list.png Graphic file (type png)
 <use images/google-chrome-list.png>
 Package pdftex.def Info: images/google-chrome-list.png  used on input line 1005
@@ -690,7 +690,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1007--1009
  []
 
 [42 <./images/google-chrome-list.png>]
-<images/googlechromestableversion.png, id=995, 886.31125pt x 290.08376pt>
+<images/googlechromestableversion.png, id=990, 886.31125pt x 290.08376pt>
 File: images/googlechromestableversion.png Graphic file (type png)
 <use images/googlechromestableversion.png>
 Package pdftex.def Info: images/googlechromestableversion.png  used on input li
@@ -708,12 +708,12 @@ Overfull \hbox (6.70154pt too wide) in paragraph at lines 1100--1102
 de da bismo pokrenuli
  []
 
-<images/chromeLive.png, id=1043, 965.6075pt x 603.25375pt>
+<images/chromeLive.png, id=1038, 965.6075pt x 603.25375pt>
 File: images/chromeLive.png Graphic file (type png)
 <use images/chromeLive.png>
 Package pdftex.def Info: images/chromeLive.png  used on input line 1117.
 (pdftex.def)             Requested size: 433.62pt x 270.90018pt.
-<images/chromeLive2.png, id=1044, 968.61874pt x 609.27625pt>
+<images/chromeLive2.png, id=1039, 968.61874pt x 609.27625pt>
 File: images/chromeLive2.png Graphic file (type png)
 <use images/chromeLive2.png>
 Package pdftex.def Info: images/chromeLive2.png  used on input line 1118.
@@ -835,12 +835,12 @@ Overfull \hbox (6.70154pt too wide) in paragraph at lines 1933--1935
 de da bismo pokrenuli
  []
 
-<images/tryUbuntu.png, id=1627, 1240.635pt x 710.655pt>
+<images/tryUbuntu.png, id=1622, 1240.635pt x 710.655pt>
 File: images/tryUbuntu.png Graphic file (type png)
 <use images/tryUbuntu.png>
 Package pdftex.def Info: images/tryUbuntu.png  used on input line 1950.
 (pdftex.def)             Requested size: 433.62pt x 248.37512pt.
-<images/ubuntu-cjmn.png, id=1628, 1147.28625pt x 708.6475pt>
+<images/ubuntu-cjmn.png, id=1623, 1147.28625pt x 708.6475pt>
 File: images/ubuntu-cjmn.png Graphic file (type png)
 <use images/ubuntu-cjmn.png>
 Package pdftex.def Info: images/ubuntu-cjmn.png  used on input line 1951.
@@ -864,151 +864,158 @@ Package hyperref Warning: Composite letter `\textasciicaron+c'
 [75
 
 ] [76]
-Overfull \hbox (11.96182pt too wide) in paragraph at lines 1967--2014
+Underfull \hbox (badness 6641) in paragraph at lines 1968--1971
+[]\T1/cmr/m/n/12 Ubuntu Live CD Cus-tomiza-tion, [][]$\T1/cmtt/m/n/12 https : /
+ / help\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 ubuntu\OML/cmm/m/it/12 :\T1/cmtt/m/n/1
+2 com / community /
+ []
+
+
+Overfull \hbox (11.96182pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / linuxconfig\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 o
 rg / install -[] gui -[] on -[] ubuntu -[] server -[] 18 -[] 04 -[] bionic -[] 
 beaver$[][] 
  []
 
 
-Overfull \hbox (41.82928pt too wide) in paragraph at lines 1967--2014
+Overfull \hbox (41.82928pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / askubuntu\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com
  / questions / 378558 / unable -[] to -[] locate -[] package -[] while -[] tryi
 ng -[]
  []
 
 
-Overfull \hbox (44.59314pt too wide) in paragraph at lines 1967--2014
+Overfull \hbox (44.59314pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / unix\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 stackexc
 hange\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / questions / 166770 / unable -[] to
  -[] delete -[] file -[] ldlinux -[]
  []
 
 
-Overfull \hbox (7.55219pt too wide) in paragraph at lines 1967--2014
+Overfull \hbox (7.55219pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / www\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 digitaloc
 ean\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / community / tutorials / how -[] to -
 [] install -[] node -[] js -[]
  []
 
 
-Overfull \hbox (49.50278pt too wide) in paragraph at lines 1967--2014
+Overfull \hbox (49.50278pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / itnext\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 io / h
 ow -[] to -[] create -[] a -[] custom -[] ubuntu -[] live -[] from -[] scratch 
 -[] dd3b3f213f81$[][] 
  []
 
 
-Overfull \hbox (1.8787pt too wide) in paragraph at lines 1967--2014
+Overfull \hbox (1.8787pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / docs\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 microsof
 t\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / en -[] us / azure / app -[] service / 
 app -[] service -[] web -[] get -[]
  []
 
 
-Overfull \hbox (13.72568pt too wide) in paragraph at lines 1967--2014
+Overfull \hbox (13.72568pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / www\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 digitaloc
 ean\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / community / tutorials / how -[] to -
 [] install -[] mysql -[] on -[]
  []
 
 
-Overfull \hbox (19.13531pt too wide) in paragraph at lines 1967--2014
+Overfull \hbox (19.13531pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / vitux\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / h
 ow -[] to -[] install -[] and -[] configure -[] mysql -[] in -[] ubuntu -[] 18 
 -[] 04 -[] lts/$[][] 
  []
 
 
-Overfull \hbox (1.8787pt too wide) in paragraph at lines 1967--2014
+Overfull \hbox (1.8787pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / www\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 linuxbabe
 \OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / ubuntu / install -[] google -[] chrome 
 -[] ubuntu -[] 18 -[] 04 -[] lts$[][] 
  []
 
 
-Overfull \hbox (28.9823pt too wide) in paragraph at lines 1967--2014
+Overfull \hbox (28.9823pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / stackoverflow\OML/cmm/m/it/12 :\T1/cmtt/m/n/12
  com / questions / 11657829 / error -[] 2002 -[] hy000 -[] cant -[] connect -[]
 
  []
 
 
-Overfull \hbox (26.07266pt too wide) in paragraph at lines 1967--2014
+Overfull \hbox (26.07266pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / www\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 digitaloc
 ean\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / community / tutorials / how -[] to -
 [] install -[] the -[] latest -[]
  []
 
 
-Overfull \hbox (7.05219pt too wide) in paragraph at lines 1967--2014
+Overfull \hbox (7.05219pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / www\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 digitaloc
 ean\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / community / tutorials / how -[] to -
 [] install -[] mongodb -[]
  []
 
 
-Overfull \hbox (19.89917pt too wide) in paragraph at lines 1967--2014
+Overfull \hbox (19.89917pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / www\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 digitaloc
 ean\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / community / tutorials / how -[] to -
 [] install -[] java -[] with -[]
  []
 
 
-Overfull \hbox (33.24615pt too wide) in paragraph at lines 1967--2014
+Overfull \hbox (33.24615pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / www\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 itzgeek\O
 ML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / how -[] tos / linux / ubuntu -[] how -[] 
 tos / how -[] to -[] install -[] eclipse -[]
  []
 
 
-Overfull \hbox (4.78833pt too wide) in paragraph at lines 1967--2014
+Overfull \hbox (4.78833pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / askubuntu\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com
  / questions / 372607 / how -[] to -[] create -[] a -[] bootable -[] ubuntu -[]
 
  []
 
 
-Overfull \hbox (9.05219pt too wide) in paragraph at lines 1967--2014
+Overfull \hbox (9.05219pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / www\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 howtogeek
 \OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / 196051 / htg -[] explains -[] what -[] 
 is -[] a -[] file -[] system -[] and -[]
  []
 
 
-Overfull \hbox (13.72568pt too wide) in paragraph at lines 1967--2014
+Overfull \hbox (13.72568pt too wide) in paragraph at lines 1973--2017
 [][]$\T1/cmtt/m/n/12 https : / / unix\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 stackexc
 hange\OML/cmm/m/it/12 :\T1/cmtt/m/n/12 com / questions / 4402 / what -[] is -[]
  a -[] superblock -[] inode -[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1967--2014
+Underfull \hbox (badness 10000) in paragraph at lines 1973--2017
 
  []
 
 [77
 
 ] [78]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2015.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2018.
  [79]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2015.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2018.
  (./zavrsni.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2015.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2015.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2018.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2018.
 
 Package rerunfilecheck Info: File `zavrsni.out' has not changed.
-(rerunfilecheck)             Checksum: 7CFEDDE806F2E9B45027B953E83230DE;6032.
+(rerunfilecheck)             Checksum: 4588C578203D999C28D1E378D6928FDB;5985.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2015.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2018.
  ) 
 Here is how much of TeX's memory you used:
- 10109 strings out of 494518
- 143794 string characters out of 6176313
- 511664 words of memory out of 5000000
+ 10110 strings out of 494518
+ 143812 string characters out of 6176313
+ 510664 words of memory out of 5000000
  12626 multiletter control sequences out of 15000+600000
  17803 words of font info for 41 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
@@ -1028,10 +1035,10 @@ four/jknappen/ec/ecrm1728.600pk> </home/dejanqa/.texlive2018/texmf-var/fonts/pk
 /pk/ljfour/jknappen/ec/ecbx1728.600pk></usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmsy10.pfb>
-Output written on zavrsni.pdf (79 pages, 2301415 bytes).
+Output written on zavrsni.pdf (79 pages, 2306569 bytes).
 PDF statistics:
- 2521 PDF objects out of 2984 (max. 8388607)
- 1829 compressed objects within 19 object streams
- 994 named destinations out of 1000 (max. 500000)
- 725 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2538 PDF objects out of 2984 (max. 8388607)
+ 1831 compressed objects within 19 object streams
+ 995 named destinations out of 1000 (max. 500000)
+ 717 words of extra memory for PDF output out of 10000 (max. 10000000)
 

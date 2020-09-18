@@ -1962,11 +1962,14 @@ Nedostatak ovog pristupa bi bilo veliko vrijeme izrade i planiranja izvedbe. Tak
 \indent
 Tako bi se Linux distribucija mogla modularizirati putem .squashfs datotečnog sistema. Pa možemo zamisliti mogućnost da korisnik prilikom instalacije odabere vrstu korisničkog naloga, npr. student, profesor, ili osoblje, te nakon odabira bi se poseban modul učitao za svaku od ovih različitih uloga. Svakako da bi se dali kreirati različiti moduli za odsjeke i godine studija različitih studentskih grupa. Te bi se ovi moduli mogli učitavati u operativni sistem po potrebi ili po nekom željenom algoritmu.
 
-\chapter*{Reference}
-\addcontentsline{toc}{chapter}{\numberline{}Reference}
-\indent
-Lista članaka i resursa na koje se referencira rad:\\
-\url{https://help.ubuntu.com/community/LiveCDCustomization}\\
+\renewcommand*\bibname{Reference}
+\begin{thebibliography}{20}
+\bibitem{ubuntuLiveCD}
+Ubuntu Live CD Customization,
+\url{https://help.ubuntu.com/community/LiveCDCustomization},
+\textit{LiveCDCustomization (posljednje ažurirano 2020-01-29 09:44:51 od akrosikam)}
+
+\end{thebibliography}
 \url{https://help.ubuntu.com/community/InstallCDCustomization}\\
 \url{https://itsfoss.com/customize-xfce/}\\
 \url{https://linuxconfig.org/install-gui-on-ubuntu-server-18-04-bionic-beaver}\\
