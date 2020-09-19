@@ -1,76 +1,79 @@
-\BOOKMARK [0][-]{chapter*.2}{Abstract}{}% 1
-\BOOKMARK [0][-]{chapter*.3}{Uvod}{}% 2
-\BOOKMARK [1][-]{section*.4}{Live distribucija?}{chapter*.3}% 3
-\BOOKMARK [2][-]{section*.5}{Postupak kreiranja live USB}{section*.4}% 4
-\BOOKMARK [2][-]{section*.6}{Upotrebe live distribucija}{section*.4}% 5
-\BOOKMARK [1][-]{section*.7}{Datotecni sistemi}{chapter*.3}% 6
-\BOOKMARK [2][-]{section*.8}{SquashFS datotecni sistem}{section*.7}% 7
-\BOOKMARK [1][-]{section*.9}{Slax}{chapter*.3}% 8
-\BOOKMARK [2][-]{section*.10}{Primjer aktiviranja/deaktiviranja Slax modula}{section*.9}% 9
-\BOOKMARK [1][-]{section*.11}{NimbleX}{chapter*.3}% 10
-\BOOKMARK [1][-]{section*.12}{Ubuntu}{chapter*.3}% 11
-\BOOKMARK [1][-]{section*.13}{Za\235to modifikovati instalacionu iso datoteku?}{chapter*.3}% 12
-\BOOKMARK [0][-]{chapter*.14}{Sistemski zahtjevi}{}% 13
-\BOOKMARK [0][-]{chapter*.15}{Priprema radnog okruzenja}{}% 14
-\BOOKMARK [1][-]{section*.16}{SquashFS paket}{chapter*.15}% 15
-\BOOKMARK [0][-]{chapter*.17}{Proces kreiranja zasebnih modula}{}% 16
-\BOOKMARK [1][-]{section*.18}{Modul NodeJS}{chapter*.17}% 17
-\BOOKMARK [2][-]{section*.19}{Kreiranje direktorija potrebnih za rad}{section*.18}% 18
-\BOOKMARK [2][-]{section*.20}{unsquashfs filesystem.squashfs datoteke}{section*.18}% 19
-\BOOKMARK [2][-]{section*.21}{Konfiguracija paketa za chroot okru\236enje}{section*.18}% 20
-\BOOKMARK [2][-]{section*.22}{Instalacija nodeJS paketa unutar chroot okru\236enja}{section*.18}% 21
-\BOOKMARK [2][-]{section*.23}{Generisanje filesystem.squashfs datoteke}{section*.18}% 22
-\BOOKMARK [2][-]{section*.24}{Generisanje Ubuntu .iso image sa nodeJS modulom}{section*.18}% 23
-\BOOKMARK [2][-]{section*.25}{Pokretanje iso image-a pomocu kvm biblioteke}{section*.18}% 24
-\BOOKMARK [2][-]{section*.26}{Rezultat Modul NodeJS}{section*.18}% 25
-\BOOKMARK [1][-]{section*.27}{Modul MongoDB}{chapter*.17}% 26
-\BOOKMARK [2][-]{section*.28}{Kreiranje direktorija potrebnih za rad}{section*.27}% 27
-\BOOKMARK [2][-]{section*.29}{unsquashfs filesystem.squashfs datoteke}{section*.27}% 28
-\BOOKMARK [2][-]{section*.30}{Konfiguracija paketa za chroot okru\236enje}{section*.27}% 29
-\BOOKMARK [2][-]{section*.31}{Instalacija mongoDB paketa unutar chroot okru\236enja}{section*.27}% 30
-\BOOKMARK [2][-]{section*.32}{Generisanje filesystem.squashfs datoteke}{section*.27}% 31
-\BOOKMARK [2][-]{section*.33}{Generisanje Ubuntu .iso image sa mongoDB modulom}{section*.27}% 32
-\BOOKMARK [2][-]{section*.34}{Pokretanje iso image-a pomocu kvm biblioteke}{section*.27}% 33
-\BOOKMARK [2][-]{section*.35}{Rezultat Modul MongoDB}{section*.27}% 34
-\BOOKMARK [1][-]{section*.36}{Modul Java}{chapter*.17}% 35
-\BOOKMARK [2][-]{section*.37}{Kreiranje direktorija potrebnih za rad}{section*.36}% 36
-\BOOKMARK [2][-]{section*.38}{unsquashfs filesystem.squashfs datoteke}{section*.36}% 37
-\BOOKMARK [2][-]{section*.39}{Konfiguracija paketa za chroot okru\236enje}{section*.36}% 38
-\BOOKMARK [2][-]{section*.40}{Instalacija Java paketa unutar chroot okru\236enja}{section*.36}% 39
-\BOOKMARK [2][-]{section*.41}{Generisanje filesystem.squashfs datoteke}{section*.36}% 40
-\BOOKMARK [2][-]{section*.42}{Generisanje Ubuntu .iso image sa Java modulom}{section*.36}% 41
-\BOOKMARK [2][-]{section*.43}{Pokretanje iso image-a pomocu kvm biblioteke}{section*.36}% 42
-\BOOKMARK [2][-]{section*.44}{Rezultat Modul Java}{section*.36}% 43
-\BOOKMARK [1][-]{section*.45}{Modul Chrome}{chapter*.17}% 44
-\BOOKMARK [2][-]{section*.46}{Kreiranje direktorija potrebnih za rad}{section*.45}% 45
-\BOOKMARK [2][-]{section*.47}{unsquashfs filesystem.squashfs datoteke}{section*.45}% 46
-\BOOKMARK [2][-]{section*.48}{Konfiguracija paketa za chroot okru\236enje}{section*.45}% 47
-\BOOKMARK [2][-]{section*.49}{Instalacija Google Chrome paketa unutar chroot okru\236enja}{section*.45}% 48
-\BOOKMARK [2][-]{section*.50}{Generisanje filesystem.squashfs datoteke}{section*.45}% 49
-\BOOKMARK [2][-]{section*.51}{Generisanje Ubuntu .iso image sa Google Chrome modulom}{section*.45}% 50
-\BOOKMARK [2][-]{section*.52}{Pokretanje iso image-a pomocu kvm biblioteke}{section*.45}% 51
-\BOOKMARK [2][-]{section*.53}{Rezultat Modul Chrome}{section*.45}% 52
-\BOOKMARK [0][-]{chapter*.54}{Kreiranje vi\235e modula unutar jedne .iso datoteke}{}% 53
-\BOOKMARK [1][-]{section*.55}{Bazni modul}{chapter*.54}% 54
-\BOOKMARK [1][-]{section*.56}{Bazni edit}{chapter*.54}% 55
-\BOOKMARK [1][-]{section*.57}{NodeJS edit}{chapter*.54}% 56
-\BOOKMARK [1][-]{section*.58}{MongoDB edit}{chapter*.54}% 57
-\BOOKMARK [1][-]{section*.59}{Java edit}{chapter*.54}% 58
-\BOOKMARK [1][-]{section*.60}{Chrome edit}{chapter*.54}% 59
-\BOOKMARK [1][-]{section*.61}{Generisanje bazne filesystem.squashfs datoteke}{chapter*.54}% 60
-\BOOKMARK [1][-]{section*.62}{Generisanje nodejs.squashfs datoteke}{chapter*.54}% 61
-\BOOKMARK [2][-]{section*.63}{Kreiranje nodejsBazniDelta direktorija}{section*.62}% 62
-\BOOKMARK [2][-]{section*.64}{nodejs.squashfs datoteka}{section*.62}% 63
-\BOOKMARK [1][-]{section*.65}{Generisanje mongodb.squashfs datoteke}{chapter*.54}% 64
-\BOOKMARK [2][-]{section*.66}{Kreiranje mongodbBazniDelta direktorija}{section*.65}% 65
-\BOOKMARK [2][-]{section*.67}{mongodb.squashfs datoteka}{section*.65}% 66
-\BOOKMARK [1][-]{section*.68}{Generisanje java.squashfs datoteke}{chapter*.54}% 67
-\BOOKMARK [2][-]{section*.69}{Kreiranje javaBazniDelta direktorija}{section*.68}% 68
-\BOOKMARK [2][-]{section*.70}{java.squashfs datoteka}{section*.68}% 69
-\BOOKMARK [1][-]{section*.71}{Generisanje chrome.squashfs datoteke}{chapter*.54}% 70
-\BOOKMARK [2][-]{section*.72}{Kreiranje chromeBazniDelta direktorija}{section*.71}% 71
-\BOOKMARK [2][-]{section*.73}{chrome.squashfs datoteka}{section*.71}% 72
-\BOOKMARK [1][-]{section*.74}{Generisanje ubuntu-cjmn-18.04-amd64.iso datoteke}{chapter*.54}% 73
-\BOOKMARK [2][-]{section*.75}{Pokretanje iso image-a pomocu kvm biblioteke}{section*.74}% 74
-\BOOKMARK [2][-]{section*.76}{Rezultat ubuntu-cjmn-18.04-amd64.iso}{section*.74}% 75
-\BOOKMARK [0][-]{chapter*.77}{Zakljucak}{}% 76
+\BOOKMARK [0][-]{chapter*.2}{Postavka rada}{}% 1
+\BOOKMARK [0][-]{chapter*.3}{Sa\236etak}{}% 2
+\BOOKMARK [0][-]{chapter*.4}{Abstract}{}% 3
+\BOOKMARK [0][-]{chapter*.5}{Uvod}{}% 4
+\BOOKMARK [1][-]{section*.6}{Live distribucija?}{chapter*.5}% 5
+\BOOKMARK [2][-]{section*.7}{Postupak kreiranja live USB}{section*.6}% 6
+\BOOKMARK [2][-]{section*.8}{Upotrebe live distribucija}{section*.6}% 7
+\BOOKMARK [1][-]{section*.9}{Datotecni sistemi}{chapter*.5}% 8
+\BOOKMARK [2][-]{section*.10}{SquashFS datotecni sistem}{section*.9}% 9
+\BOOKMARK [1][-]{section*.11}{Slax}{chapter*.5}% 10
+\BOOKMARK [2][-]{section*.12}{Primjer aktiviranja/deaktiviranja Slax modula}{section*.11}% 11
+\BOOKMARK [1][-]{section*.13}{NimbleX}{chapter*.5}% 12
+\BOOKMARK [1][-]{section*.14}{Ubuntu}{chapter*.5}% 13
+\BOOKMARK [1][-]{section*.15}{Za\235to modifikovati instalacionu iso datoteku?}{chapter*.5}% 14
+\BOOKMARK [0][-]{chapter*.16}{Sistemski zahtjevi}{}% 15
+\BOOKMARK [0][-]{chapter*.17}{Priprema radnog okru\236enja}{}% 16
+\BOOKMARK [1][-]{section*.18}{SquashFS paket}{chapter*.17}% 17
+\BOOKMARK [0][-]{chapter*.19}{Proces kreiranja zasebnih modula}{}% 18
+\BOOKMARK [1][-]{section*.20}{Modul NodeJS}{chapter*.19}% 19
+\BOOKMARK [2][-]{section*.21}{Kreiranje direktorija potrebnih za rad - NodeJS modul}{section*.20}% 20
+\BOOKMARK [2][-]{section*.22}{unsquashfs filesystem.squashfs datoteke - NodeJS modul}{section*.20}% 21
+\BOOKMARK [2][-]{section*.23}{Konfiguracija paketa za chroot okru\236enje - NodeJS modul}{section*.20}% 22
+\BOOKMARK [2][-]{section*.24}{Instalacija nodeJS paketa unutar chroot okru\236enja}{section*.20}% 23
+\BOOKMARK [2][-]{section*.25}{Generisanje filesystem.squashfs datoteke}{section*.20}% 24
+\BOOKMARK [2][-]{section*.26}{Generisanje Ubuntu .iso image sa nodeJS modulom}{section*.20}% 25
+\BOOKMARK [2][-]{section*.27}{Pokretanje iso datoteke pomocu KVM biblioteke}{section*.20}% 26
+\BOOKMARK [2][-]{section*.28}{Rezultat Modul NodeJS}{section*.20}% 27
+\BOOKMARK [1][-]{section*.29}{Modul MongoDB}{chapter*.19}% 28
+\BOOKMARK [2][-]{section*.30}{Kreiranje direktorija potrebnih za rad}{section*.29}% 29
+\BOOKMARK [2][-]{section*.31}{unsquashfs filesystem.squashfs datoteke}{section*.29}% 30
+\BOOKMARK [2][-]{section*.32}{Konfiguracija paketa za chroot okru\236enje}{section*.29}% 31
+\BOOKMARK [2][-]{section*.33}{Instalacija mongoDB paketa unutar chroot okru\236enja}{section*.29}% 32
+\BOOKMARK [2][-]{section*.34}{Generisanje filesystem.squashfs datoteke}{section*.29}% 33
+\BOOKMARK [2][-]{section*.35}{Generisanje Ubuntu .iso image sa mongoDB modulom}{section*.29}% 34
+\BOOKMARK [2][-]{section*.36}{Pokretanje iso image-a pomocu kvm biblioteke}{section*.29}% 35
+\BOOKMARK [2][-]{section*.37}{Rezultat Modul MongoDB}{section*.29}% 36
+\BOOKMARK [1][-]{section*.38}{Modul Java}{chapter*.19}% 37
+\BOOKMARK [2][-]{section*.39}{Kreiranje direktorija potrebnih za rad}{section*.38}% 38
+\BOOKMARK [2][-]{section*.40}{unsquashfs filesystem.squashfs datoteke}{section*.38}% 39
+\BOOKMARK [2][-]{section*.41}{Konfiguracija paketa za chroot okru\236enje}{section*.38}% 40
+\BOOKMARK [2][-]{section*.42}{Instalacija Java paketa unutar chroot okru\236enja}{section*.38}% 41
+\BOOKMARK [2][-]{section*.43}{Generisanje filesystem.squashfs datoteke}{section*.38}% 42
+\BOOKMARK [2][-]{section*.44}{Generisanje Ubuntu .iso image sa Java modulom}{section*.38}% 43
+\BOOKMARK [2][-]{section*.45}{Pokretanje iso image-a pomocu kvm biblioteke}{section*.38}% 44
+\BOOKMARK [2][-]{section*.46}{Rezultat Modul Java}{section*.38}% 45
+\BOOKMARK [1][-]{section*.47}{Modul Chrome}{chapter*.19}% 46
+\BOOKMARK [2][-]{section*.48}{Kreiranje direktorija potrebnih za rad}{section*.47}% 47
+\BOOKMARK [2][-]{section*.49}{unsquashfs filesystem.squashfs datoteke}{section*.47}% 48
+\BOOKMARK [2][-]{section*.50}{Konfiguracija paketa za chroot okru\236enje}{section*.47}% 49
+\BOOKMARK [2][-]{section*.51}{Instalacija Google Chrome paketa unutar chroot okru\236enja}{section*.47}% 50
+\BOOKMARK [2][-]{section*.52}{Generisanje filesystem.squashfs datoteke}{section*.47}% 51
+\BOOKMARK [2][-]{section*.53}{Generisanje Ubuntu .iso image sa Google Chrome modulom}{section*.47}% 52
+\BOOKMARK [2][-]{section*.54}{Pokretanje iso image-a pomocu kvm biblioteke}{section*.47}% 53
+\BOOKMARK [2][-]{section*.55}{Rezultat Modul Chrome}{section*.47}% 54
+\BOOKMARK [0][-]{chapter*.56}{Kreiranje vi\235e modula unutar jedne .iso datoteke}{}% 55
+\BOOKMARK [1][-]{section*.57}{Bazni modul}{chapter*.56}% 56
+\BOOKMARK [1][-]{section*.58}{Bazni edit}{chapter*.56}% 57
+\BOOKMARK [1][-]{section*.59}{NodeJS edit}{chapter*.56}% 58
+\BOOKMARK [1][-]{section*.60}{MongoDB edit}{chapter*.56}% 59
+\BOOKMARK [1][-]{section*.61}{Java edit}{chapter*.56}% 60
+\BOOKMARK [1][-]{section*.62}{Chrome edit}{chapter*.56}% 61
+\BOOKMARK [1][-]{section*.63}{Generisanje bazne filesystem.squashfs datoteke}{chapter*.56}% 62
+\BOOKMARK [1][-]{section*.64}{Generisanje nodejs.squashfs datoteke}{chapter*.56}% 63
+\BOOKMARK [2][-]{section*.65}{Kreiranje nodejsBazniDelta direktorija}{section*.64}% 64
+\BOOKMARK [2][-]{section*.66}{nodejs.squashfs datoteka}{section*.64}% 65
+\BOOKMARK [1][-]{section*.67}{Generisanje mongodb.squashfs datoteke}{chapter*.56}% 66
+\BOOKMARK [2][-]{section*.68}{Kreiranje mongodbBazniDelta direktorija}{section*.67}% 67
+\BOOKMARK [2][-]{section*.69}{mongodb.squashfs datoteka}{section*.67}% 68
+\BOOKMARK [1][-]{section*.70}{Generisanje java.squashfs datoteke}{chapter*.56}% 69
+\BOOKMARK [2][-]{section*.71}{Kreiranje javaBazniDelta direktorija}{section*.70}% 70
+\BOOKMARK [2][-]{section*.72}{java.squashfs datoteka}{section*.70}% 71
+\BOOKMARK [1][-]{section*.73}{Generisanje chrome.squashfs datoteke}{chapter*.56}% 72
+\BOOKMARK [2][-]{section*.74}{Kreiranje chromeBazniDelta direktorija}{section*.73}% 73
+\BOOKMARK [2][-]{section*.75}{chrome.squashfs datoteka}{section*.73}% 74
+\BOOKMARK [1][-]{section*.76}{Generisanje ubuntu-cjmn-18.04-amd64.iso datoteke}{chapter*.56}% 75
+\BOOKMARK [2][-]{section*.77}{Pokretanje iso image-a pomocu kvm biblioteke}{section*.76}% 76
+\BOOKMARK [2][-]{section*.78}{Rezultat ubuntu-cjmn-18.04-amd64.iso}{section*.76}% 77
+\BOOKMARK [0][-]{chapter*.79}{Zakljucak}{}% 78
+\BOOKMARK [0][-]{chapter*.80}{Reference}{}% 79
