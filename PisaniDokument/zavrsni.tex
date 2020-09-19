@@ -20,14 +20,14 @@
 
 \lstdefinestyle{BashInputStyle}{
   language=bash,
-  basicstyle=\small\sffamily,
+  basicstyle=\small\sffamily\color{yellow},
   numbers=left,
   numberstyle=\tiny,
   numbersep=3pt,
   frame=tb,
   columns=fullflexible,
   breaklines=true,
-  backgroundcolor=\color{white},
+  backgroundcolor=\color{blue},
   linewidth=1\linewidth,
   xleftmargin=0.001\linewidth
 }
@@ -464,7 +464,7 @@ git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 cd nodejs-docs-hello-world
 npm start
 \end{lstlisting}
-Ukoliko git program nije instaliran potrebno je instalirati git koristeci komandu:
+Ukoliko git program nije instaliran potrebno je instalirati git koristeći komandu:
 \begin{lstlisting}[style=BashInputStyle]
 sudo apt install git
 \end{lstlisting}
@@ -1963,56 +1963,170 @@ Nedostatak ovog pristupa bi bilo veliko vrijeme izrade i planiranja izvedbe. Tak
 Tako bi se Linux distribucija mogla modularizirati putem .squashfs datotečnog sistema. Pa možemo zamisliti mogućnost da korisnik prilikom instalacije odabere vrstu korisničkog naloga, npr. student, profesor, ili osoblje, te nakon odabira bi se poseban modul učitao za svaku od ovih različitih uloga. Svakako da bi se dali kreirati različiti moduli za odsjeke i godine studija različitih studentskih grupa. Te bi se ovi moduli mogli učitavati u operativni sistem po potrebi ili po nekom željenom algoritmu.
 
 \renewcommand*\bibname{Reference}
-\begin{thebibliography}{20}
+\begin{thebibliography}{38}
+
+\bibitem{operativni-sistemi}
+\textbf{Operativni sistemi}\\
+\textit{Autori: \textbf{Samir Ribić}, \textbf{Nazif Husović}, \textbf{Enisa Brka}}\\
+\textit{Februar 2017 [p.~282-285 -unix datotečni sistem] [p.~295]}
+
+\bibitem{linux-bible}
+\textbf{Linux Bible 9th Edition}\\
+\textit{Autor: \textbf{Cristopher Negus}}\\
+\textit{4.2.2015 [p.~303 squashfs] [p.~302 filesystems] [p.~809 resolv.conf] [p.~186 resolv.conf hosts] [p.~183 administrative conf files]}
+
+\bibitem{squashfs-howto}
+\textbf{SquashFS HOWTO}\\
+\url{https://tldp.org/HOWTO/SquashFS-HOWTO/index.html}\\
+\textit{Autori: \textbf{Marco Cecchetti i Artemiy I. Pavlov}}\\
+\textit{Verzija dokumenta od 24.7.2019}
+
+\bibitem{squashfs-deployment}
+\textbf{Deploying large fixed file datasets with SquashFS and Singularity}\\
+\textit{Autori: \textbf{Pierre Rioux}, \textbf{Gregory Kiar}, \textbf{Alexandre Hutton}, \textbf{Alan C. Evans}, \textbf{Shawn T. Brown}}\\
+\textit{2020}
+
 \bibitem{ubuntuLiveCD}
-Ubuntu Live CD Customization,
-\url{https://help.ubuntu.com/community/LiveCDCustomization},
-\textit{LiveCDCustomization (posljednje ažurirano 2020-01-29 09:44:51 od akrosikam)}
+\textbf{Ubuntu Live CD Customization}\\
+\url{https://help.ubuntu.com/community/LiveCDCustomization}\\
+\textit{Autor: \textbf{akrosikam}}\\
+\textit{Verzija dokumenta od 29.1.2020 u 09:44:51}
+
+\bibitem{customize-xfce}
+\textbf{Xfce customization}\\
+\url{https://itsfoss.com/customize-xfce/}\\
+\textit{Autor: \textbf{Ambarish Kumar}}\\
+\textit{Verzija dokumenta od 25.5.2019}
+
+\bibitem{nodejs-howto}
+\textbf{NodeJS HOWTO}\\
+\url{https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04}\\
+\textit{Autori: \textbf{Brennen Bearnes i Kathleen Juell}}\\
+\textit{Verzija dokumenta od 6.8.2020}
+
+\bibitem{slax-org}
+\textbf{Slax.org}\\
+\url{https://www.slax.org/}\\
+\textit{Autor: \textbf{Tomas Matejicek}}
+\textit{Verzija stranice od 2020}
+
+\bibitem{slax-wiki}
+\textbf{Wiki/Slax}\\
+\url{https://en.wikipedia.org/wiki/Slax}\\
+\textit{© \textbf{Wikipedia}}
+\textit{Verzija stranice od 28.7.2020 u 17:26(UTC)}
+
+\bibitem{ubuntu-wiki}
+\textbf{Wiki/Ubuntu}\\
+\url{https://en.wikipedia.org/wiki/Ubuntu}\\
+\textit{© \textbf{Wikipedia}}
+\textit{Verzija stranice od 11.9.2020 u 07:11(UTC)}
+
+\bibitem{wiki-livecd}
+\textbf{Wiki/Live-CD}\\
+\url{https://en.wikipedia.org/wiki/Live_CD}\\
+\textit{© \textbf{Wikipedia}}
+\textit{Verzija stranice od 12.7.2020 u 13:44(UTC)}
+
+\bibitem{NimbleX-wiki}
+\textbf{Wiki/NimbleX}\\
+\url{https://en.wikipedia.org/wiki/NimbleX}\\
+\textit{© \textbf{Wikipedia}}
+\textit{Verzija stranice od 3.1.2020 u 11:47(UTC)}
+
+\bibitem{nodejs-wiki}
+\textbf{Wiki/Node.js}\\
+\url{https://en.wikipedia.org/wiki/Node.js}\\
+\textit{© \textbf{Wikipedia}}
+\textit{Verzija stranice od 16.9.2020 u 04:11(UTC)}
+
+\bibitem{wiki-filesystem}
+\textbf{Wiki/File-system}\\
+\url{https://en.wikipedia.org/wiki/File_system}\\
+\textit{© \textbf{Wikipedia}}
+\textit{Verzija stranice od 8.9.2020 u 09:08(UTC)}
+
+\bibitem{tldp-guide}
+\textbf{The Linux System Administrator Guide version 0.9}\\
+\url{https://www.tldp.org/LDP/sag/html}
+\textit{Autori: \textbf{Lars Wirzenius}, \textbf{Joanna Oja}, \textbf{Stephen Stafford}, \textbf{Alex Weeks}}
+
+\bibitem{mongodb-howto}
+\textbf{Install MongoDB Community Edition on Ubuntu}\\
+\url{https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/}\\
+\textit{\textbf{© MongoDB}, Inc 2008-present}
+
+\bibitem{wiki-hosts-file}
+\textbf{Wiki/Hosts}\\
+\url{https://en.wikipedia.org/wiki/Hosts_(file)}\\
+\textit{© \textbf{Wikipedia}}
+\textit{Verzija stranice od 10.9.2020 u 11:21(UTC)}
+
+\bibitem{wiki-resolv.conf}
+\textbf{Wiki/Resolv.conf}\\
+\url{https://en.wikipedia.org/wiki/Resolv.conf}\\
+\textit{© \textbf{Wikipedia}}
+\textit{Verzija stranice od 27.8.2020 u 19:39(UTC)}
+
+\bibitem{gui-on-ubuntu}
+\textbf{How to install gui on ubuntu-server-18.04}\\
+\url{https://linuxconfig.org/install-gui-on-ubuntu-server-18-04-bionic-beaver}\\
+\textit{Autor: \textbf{Lubos Rendek}}\\
+\textit{Verzija stranice od 16.7.2020}
+
+\bibitem{custom-ubuntu-live}
+\textbf{How to create a custom Ubuntu live from scratch}\\
+\url{https://itnext.io/how-to-create-a-custom-ubuntu-live-from-scratch-dd3b3f213f81}\\
+\textit{Autor: \textbf{Marcos Vallim}}\\
+\textit{Verzija stranice od 29.6.2020}
+
+\bibitem{nodejs-helloworld-sample}
+\textbf{NodeJS quickstart}\\
+\url{https://docs.microsoft.com/en-us/azure/app-service/quickstart-nodejs?pivots=platform-linux}\\
+\textit{© Microsoft 2020}
+
+\bibitem{google-chrome-ubuntu-install}
+\textbf{Install google-chrome in Ubuntu 18.04 LTS}\\
+\url{https://www.linuxbabe.com/ubuntu/install-google-chrome-ubuntu-18-04-lts}\\
+\textit{Autor: \textbf{Xiao Guoan (Admin)}}\\
+\textit{Verzija stranica od 18.8.2018}
+
+\bibitem{mongodb-ubuntu-install}
+\textbf{How to Install MongoDB on Ubuntu 18.04}\\
+\url{https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-18-04}\\
+\textit{Autor: \textbf{Mateusz Papiernik}}
+\textit{Verzija stranice od 7.6.2018}
+
+\bibitem{java-ubuntu-install}
+\textbf{How To Install Java with Apt on Ubuntu 18.04}\\
+\url{https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04}\\
+\textit{Autor: \textbf{Koen Vlaswinkel}}
+\textit{Verzija stranice iz 7.5.2020}
+
+\bibitem{java-ubuntu-install}
+\textbf{Install Java on Ubuntu 18.04}\\
+\url{https://linuxize.com/post/install-java-on-ubuntu-18-04/}\\
+\textit{© \textbf{Linuxize}}\\
+\textit{Verzija dokumenta od  24.2.2020}
+
+\bibitem{eclispe-ubuntu-install}
+\textbf{How To Install Eclipse IDE on Ubuntu 18.04}\\
+\url{https://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/how-to-install-eclipse-ide-on-ubuntu-18-04-lts.html}\\
+\textit{Autor: \textbf{Ray}}\\
+\textit{Verzija dokumenta od 26.4.2019}
+
+\bibitem{wiki-filesystem-comparison}
+\textbf{Wiki/Comparison-of-file-systems}\\
+\url{https://en.wikipedia.org/wiki/Comparison_of_file_systems}\\
+\textit{© \textbf{Wikipedia}}
+\textit{Verzija dokumenta od 16.8.2020}
+
+\bibitem{filesystem-comparison}
+\textbf{What Is a File System, and Why Are There So Many of Them?}\\
+\url{https://www.howtogeek.com/196051/htg-explains-what-is-a-file-system-and-why-are-there-so-many-of-them/}\\
+\textit{Autor: \textbf{Chriss Hoffman}}\\
+\textit{Verzija dokumenta od 22.9.2016}
 
 \end{thebibliography}
-\url{https://help.ubuntu.com/community/InstallCDCustomization}\\
-\url{https://itsfoss.com/customize-xfce/}\\
-\url{https://linuxconfig.org/install-gui-on-ubuntu-server-18-04-bionic-beaver}\\
-\url{https://www.linuxtrainingacademy.com/install-desktop-on-ubuntu-server/}\\
-\url{https://askubuntu.com/questions/378558/unable-to-locate-package-while-trying-to-install-packages-with-apt}\\
-\url{http://tldp.org/HOWTO/SquashFS-HOWTO/whatis.html}\\
-\url{https://unix.stackexchange.com/questions/166770/unable-to-delete-file-ldlinux-sys-from-a-partition}\\
-\url{https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04}\\
-\url{https://itnext.io/how-to-create-a-custom-ubuntu-live-from-scratch-dd3b3f213f81}\\
-\url{https://nathanpfry.com/how-to-customize-an-ubuntu-installation-disc/}\\
-\url{https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs}\\
-\url{https://phoenixnap.com/kb/how-to-install-lamp-stack-on-ubuntu}\\
-\url{https://phoenixnap.com/kb/how-to-install-docker-on-ubuntu-18-04}\\
-\url{https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04}\\
-\url{https://linuxize.com/post/how-to-install-mysql-on-ubuntu-18-04/}\\
-\url{https://en.wikipedia.org/wiki/Hosts_(file)}\\
-\url{https://en.wikipedia.org/wiki/Resolv.conf}\\
-\url{https://vitux.com/how-to-install-and-configure-mysql-in-ubuntu-18-04-lts/}\\
-\url{https://www.linuxbabe.com/ubuntu/install-google-chrome-ubuntu-18-04-lts}\\
-\url{https://stackoverflow.com/questions/11657829/error-2002-hy000-cant-connect-to-local-mysql-server-through-socket-var-run}\\
-\url{https://itsfoss.com/install-mysql-ubuntu/}\\
-\url{https://www.digitalocean.com/community/tutorials/how-to-install-the-latest-mysql-on-ubuntu-18-04}\\
-\url{https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-18-04}\\
-\url{https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/}\\
-\url{https://linuxize.com/post/how-to-install-couchdb-on-ubuntu-18-04/}\\
-\url{https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04}\\
-\url{https://linuxize.com/post/install-java-on-ubuntu-18-04/}\\
-\url{https://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/how-to-install-eclipse-ide-on-ubuntu-18-04-lts.html}\\
-\url{https://en.wikipedia.org/wiki/Live_CD}\\
-\url{https://en.wikipedia.org/wiki/Comparison_of_file_systems}\\
-How To Install Linux to an External USB SSD or HDD - \url{https://www.youtube.com/watch?reload=9&v=glFCEauwGgw}\\
-\url{https://askubuntu.com/questions/372607/how-to-create-a-bootable-ubuntu-usb-flash-drive-from-terminal}\\
-\url{https://www.howtogeek.com/196051/htg-explains-what-is-a-file-system-and-why-are-there-so-many-of-them/}\\
-\url{https://en.wikipedia.org/wiki/File_system}\\
-\url{https://www.tldp.org/LDP/sag/html/filesystems.html}\\
-\url{https://unix.stackexchange.com/questions/4402/what-is-a-superblock-inode-dentry-and-a-file}\\
-\url{https://opensource.com/article/17/5/introduction-ext4-filesystem}\\
-\url{https://opensource.com/life/16/10/introduction-linux-filesystems}\\
-\url{https://www.slax.org/customize.php}\\
-\url{https://www.slax.org/}\\
-\url{https://en.wikipedia.org/wiki/Slax}\\
-\url{https://en.wikipedia.org/wiki/NimbleX}\\
-\url{https://en.wikipedia.org/wiki/Node.js}\\
-\url{https://en.wikipedia.org/wiki/Ubuntu}\\
 
 \end{document}
