@@ -32,6 +32,7 @@
   xleftmargin=0.001\linewidth
 }
 \renewcommand*\contentsname{Sadržaj}
+\renewcommand{\figurename}{Slika}
 \begin{document}
 \author{Dajan Bračković}
 \department{Odsjek za Računarstvo i informatiku}
@@ -58,13 +59,13 @@ Modularizacija Linux SquashFS datotečnog sistema\\
 \indent
 Primarni cilj je bolje upoznavanje sa Linux operativnim sistemom i sa načinom modifikacije instalacije Linux distribucije putem modularizacije squashfs datotečnog sistema.\\
 Cilj izrade je kreiranje modifikovanih modula squashfs datotečnog sistema, koji imaju različite aplikacije predinstalirane. Na osnovu modula squashfs datotečnih sistema, kreirane su .iso datoteke.\\
-Finalni produkt su 5 zasebnih .iso datoteka tijekom čije izrade je demonstriran proces modularizacije squashfs datotečnog sistema. Posljednja .iso datoteka kreirana kao praktični dio rada sadrži sve module unutar sebe, dok su prve četiri .iso datoteke kreirane svaka zasebno za jedan od modula. Ovaj primjer prikazuje razliku u kreiranju .iso datoteke u slučaju kada se unutar nje stave 4 .squashfs modula, u odnosu na način kreiranja .iso datoteke sa samo jednim .squashfs modulom.\\
+Finalni produkti su 5 zasebnih .iso datoteka tijekom čije izrade je demonstriran proces modularizacije squashfs datotečnog sistema. Posljednja .iso datoteka, kreirana kao praktični dio rada, sadrži sve module unutar sebe, dok su prve četiri .iso datoteke kreirane svaka zasebno za jedan od modula. Ovaj primjer prikazuje razliku u kreiranju .iso datoteke u slučaju kada se unutar nje stave 4 .squashfs modula, u odnosu na način kreiranja .iso datoteke sa samo jednim .squashfs modulom.\\
 \noindent
 \textbf{Opis:}\\
 \indent
 Rad opisuje proces modularizacije squashfs datotečnog sistema. Pored toga opisani su termini i tehnologije korištene kroz proces modularizacije. Rad se ne ograničava striktno na opisivanje alata za kreiranje i manipuliranje .squashfs datotekama, nego i na sve aplikacije koje su instalirane kao zasebni moduli.\\
 \indent
-Rad spominje termine kao Ubuntu, LiveCD, Slax, NodeJS, MongoDB... te su oni opisani u sažetoj formi. Glavni fokus rada je proces modularizacije, izrade i generisanja .iso datoteka. Napomena, da je generisanje .iso datoteke jedna komanda u komandnom interfejsu,  stoga je to samo mali dio procesa, dok je većina procesa priprema i modifikacija datotečnog sistema. Generisanje .iso datoteke je posljednji korak izrade svakog od modula.
+Rad spominje termine kao Ubuntu, LiveCD, Slax, NodeJS, MongoDB... te su oni opisani u sažetoj formi. Glavni fokus rada su procesi modularizacije i modifikacije squashfs datotečnog sistema, izrade i generisanja .iso datoteka. Napomena, da je generisanje .iso datoteke jedna komanda u komandnom interfejsu, stoga je to samo mali dio procesa, dok je većina procesa priprema i modifikacija datotečnog sistema. Generisanje .iso datoteke je posljednji korak izrade svakog od modula.
 
 \chapter*{Sažetak}
 \addcontentsline{toc}{chapter}{\numberline{}Sažetak}
@@ -73,20 +74,24 @@ U ovom poglavlju je sažeto opisan sadržaj rada i poglavlja koja slijede.\\
 \indent
 Uvodno poglavlje objašnjava pojmove poput live tj. žive distribucije, načina kreiranja live distribucija, te razloge njihove upotrebe.
 Nakon toga su opisani datotečni sistemi, njihove vrste i detaljniji opis squashfs datotečnog sistema.
-Zatim slijede kratka podpoglavlja o Slax/Nimblex/Ubuntu distribucijama, koje su jedne od popularnijih live distribucija. Spomenuti su i neki od razloga zbog kojih se modifikuju instalacione .iso datoteke.\\
+Zatim slijede kratka podpoglavlja o Slax/Nimblex/Ubuntu distribucijama, koje su jedne od popularnijih live distribucija, koje koriste squashfs datotečni sistem. Spomenuti su i neki od razloga zbog kojih se modifikuju instalacione .iso datoteke.\\
 \indent
 Sljedeće poglavlje je kratki opis sistemskih zahtjeva.\\
 \indent
-Poglavlje Priprema radnog okruženja prikazuje listu potrebnih paketa za realizaciju modifikacije squashfs datotečnog sistema, kao i način instalacije ovih paketa.\\
+Poglavlje 'Priprema radnog okruženja' prikazuje listu potrebnih paketa za realizaciju modifikacije squashfs datotečnog sistema, kao i način instalacije ovih paketa.\\
 \indent
 Poglavlje 'Proces kreiranja zasebnih modula' sadrži više podpoglavlja. U cjelosti ovo poglavlje opisuje proces kreiranja 4 .iso datoteke a to su:\\
-1. ubuntu-with-nodejs-18.04-amd64.iso\\
-2. ubuntu-with-mongodb-18.04-amd64.iso\\
-3. ubuntu-with-java-18.04-amd64.iso\\
-4. ubuntu-with-chrome-18.04-amd64.iso\\
-Finalni produkti ovog poglavlja su live distribucije koje imaju predinstalirane neke od danas popularnih aplikacija u svijetu programiranja.\\
 \indent
-U poglavlju 'Kreiranje više modula unutar jedne .iso datoteke' se opisuje sličan proces kao u prethodnom poglavlju, uz nekoliko razlika. To su potreba pravljenja delta direktorija za svaki modul, generisanje status.diff datoteke, te kreiranje .iso datoteke koja sadrži 4 .squashfs datoteke. Kao usporedba sa prethodnim poglavljem u kojem su kreirane 4 .iso datoteke, svaka za jedan modul, u ovom poglavlju je kreirana jedna .iso datoteka sa 4 .squashfs datoteke, svaka za jedan modul.\\
+1. ubuntu-with-nodejs-18.04-amd64.iso\\
+\indent
+2. ubuntu-with-mongodb-18.04-amd64.iso\\
+\indent
+3. ubuntu-with-java-18.04-amd64.iso\\
+\indent
+4. ubuntu-with-chrome-18.04-amd64.iso\\
+Finalni proizvodi praktičnog rada opisanog ovim poglavljem su .iso datoteke koje imaju predinstalirane neke od danas popularnih aplikacija u svijetu programiranja. Aplikacije su instalirane unutar zasebnih filesystem.squashfs modula, iz kojih su generisane 4 zasebne .iso datoteke. U ovom poglavlju se najviše referenciraju uputstva na \cite{ubuntuLiveCD} i \cite{custom-ubuntu-live}, koja se tiču redoslijeda izvršavanja komandi za modifikaciju Linux live distribucije.\\
+\indent
+U poglavlju 'Kreiranje više modula unutar jedne .iso datoteke' je fokus na generisanju jedne .iso datoteke koja sadrži 5 .squashfs modula unutar sebe. To su moduli: bazni, nodejs, mongodb, java i chrome. Opisuje se sličan proces kao u prethodnom poglavlju, uz nekoliko razlika. To su potreba pravljenja delta direktorija za svaki modul, generisanje status.diff datoteke, te kreiranje .iso datoteke koja sadrži 5 .squashfs modula. Kao usporedba sa prethodnim poglavljem u kojem su kreirane 4 .iso datoteke, svaka za jedan modul, u ovom poglavlju je kreirana jedna .iso datoteka sa 5 .squashfs datoteka, svaka za jedan od 4 modula + bazni modul.\\
 \indent
 Poglavlje 'Zaključaj' opisuje moguća poboljšanja i dorade. Kao primjer upotrebe modularizacije .squashfs datotečnog sistema navodi se mogućnost kreiranja modularne linux distribucije koja bi omogućavala korisniku odabir između KDE, GNOME, Xfce, LXDE grafičkih interfejsa, te mehanizam uključivanja/isključivanja željenog grafičkog interfejsa. Kao drugi primjer je opisana mogućnost primjene koncepta modularizacije .squashfs datotečnih sistema za kreiranje namjenskog operativnog sistema na Elektrotehničkom fakultetu Univerziteta u Sarajevu.
 
@@ -94,11 +99,11 @@ Poglavlje 'Zaključaj' opisuje moguća poboljšanja i dorade. Kao primjer upotre
 \addcontentsline{toc}{chapter}{\numberline{}Abstract}
 \indent
 This work is describing the process of modularization of Linux SquashFS filesystem. Modularization is performed by manual customization of packages in the live system, then extracting that customized system as a separate module.\\
-\indent
+\noindent
 This thesis will show how to create 4 separate modules out of the same base image, which will be the ubuntu-18.04.4-desktop-amd64.iso.\\
-\indent
+\noindent
 Also the thesis will show the process of integrating 4 separate modules inside a single ubuntu-18.04.4-desktop-amd64.iso image.\\
-\indent
+\noindent
 We will be using the SquashFS tools to make the modifications inside the ubuntu-18.04.4-desktop-amd64.iso image.
 
 \chapter*{Uvod}
@@ -108,18 +113,18 @@ We will be using the SquashFS tools to make the modifications inside the ubuntu-
 \indent
 Svaka .iso datoteka kreirana tokom izrade i pisanja rada je pokrenuta kao live distribucija unutar kvm-qemu emulatora. Zbog toga je u nastavku opisan pojam live distribucije.\\
 \indent
-Live distribucije omogućavaju korisniku da pokrene operativni sistem sa nekog eksternog uređaja kao što su CD/DVD, USB, HDD ili SSD (HDD i SSD se češće koriste kao eksterni diskovi na koje je u potpunosti instaliran operativni sistem), te da se operativni sistem učita u cjelosti u RAM memoriju. To omogućava upotrebu operativnog sistema bez potrebe da se isti instalira na interni disk unutar računara.\\
+Live distribucije\cite{wiki-livecd} omogućavaju korisniku da pokrene operativni sistem sa nekog eksternog uređaja kao što su CD/DVD, USB, HDD ili SSD (HDD i SSD se češće koriste kao eksterni diskovi na koje je u potpunosti instaliran operativni sistem), te da se operativni sistem učita u cjelosti u RAM memoriju. To omogućava upotrebu operativnog sistema bez potrebe da se isti instalira na interni disk računara.\\
 \indent
-Najčešće se ipak koriste live CD/DVD ili USB distribucije.
-Na ovaj način možemo pokrenuti instancu operativnog sistema na računar koji već ima prethodno instaliran operativni sistem, te nakon upotrebe ugasiti računar i izvaditi USB/CD/DVD uređaj sa kog je pokrenut "živi" operativni sistem. Prilikom sljedećeg paljenja računara, biće pokrenut originalno instalirani operativni sistem.\\
+Najčešće se koriste live CD/DVD ili USB distribucije.
+Na ovaj način se može pokrenuti instanca operativnog sistema na računaru koji već ima prethodno instaliran operativni sistem, te nakon upotrebe ugasiti računar, i izvaditi USB/CD/DVD uređaj sa kog je pokrenut "živi" operativni sistem. Prilikom sljedećeg paljenja računara, biće pokrenut originalno instalirani operativni sistem.\\
 Može se reći da su CD/DVD live distribucije sve manje i manje popularne zbog rasta upotrebe USB uređaja za pokretanje live distribucija.\\
 \indent
 Za razliku od live CD/DVD instalacija, podaci na USB uređaju mogu biti modificirani i dodatni podaci mogu biti upisani na uređaj. Korisnik može sa sobom u džepu nositi kompletan operativni sistem, aplikacije, konfiguracione datoteke i mnogo ličnih podataka.\\
 \indent
 Sa aspekta sigurnosti USB live distribucije imaju prednosti i mane. Svakako da je USB mnogo manji i stoga je lakše ga prenijeti i sakriti na neku sigurnu lokaciju, pri čemu se onemugućuje drugima da pristupe vašim podacima. Međutim svakako da ga je lakše izgubiti, pa su šifriranje podataka i rezervna kopija mnogo važniji nego u slučaju tradicionalnog desktop operativnog sistema.\\
 \indent
-Treba imati na umu da će pokretanje live instalacija na starijim mašinama koje nemaju podršku za USB 2.0 protokol, biti jako sporo.\\
-Neke mašine ne dozvoljavaju pokretanje tj. "bootanje" sa USB uređaja, te je potrebno "enableati" tu opciju unutar BOOT "managera" u BIOS-u.
+Treba imati na umu da je pokretanje live instalacija na starijim mašinama koje nemaju podršku za USB 2.0 protokol, jako sporo.\\
+Neke mašine ne dozvoljavaju pokretanje tj. "bootanje" sa USB uređaja, te je potrebno uključiti tu opciju unutar BOOT menadžera u BIOS-u.
 \subsection*{Postupak kreiranja live USB}
 \addcontentsline{toc}{subsection}{\numberline{}Postupak kreiranja live USB}
 \indent
@@ -130,21 +135,24 @@ Postupak kreiranja live USB distribucije je sljedeći:\\
 2. Preuzimanje instalacione datoteke, npr.\\fedora 32 \url{https://getfedora.org/en/workstation/download/}\\
 ili npr. ubuntu 20.04 \url{https://ubuntu.com/download/desktop}\\
 \indent
-3. U Linux terminalu, tj. komandnom interfejsu, izvršavanje komande:\\
-\indent
+3. U Linux terminalu, tj. komandnom interfejsu, izvršavanje komande:
 \begin{lstlisting}[style=BashInputStyle]
 lsblk
 \end{lstlisting}
 \indent
-Ispis bi treba imati sadržaj sličan sljedećem:\\
-\includegraphics[width=\linewidth]{images/lsblkOutput.png}\\
+Ispis bi trebao imati sadržaj sličan sljedećem:\\
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{images/lsblkOutput.png}
+\caption{Ispis lsblk komande}
+\end{figure}
 \indent
 4. Slika iznad potvrđuje da je uključen USB uređaj. Komande navedene u odsječku ispod:
 \begin{lstlisting}[style=BashInputStyle]
 sudo umount /dev/sdb1
 sudo umount /dev/sdb3
 \end{lstlisting}
-uklonjaju particije na USB uređaju koje imaju MOUNTPOINT.\\
+uklanjaju particije na USB uređaju koje imaju MOUNTPOINT.\\
 \indent
 5. Komanda:
 \begin{lstlisting}[style=BashInputStyle]
@@ -162,29 +170,38 @@ Nakon uspješnog izvršavanja dd komande je kreiran "live USB".\\
 \addcontentsline{toc}{subsection}{\numberline{}Upotrebe live distribucija}
 \indent
 Live distribucije imaju razne upotrebe:\\
+\indent
 1. Za instalaciju operativnih sistema na HDD/SSD\\
+\indent
 2. Za popravku i spašavanje podataka sa računara\\
+\indent
 3. Za kompjutersku forenziku\\
+\indent
 4. Za izlistavanje i testiranje hardvera\\
+\indent
 5. Za sigurnosno testiranje mreže\\
+\indent
 6. Za promjenu, krađu, probijanje šifri\\
+\indent
 7. Za skeniranje i odstranjivanje virusa i malvera\\
+\indent
 8. Za internet bankarstvo, kao namjenski konfigurisana platforma sa pojačanim sigurnosnim aspektima.\\
+\indent
 9. Za testiranje softvera...\\
 \section*{Datotečni sistemi}
 \addcontentsline{toc}{section}{\numberline{}Datotečni sistemi}
 \indent
-Datotečni sistemi ("file systems" ili "filesystems") su skupina metoda i podatkovnih struktura koje operativni sistem koristi radi vođenja evidencije o podacima na disku ili particiji diska. Datotečni sistem određuje način na koji su organizovani podaci na disku.\\
+Datotečni sistemi\cite{tldp-guide} ("file systems" ili "filesystems")\cite{wiki-filesystem} su skupina metoda i podatkovnih struktura koje operativni sistem koristi radi vođenja evidencije o podacima na disku ili particiji diska. Datotečni sistem određuje način na koji su organizovani podaci na disku.\\
 Prije nego što disk ili particija diska mogu biti upotrijebljeni kao datotečni sistem, datotečni sistem mora biti inicijaliziran na disk/particiju i strukture za čuvanje podataka trebaju biti upisane u disk. Ovaj proces se zove kreiranje datotečnog sistema.\\
-Prije svega treba napomenuti da su Linux datotečni sistemi su slični UNIX datotečnim sistemima. Većina UNIX datotečnih sistema ima sličnu strukturu i uređenost. Glavni koncepti su "superblock", "inode", "data block". "directory block" i "direction block".\\
-"Superblock" sadrži informacije o datotečnom sistemu uopćenito, npr. veličina datotečnog sistema. "Inode" sadrži sve informacije o pojedinačnoj datoteci, izuzev njenog naziva. Nazim se smješta u direktorij zajedno sa rednim brojem "inodea".\\
-Različiti operativni sistemi nemaju podršku za iste datotečne sisteme. Windows podržava NTFS, dok linux uglavnom EXT2, EXT3, EXT4. Mac s druge strane HFS+.\\
+Prije svega treba napomenuti da su Linux datotečni sistemi su slični UNIX datotečnim sistemima. Većina UNIX datotečnih sistema ima sličnu strukturu i uređenost. Glavni koncepti su "superblock" ili superblok, "inode" ili indeksni čvor\cite[str.~281]{operativni-sistemi}, "data block" ili blok podataka, "directory block" ili blok direktorija i "direction block" tj. blok pokazivač.\\
+"Superblock" sadrži informacije o datotečnom sistemu uopćenito, npr. veličina datotečnog sistema. "Inode" ili indeksni čvor sadrži sve informacije o pojedinačnoj datoteci, izuzev njenog naziva. Nazim se smješta u direktorij zajedno sa rednim brojem indeksnog čvora.\\
+Različiti operativni sistemi nemaju podršku za iste datotečne sisteme\cite{wiki-filesystem-comparison}\cite{filesystem-comparison}. Windows podržava NTFS\cite[str.~286]{operativni-sistemi}, dok Linux koristi uglavnom EXT2\cite[~302]{linux-bible}, EXT3\cite[~302]{linux-bible}, EXT4\cite[~302]{linux-bible}, ali i dosta drugih. Mac s druge strane HFS+.\\
 FAT32 je stariji datotečni sistem razvijen od Microsoft-a, ali ga podržavaju i Linux i Windows operativni sistemi pa je nekad koristan za USB diskove koji se dijele između Windows-a i Linux-a.
 
 \subsection*{SquashFS datotečni sistem}
 \addcontentsline{toc}{subsection}{\numberline{}SquashFS datotečni sistem}
 \indent
-SquasFS je kompresovani "read-only" file system. Squasfs kompresuje datoteke, "inode"-ove i direktorije. Podržava blokove veličina između 4KiB i 1MiB.\\
+SquasFS\cite[str.~303]{linux-bible}\cite{squashfs-howto}\cite{squashfs-deployment} je kompresovani "read-only" file system. Squasfs kompresuje datoteke, indeksne čvorove i direktorije. Podržava blokove veličina između 4KiB i 1MiB.\\
 \indent
 SquashFS datotečni sistem je napisan od strane 	Phillip Lougher-a i Robert Lougher-a. 
 Nekoliko algoritama za kompresiju su podržani kao gzip, LZMA i LZO.\\
@@ -193,7 +210,7 @@ Squashfs se koristi u Live CD verzijama Arch Linux-a, Debian-a, Fedora-e, Gentoo
 \section*{Slax}
 \addcontentsline{toc}{section}{\numberline{}Slax}
 \indent
-Slax je LiveCD Linux distribucija koju aktivno razvija Tomáš Matějíček. Na oficijelnoj stranici Slax operativnog sistema stoji opis "Vaš džepni operativni sistem".\\
+Slax\cite{slax-org}\cite{slax-wiki} je LiveCD Linux distribucija koju aktivno razvija Tomáš Matějíček. Na oficijelnoj stranici Slax operativnog sistema stoji opis "Vaš džepni operativni sistem".\\
 \indent
 Jedna od prednosti Slax operativnog sistema je jednostavnost modifikacije. Paketi mogu biti dodani i uklonjeni koristeći Slax module, koji su kompresovani "read-only" squasfs datotečni sistemi kompresovani pomoću LZMA algoritma.\\
 Paketi mogu biti instalirani upotrebom apt paket menadžera, zatim se spašava modul sa .sb ekstenzijom, te se generiše slax.iso sa tim novokreiranim modulom.sb pomoću genslaxiso komande.\\
@@ -211,7 +228,7 @@ slax deactivate module.sb
 \section*{NimbleX}
 \addcontentsline{toc}{section}{\numberline{}NimbleX}
 \indent
-NimbleX je Linux distribucija optimizirana da se pokrene sa CD-a, USB-a ili direktno preko mreže. Karakteristika NimbleX-a je brzo boot-anje, i mala količina prostora na disku koju zauzima, s obzirom da je distribuiran sa KDE desktop okruženjem. NimbleX je jedinstven po svojoj web stranici koja dozvoljava korisnicima da generišu "boot-abilne" distribucije modifikovane putem browsera. NimbleX boot-a u otprilike duplo kraćem vremenskom roku od Ubuntu ili recimo Fedora distribucije.\\
+NimbleX\cite{NimbleX-wiki} je Linux distribucija optimizirana da se pokrene sa CD-a, USB-a ili direktno preko mreže. Karakteristika NimbleX-a je brzo boot-anje, i mala količina prostora na disku koju zauzima, s obzirom da je distribuiran sa KDE desktop okruženjem. NimbleX je jedinstven po svojoj web stranici koja dozvoljava korisnicima da generišu "boot-abilne" distribucije modifikovane putem browsera. NimbleX boot-a u otprilike duplo kraćem vremenskom roku od Ubuntu ili recimo Fedora distribucije.\\
 NimbleX je bio na strani kritika zbog nedostatka instaliranih sigurnosnih softverskih paketa. Prvi put je objavljen 20-og oktobra 2004-te godine. Glavni inžinjer odgovoran za razvoj NimbleX-a je rumun Bogdan Rădulescu.\\
 \indent
 NimbleX koristi Linux kernel verziju 2.6. Predinstalirani grafički menadžer je KDE. Za kompjutere slabijih performansi može se podesiti i Fluxbox kao i Xfce kao grafički menadžer. Veličina instalacione datoteke NimblX distribucije je ispod 400MB, što nas navodi na logičan zaključak da NimbleX ne nudi previše grafičkih aplikacija, za dosta zadataka je neophodno koristiti terminal ili komandni interfejs. NimbleX nudi i instalacione datoteke manje veličine, npr. 100MB ili 69MB. Dodatne aplikacije se mogu instalirati putem grafičke aplikacije Gslapt, ili putem komande slapt-get u komandnom interfejsu. Na većim instalacionim NimbleX datotekama je predinstalirano mnoštvo korisnih aplikacija kao što su:\\
@@ -223,10 +240,9 @@ NimbleX koristi Linux kernel verziju 2.6. Predinstalirani grafički menadžer je
 3. Python\\
 \indent
 4. Wine...
-
 \section*{Ubuntu}
 \addcontentsline{toc}{section}{\numberline{}Ubuntu}
-Ubuntu je Linux distribucija zasnovana na Debian Linux distribuciji. Koristi isti paket menadžer kao i Debian. Ubuntu se oficijelno distribuira u 3 verzije:\\
+Ubuntu\cite{ubuntu-wiki} je Linux distribucija zasnovana na Debian Linux distribuciji. Koristi isti paket menadžer kao i Debian. Ubuntu se oficijelno distribuira u 3 verzije:\\
 \indent
 1. Desktop\\
 \indent
@@ -255,8 +271,7 @@ Pored podjele Ubuntu distribucija na Desktop, Server i Core, Ubuntu pruža razne
 \indent
 6. Ubuntu MATE - Ubuntu distribucija sa podešenim MATE desktop okruženjem.\\
 \indent
-7. Ubuntu Studio - Ubuntu distribucija namijenjena isključivo za multimedijsku produkciju. Dolazi sa Xfce gračifkim okruženjem. Jedna od najbitnijih karakteristika ove distribucije je "low-latency" jezgro sistema, koja je u osnovi standardno Linux jezgro, sa posebnom konfiguracijom koja dozvoljava stabilan rad audio aplikacija sa malim kašnjenjem. Ova distribucija dolazi sa instaliranim aplikacijama kao što su: Ardour, LMMS, Hydrogen, Audacity, JACK audio connection kit, Blender, GIMP, Krita, Kdenlive i mnogim drugim.\\
-
+7. Ubuntu Studio - Ubuntu distribucija namijenjena isključivo za multimedijsku produkciju. Dolazi sa Xfce gračifkim okruženjem. Jedna od najbitnijih karakteristika ove distribucije je "low-latency" jezgro sistema, koja je u osnovi standardno Linux jezgro, sa posebnom konfiguracijom koja dozvoljava stabilan rad audio aplikacija sa malim kašnjenjem. Ova distribucija dolazi sa instaliranim aplikacijama kao što su: Ardour, LMMS, Hydrogen, Audacity, JACK audio connection kit, Blender, GIMP, Krita, Kdenlive i mnogim drugim.
 \section*{Zasto modifikovati instalacionu iso datoteku?}
 \addcontentsline{toc}{section}{\numberline{}Zašto modifikovati instalacionu iso datoteku?}
 Zašto uopće mijenjati instalacioni iso image operativnog sistema? Postoji nekoliko razloga:\\
@@ -314,7 +329,7 @@ Proces izrade zasebnih modula za svaki od modula je sličan, s tim da će se raz
 \section*{Modul NodeJS}
 \addcontentsline{toc}{section}{\numberline{}Modul NodeJS}
 \indent
-NodeJS je platforma "otvorenog koda" za izvršavanje JavaScript programa izvan okruženja mrežnog pretraživača. Neovisna je od vrste operativnog sistema i može se instalirati na Windows/Linux i MacOS operativne sisteme. JVM(JavaVirtualMachine), JRE(JavaRuntimeEnvironment) i JDK(JavaDevelopmentKit) zajedno predstavljaju sličnost sa NodeJS-om, ali za Java programski jezik. Može se reći da NodeJS objedinjuje sve te stvari u jedan koncept, ali za JavaScript programski jezik.\\
+NodeJS\cite{nodejs-wiki} je platforma "otvorenog koda" za izvršavanje JavaScript programa izvan okruženja mrežnog pretraživača. Neovisna je od vrste operativnog sistema i može se instalirati na Windows/Linux i MacOS operativne sisteme. JVM(JavaVirtualMachine), JRE(JavaRuntimeEnvironment) i JDK(JavaDevelopmentKit) zajedno predstavljaju sličnost sa NodeJS-om, ali za Java programski jezik. Može se reći da NodeJS objedinjuje sve te stvari u jedan koncept, ali za JavaScript programski jezik.\\
 NodeJS ima "event-driven" baziranu arhitekturu koja omogućava asinhroni ulaz/izlaz informacija. To ga čini pogodnim za razvijanje web aplikacija koje imaju mnoštvo ulaznih/izlaznih operacija, kao i za razvoj mrežnih aplikacija za rad u realnom vremenu i igrica za mrežne pretraživače.\\
 Prirodno NodeJS podržava samo JavaScript programski kod. Međutim podržava i programske jezike koji se daju kompajlirati u JavaScript. To su CoffeeScript, Dart, TypeScript, ClojureScript.\\
 NodeJS se najčešće koristi za razvijanje WebServer-a. Jedna od bitnih razlika između NodeJS-a i PHP-a je ta što kod PHP-a većina funkcija blokira izvršavanje naredne funkcije dok se ne izvrši u potpunosti, dok su funkcije u NodeJS-u neblokirajuće te se mogu izvršavati paralelno, te na osnovu "callback" funkcije signaliziraju uspješno izvršenje ili grešku.\\
@@ -357,15 +372,15 @@ sudo mv squashfs-root/ edit
 \subsection*{Konfiguracija paketa za chroot okruženje - NodeJS modul}
 \addcontentsline{toc}{subsection}{\numberline{}Konfiguracija paketa za chroot okruženje - NodeJS modul}
 \indent
-Zbog potrebe za mrežnom konekcijom unutar edit direktorija neophodno je kopiranje sadržaja resolv.conf iz sistema domaćina unutar edit direktorija:
+Zbog potrebe za mrežnom konekcijom unutar edit direktorija neophodno je kopiranje sadržaja resolv.conf\cite[str.~809, str.~186]{linux-bible} iz sistema domaćina unutar edit direktorija:
 \begin{lstlisting}[style=BashInputStyle]
 sudo gedit edit/etc/resolv.conf
 \end{lstlisting}
-Kopirani sadržaj mora biti spremljen:
+Kopirani sadržaj mora biti spremljen:\\
 (\textit{nameserver 1.1.1.1 \\
 nameserver 8.8.8.8}).\\
 \noindent
-Isto važi i za etc/hosts datoteku:
+Isto važi i za etc/hosts\cite[str.~186]{linux-bible} datoteku:
 \begin{lstlisting}[style=BashInputStyle]
 sudo gedit edit/etc/hosts
 \end{lstlisting}
@@ -401,7 +416,7 @@ dpkg-query -W --showformat='\${Installed-Size}\t\${Package}\n' | sort -nr | less
 \end{lstlisting}
 
 \noindent
-Instalacija NodeJS paketa unutar chroot okruženja:
+Instalacija NodeJS paketa unutar chroot okruženja\cite{nodejs-howto}
 \begin{lstlisting}[style=BashInputStyle]
 apt-get update
 apt-get install curl
@@ -495,9 +510,13 @@ sudo kvm -hda ubuntunodejs.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-nodejs-18.
 
 \subsection*{Rezultat Modul NodeJS}
 \addcontentsline{toc}{subsection}{\numberline{}Rezultat Modul NodeJS}
-\includegraphics[width=\linewidth]{images/ModulNodeJSUbuntu.png}\\
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{images/ModulNodeJSUbuntu.png}
+\caption{ubuntu-with-nodejs-18.04-amd64.iso}
+\end{figure}
 \indent
-Demonstrirana je upotreba NodeJS-a kreiranjem jednostavne mrežne aplikacije unutar novokreirane žive Ubuntu distribucije.\\
+Demonstrirana je upotreba NodeJS-a kreiranjem jednostavne mrežne aplikacije unutar novokreirane žive Ubuntu distribucije\cite{nodejs-helloworld-sample}.\\
 Unutar pokrenute žive distribucije sa preidnstaliranim NodeJS bibliotekama pokrenuta je mrežna aplikacija putem NodeJS-a na vrlo jednostavan način:
 \begin{lstlisting}[style=BashInputStyle]
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
@@ -508,17 +527,22 @@ Potvrda da je mrežna aplikacija pokrenuta je server koji je pokrenut i može se
 \begin{lstlisting}[style=BashInputStyle]
 http://localhost:1337
 \end{lstlisting}
-Za potrebe rada nije rađena modifikacija ove mrežne aplikacije, ali moguće je iskoristiti aplikaciju kao bazu za nadograđivanje po želji. HTTP mrežni server se kreira unutar index.js datoteke te bi početna modifikacija mogla biti nadogradnja ove datoteke sa dodatnim funkcionalnostima.\\
-\noindent
-\includegraphics[width=\linewidth]{images/ModulNodeJSUbuntuTerminal.png}\\
-\includegraphics[width=\linewidth]{images/ModulNodeJSUbuntu1.png} 
-\newpage
+Za potrebe rada nije rađena modifikacija ove mrežne aplikacije, ali moguće je iskoristiti aplikaciju kao bazu za nadograđivanje po želji. HTTP mrežni server se kreira unutar index.js datoteke te bi početna modifikacija mogla biti nadogradnja ove datoteke sa dodatnim funkcionalnostima.
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{images/ModulNodeJSUbuntuTerminal.png}
+\caption{Pokretanje NodeJS hello-world aplikacije}
+\end{figure}
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{images/ModulNodeJSUbuntu1.png}
+\caption{NodeJS hello-world aplikacija pokrenuta}
+\end{figure}
 \section*{Modul MongoDB}
 \addcontentsline{toc}{section}{\numberline{}Modul MongoDB}
 MongoDB je nerelaciona baza podataka napisana u C++ programskom jeziku. Koristi JSON format za spremanje podataka.\\
 To je čini pogodnom za povezivanje sa NodeJS bibliotekama, čiji je modul već napraviljen u prethodnom paragrafu.\\
-Postupak kreiranja ovog modula je gotovo identičan postupku kreiranja NodeJS modula, izuzev dijela u kojem se vrši instaliranje novih paketa unutar raspakovanog squashfs datotečnog sistema.\\
-
+Postupak kreiranja ovog modula je gotovo identičan postupku kreiranja NodeJS modula, izuzev dijela u kojem se vrši instaliranje novih paketa unutar raspakovanog squashfs datotečnog sistema.
 \subsection*{Kreiranje direktorija potrebnih za rad - MongoDB modul}
 \addcontentsline{toc}{subsection}{\numberline{}Kreiranje direktorija potrebnih za rad - MongoDB modul}
 \indent
@@ -529,7 +553,6 @@ sudo mount -o loop ./isoimgs/ubuntu-18.04.4-desktop-amd64.iso mnt
 mkdir extract-mongodb-cd
 sudo rsync --exclude=/casper/filesystem.squashfs -a mnt/ extract-mongodb-cd
 \end{lstlisting}
-
 \subsection*{unsquashfs filesystem.squashs datoteke - MongoDB modul}
 \addcontentsline{toc}{subsection}{\numberline{}unsquashfs filesystem.squashfs datoteke - MongoDB modul}
 \noindent
@@ -541,7 +564,6 @@ Rezultat unsquashfs komande je squashfs-root direktorij koji je iskopiran u edit
 \begin{lstlisting}[style=BashInputStyle]
 sudo mv squashfs-root/ edit-mongodb
 \end{lstlisting}
-
 \subsection*{Konfiguracija paketa za chroot okruženje - MongoDB modul}
 \addcontentsline{toc}{subsection}{\numberline{}Konfiguracija paketa za chroot okruženje - MongoDB modul}
 \noindent
@@ -549,7 +571,7 @@ Datoteka resolv.conf unutar edit direktorija je ažurirana da bi se omogućila m
 \begin{lstlisting}[style=BashInputStyle]
 sudo gedit edit-mongodb/etc/resolv.conf
 \end{lstlisting}
-Sadržaj koji je unesen u resolv.conf datoteku:
+Sadržaj koji je unesen u resolv.conf datoteku:\\
 (\textit{nameserver 1.1.1.1 \\
 nameserver 8.8.8.8}).\\
 \noindent
@@ -586,9 +608,8 @@ Za ispis svih instaliranih paketa unutar chroot okruženja:
 \begin{lstlisting}[style=BashInputStyle]
 dpkg-query -W --showformat='\${Installed-Size}\t\${Package}\n' | sort -nr | less
 \end{lstlisting}
-
 \noindent
-Za pokretanje mongoDB, potrebni su libcurl4 i openssl paketi:
+Za pokretanje MongoDB, potrebni su libcurl4 i openssl paketi\cite{mongodb-howto}
 \begin{lstlisting}[style=BashInputStyle]
 sudo apt-get install libcurl4 openssl
 \end{lstlisting}
@@ -640,8 +661,11 @@ build environment:
 \end{lstlisting}
 
 Na slici ispod je prikazan mongo pokrenut u konzoli unutar chroot edit-mongodb direktorija:\\
+\begin{figure}[!htb]
+\centering
 \includegraphics[width=\linewidth]{images/mongoRunning.png}
-
+\caption{Mongo proces pokrenut}
+\end{figure}
 Bilo bi poželjno mongoDB pokrenuti povezujući je sa drugom IP adresom jer je po prvobitnim postavkama povezana na localhost tj. 127.0.0.1 te može primati zahtjeve samo od aplikacija koje su na toj mašini na kojoj je instaliran mongo. Ovaj korak nije dio ovog praktičnog rada.
 \begin{lstlisting}[style=BashInputStyle]
 Start the server with --bind_ip <address> to specify which IP addresses it should serve responses from, or with --bind_ip_all to bind to all interfaces.
@@ -733,17 +757,23 @@ sudo kvm -hda ubuntumongodb.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-mongodb-1
 \subsection*{Rezultat Modul MongoDB}
 \addcontentsline{toc}{subsection}{\numberline{}Rezultat Modul MongoDB}
 \indent
-Slika ispod prikazuje MongoDB dostupan unutar Ubuntu distribucije, ubuntu-with-mongodb-18.04-amd64.iso, pokrenutoj sa KVM-om:\\
-\noindent
-\includegraphics[width=\linewidth]{images/mongoLive.png} 
-\newpage
+Slika ispod prikazuje MongoDB dostupan unutar Ubuntu distribucije, ubuntu-with-mongodb-18.04-amd64.iso, pokrenutoj sa KVM-om:
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{images/mongoLive.png}
+\caption{Mongo proces pokrenut unutar live distribucije}
+\end{figure}
 \section*{Modul Java}
 \addcontentsline{toc}{section}{\numberline{}Modul Java}
 Java je objektno-orijentisani programski jezik opće namjene. Aplikacije napisane u Java programskom jeziku se prije izvršenja kompajliraju u Java bitkod te se izvršavaju u Java virtuelnoj mašini, tako da jedan java program može da se pokrene na bilo kom računaru koji ima instaliran Java Virtual Machine.\\
 Java je napravljena od strane Sun Microsystems kompanije te objavljena u maju 1995. godine. Posljednja verzija Java-e je 14, dok je posljednja LTS verzija 11. Postoji nekoliko različitih platformi za koje se distribuira Java, te iz toga se mogu definisati 4 grupe Java distribucija:\\
+\indent
 1. Java Card - za kartice\\
+\indent
 2. Java Platform, Micro Edition (ME) - za računare sa ograničenim resursima\\
+\indent
 3. Java Platform, Standard Edition (SE) - za takozvane radne stanice ili "workstations"\\
+\indent
 4. Java Platform, Enterprise Edition (EE) - za velike distribuirane poslovne sisteme i internet okruženja\\
 \indent
 Slijedi postupak kreiranja Java modula.
@@ -767,9 +797,12 @@ Raspakovan je ponovo filesystem.squashfs direktorij i kopiran u edit-java direkt
 sudo unsquashfs mnt/casper/filesystem.squashfs
 sudo mv squashfs-root/ edit-java
 \end{lstlisting}
-Na slici ispod se vidi ispis unsquashfs komande:\\
-\includegraphics[width=\linewidth]{images/unsquashfscommand.png} 
-
+Na slici ispod se vidi ispis unsquashfs komande:
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{images/unsquashfscommand.png}
+\caption{Ispis unsquashfs komande}
+\end{figure}
 \subsection*{Konfiguracija paketa za chroot okruženje - Java modul}
 \addcontentsline{toc}{subsection}{\numberline{}Konfiguracija paketa za chroot okruženje - Java modul}
 \noindent
@@ -777,11 +810,11 @@ Ažuriranje resolv.conf unutar edit-java direktorija:
 \begin{lstlisting}[style=BashInputStyle]
 sudo gedit edit-java/etc/resolv.conf
 \end{lstlisting}
-Uneseni sadržaj u resolv.conf datoteku:
+Uneseni sadržaj u resolv.conf datoteku:\\
 (\textit{nameserver 1.1.1.1 \\
 nameserver 8.8.8.8}).\\
 \noindent
-Ažuriranje etc/hosts datoteku:
+Ažuriranje etc/hosts datoteke:
 \begin{lstlisting}[style=BashInputStyle]
 sudo gedit edit-java/etc/hosts
 \end{lstlisting}
@@ -817,7 +850,7 @@ dpkg-query -W --showformat='\${Installed-Size}\t\${Package}\n' | sort -nr | less
 \end{lstlisting}
 
 \noindent
-Instalacija java paketa:
+Instalacija java paketa\cite{apt-java-ubuntu-install}\cite{java-ubuntu-install}
 \begin{lstlisting}[style=BashInputStyle]
 apt update
 apt install default-jdk
@@ -832,7 +865,7 @@ openjdk version "11.0.6" 2020-01-14
 OpenJDK Runtime Environment (build 11.0.6+10-post-Ubuntu-1ubuntu118.04.1)
 OpenJDK 64-Bit Server VM (build 11.0.6+10-post-Ubuntu-1ubuntu118.04.1, mixed mode, sharing)
 \end{lstlisting}
-Kao praktična primjena Java platforme, instaliran je Eclipse, koji je jedan od najpoznatijih JAVA IDE (Integrated Development Environment):
+Kao praktična primjena Java platforme, instaliran je Eclipse, koji je jedan od najpoznatijih JAVA IDE (Integrated Development Environment)\cite{eclipse-ubuntu-install}
 \begin{lstlisting}[style=BashInputStyle]
 wget http://ftp.jaist.ac.jp/pub/eclipse/technology/epp/downloads/release/2019-03/R/eclipse-java-2019-03-R-linux-gtk-x86_64.tar.gz
 tar -zxvf eclipse-java-2019-03-R-linux-gtk-x86_64.tar.gz -C /usr/
@@ -940,10 +973,22 @@ sudo kvm -hda ubuntujava.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-java-18.04-a
 \addcontentsline{toc}{subsection}{\numberline{}Rezultat Modul Java}
 \indent
 Modul Java je instaliran u ubuntu-with-java-18.04-amd64.iso.
-Slike ispod prikazuju verziju jave i Eclipse okruženje pokrenuto unutar KVM:\\
-\includegraphics[width=\linewidth]{images/javaLive.png}\\
-\includegraphics[width=\linewidth]{images/eclipseLive.png}\\ 
+Slike ispod prikazuju verziju Jave i Eclipse okruženje pokrenuto unutar KVM:
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{images/javaLive.png}
+\caption{Java verzija u live distribuciji}
+\end{figure}
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{images/eclipseLive.png}
+\caption{Eclipse okruženje u live distribuciji}
+\end{figure}
+\begin{figure}[!htb]
+\centering
 \includegraphics[width=\linewidth]{images/eclipseLive1.png}
+\caption{Eclipse okruženje u live distribuciji}
+\end{figure}
 \newpage
 \section*{Modul Chrome}
 \addcontentsline{toc}{section}{\numberline{}Modul Chrome}
@@ -1027,7 +1072,11 @@ Ažurirani sadržaj google-chrome.list datoteke:
 \begin{lstlisting}[style=BashInputStyle]
 deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
 \end{lstlisting}
-\includegraphics[width=\linewidth]{images/google-chrome-list.png} 
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{images/google-chorme-list.png}
+\caption{google-chrme-list datoteka}
+\end{figure}
 \noindent
 Preuzimanje Google javnog ključa je potrebno za instaliranje Google Chrome paketa. Također potrebno je komandom apt-key dodati ključ u prsten javnih ključeva da bi apt mogao potvrditi integritet Google Chrome paketa.\\
 \begin{lstlisting}[style=BashInputStyle]
@@ -1047,8 +1096,11 @@ Provjera instalacije:
 \begin{lstlisting}[style=BashInputStyle]
 google-chrome-stable --version
 \end{lstlisting}
-\includegraphics[width=\linewidth]{images/googlechromestableversion.png} 
-
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{images/googlechromestableversion.png}
+\caption{Google Chrome verzija}
+\end{figure}
 \noindent
 Nakon završetka instalacije urađeno je čišćenje unutar chroot:
 \begin{lstlisting}[style=BashInputStyle]
@@ -1136,10 +1188,17 @@ sudo kvm -hda ubuntuchrome.img -cdrom ~/zavrsni/livecdtmp/ubuntu-with-chrome-18.
 \subsection*{Rezultat Modul Chrome}
 \addcontentsline{toc}{subsection}{\numberline{}Rezultat Modul Chrome}
 \indent
-Nakon pokretanja ubuntu-with-chrome-18.04-amd64.iso u KVM, odabirom opcije Try Ubuntu možemo se uvjeriti da je Google Chrome instaliran, što pokazuju slike ispod:\\
-\includegraphics[width=\linewidth]{images/chromeLive.png}\\\\
-\includegraphics[width=\linewidth]{images/chromeLive2.png}\\
-
+Nakon pokretanja ubuntu-with-chrome-18.04-amd64.iso u KVM, odabirom opcije Try Ubuntu možemo se uvjeriti da je Google Chrome instaliran, što pokazuju slike ispod:
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{images/chromeLive.png}
+\caption{Google Chrome u live distribuciji}
+\end{figure}
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{images/chromeLive2.png}
+\caption{Google Chrome u live distribuciji}
+\end{figure}
 \chapter*{Kreiranje više modula unutar jedne .iso datoteke}
 \addcontentsline{toc}{chapter}{\numberline{}Kreiranje više modula unutar jedne .iso datoteke}
 \indent
@@ -1182,11 +1241,11 @@ Ažuriranje resolv.conf datoteke u bazni-edit/etc direktoriju:
 sudo gedit bazni-edit/etc/resolv.conf
 \end{lstlisting}
 \noindent
-Sadržaj ažurirane resolv.conf datoteke:\\
+Sadržaj ažurirane resolv.conf\cite{wiki-resolv.conf} datoteke:\\
 (\textit{nameserver 1.1.1.1 \\
 nameserver 8.8.8.8}).\\
 \noindent
-Ažuriranje etc/hosts datoteke:
+Ažuriranje etc/hosts\cite{wiki-hosts-file} datoteke:
 \begin{lstlisting}[style=BashInputStyle]
 sudo gedit bazni-edit/etc/hosts
 \end{lstlisting}
@@ -1505,7 +1564,11 @@ Ažurirani sadržaj google-chrome.list datoteke:
 \begin{lstlisting}[style=BashInputStyle]
 deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
 \end{lstlisting}
-\includegraphics[width=\linewidth]{images/google-chrome-list.png} 
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{images/google-chrome-list.png}
+\caption{google-chrome-list}
+\end{figure}
 \noindent
 Sljedeća komanda preuzima Google javni ključ. Komanda apt-key dodaje ključ u prsten javnih ključeva da bi apt mogao potvrditi integritet Google Chrome paketa:\\
 \begin{lstlisting}[style=BashInputStyle]
@@ -1525,7 +1588,11 @@ Provjera instalacije:
 \begin{lstlisting}[style=BashInputStyle]
 google-chrome-stable --version
 \end{lstlisting}
+\begin{figure}[!htb]
+\centering
 \includegraphics[width=\linewidth]{images/googlechromestableversion.png}
+\caption{google-chrome-stable verzija}
+\end{figure}
 \noindent
 Čišćenje unutar chroot okruženja chrome-edit direktorija:
 \begin{lstlisting}[style=BashInputStyle]
@@ -1544,10 +1611,10 @@ exit
 \indent
 Opisan je proces konfiguracije chrome-edit direktorij. On je, kao i prethodni edit direktoriji, iskorišten za poredeđenje sa bazni-edit direktorijem, da bismo dobili delta direktorij. Od delta direktorija je kreirana chrome.squashfs datoteka pozicionirana u bazni-modul/casper direktoriju kao i ostale .squashfs datoteke.
 
-\section*{Generisanje bazne filesystem.squashfs datoteke}
-\addcontentsline{toc}{section}{\numberline{}Generisanje bazne filesystem.squashfs datoteke}
+\section*{Generisanje bazne filesystem.squashfs modula}
+\addcontentsline{toc}{section}{\numberline{}Generisanje bazne filesystem.squashfs modula}
 \indent
-Ovo poglavlje opisuje proces generisanje bazne filesystem.squash datoteke. Direktorij, na osnovu kojeg je kreirana bazna filesystem.squashfs datoteka, je bazni-edit direktorij.\\
+Ovo poglavlje opisuje proces generisanje baznog filesystem.squash modula. Direktorij, na osnovu kojeg je kreirana bazna filesystem.squashfs datoteka, je bazni-edit direktorij.\\
 \noindent
 Ažuriranje bazne filesystem.manifest datoteke:
 \begin{lstlisting}[style=BashInputStyle]
@@ -1574,10 +1641,10 @@ exit
 \end{lstlisting}
 \noindent
 Generisana je bazna filesystem.squashfs datoteka, tj bazni squashfs modul. U nastavku je opisan proces pravljenja ostalih squashfs modula.
-\section*{Generisanje nodejs.squashfs datoteke}
-\addcontentsline{toc}{section}{\numberline{}Generisanje nodejs.squashfs datoteke}
+\section*{Generisanje nodejs.squashfs modula}
+\addcontentsline{toc}{section}{\numberline{}Generisanje nodejs.squashfs modula}
 \indent
-Proces kreiranja nodejs.squashfs datoteke podrazumijeva prije svega generisanje delta direktorija koji sadrži sve razlike između bazni-edit i nodejs-edit direktorija. Također se podrazumijeva kreiranje status.diff datoteke koja će sadržati razliku između status datoteka bazni-edit i nodejs-edit direktorija.
+Proces kreiranja nodejs.squashfs modula podrazumijeva prije svega generisanje delta direktorija koji sadrži sve razlike između bazni-edit i nodejs-edit direktorija. Također se podrazumijeva kreiranje status.diff datoteke koja će sadržati razliku između status datoteka bazni-edit i nodejs-edit direktorija.
 \subsection*{Kreiranje nodejsBazniDelta direktorija}
 \addcontentsline{toc}{subsection}{\numberline{}Kreiranje nodejsBazniDelta direktorija}
 \indent
@@ -1710,10 +1777,10 @@ printf $(du -sx --block-size=1 nodejsBazniDelta | cut -f1) > bazni-modul/casper/
 exit
 \end{lstlisting}
 Završen je proces za kreiranje nodejs.squashfs datoteke. Kao i bazna filesystem.squashfs datoteka, i nodejs.squashfs datoteka je smještena u bazni-modul/casper direktorij.
-\section*{Generisanje mongodb.squashfs datoteke}
-\addcontentsline{toc}{section}{\numberline{}Generisanje mongodb.squashfs datoteke}
+\section*{Generisanje mongodb.squashfs modula}
+\addcontentsline{toc}{section}{\numberline{}Generisanje mongodb.squashfs modula}
 \indent
-U ovom je dijelu opisan proces kreiranja mongodb.squashfs datoteke. Proces kreiranja mongodb.squashfs datoteke zahtijeva prije svega generisanje delta direktorija koji sadrži sve razlike između bazni-edit i mongodb-edit direktorija. Također se podrazumijeva kreiranje status.diff datoteke koja sadrži razliku između status datoteka bazni-edit i mongodb-edit direktorija.\\
+U ovom je dijelu opisan proces kreiranja mongodb.squashfs modula. Proces kreiranja mongodb.squashfs datoteke zahtijeva prije svega generisanje delta direktorija koji sadrži sve razlike između bazni-edit i mongodb-edit direktorija. Također se podrazumijeva kreiranje status.diff datoteke koja sadrži razliku između status datoteka bazni-edit i mongodb-edit direktorija.\\
 
 \subsection*{Kreiranje mongodbBazniDelta direktorija}
 \addcontentsline{toc}{subsection}{\numberline{}Kreiranje mongodbBazniDelta direktorija}
@@ -1806,8 +1873,8 @@ printf $(du -sx --block-size=1 mongodbBazniDelta | cut -f1) > bazni-modul/casper
 exit
 \end{lstlisting}
 U narednom poglavlju se opisuje proces kreiranja java.squashfs modula.
-\section*{Generisanje java.squashfs datoteke}
-\addcontentsline{toc}{section}{\numberline{}Generisanje java.squashfs datoteke}
+\section*{Generisanje java.squashfs modula}
+\addcontentsline{toc}{section}{\numberline{}Generisanje java.squashfs modula}
 \indent
 Proces kreiranja java.squashfs datoteke podrazumijeva prije svega generisanje delta direktorija koji sadrži sve razlike između bazni-edit i java-edit direktorija. Također se podrazumijeva kreiranje status.diff datoteke koja sadrži razliku između status datoteka bazni-edit i java-edit direktorija.\\
 
@@ -1843,8 +1910,9 @@ sudo mv status.diff javaBazniDelta/var/lib/dpkg/status
 Dovršen je proces generisanja javaBazniDelta direktorija. Slijedi opis procedure za kreiranje java.squashfs modula.
 \subsection*{java.squashfs datoteka}
 \addcontentsline{toc}{subsection}{\numberline{}java.squashfs datoteka}
-\indent
-Prvo ćemo generisati java.manifest, slično kao kod generisanja nodejs.manifest i mongodb.manifest datoteka samo uz razliku što sad koristimo java prefix ispred .manifest nastavka:
+\noindent
+Ovaj odjeljak prikazuje proces generisanja java.squashfs modula na osnovu javaBazniDelta direktorija.
+Generisan je prvenstveno java.manifest, slično kao kod generisanja nodejs.manifest i mongodb.manifest datoteka samo uz razliku što je iskorišteno odgovarajuće ime modula java kao prefix ispred .manifest nastavka:
 \begin{lstlisting}[style=BashInputStyle]
 sudo su
 chroot java-edit dpkg-query -W --showformat='${Package} ${Version}\n' > bazni-modul/casper/java.manifest
@@ -1853,46 +1921,48 @@ sudo cp bazni-modul/casper/java.manifest bazni-modul/casper/java.manifest-deskto
 sudo sed -i '/ubiquity/d' bazni-modul/casper/java.manifest-desktop
 sudo sed -i '/casper/d' bazni-modul/casper/java.manifest-desktop
 \end{lstlisting}
-\indent
-Sljedeće je da se kreira java.squashfs datoteka. I u ovom slučaju važi napomena da će ova datoteka biti generisana na osnovu delta direktorija, a ne java-edit direktorija. Kao i u prethodnim slučajevima moguće je koristiti bilo koju od 3 alternative za generisanje .squashfs datoteke. Konkretno u ovom slučaju je korištena druga opcija, i ona je korištena u svakom prethodnom slučaju upotrebe mksquashfs funkcije.
-\begin{lstlisting}[style=BashInputStyle]
-sudo mksquashfs javaBazniDelta bazni-modul/casper/java.squashfs -nolzma 
-sudo mksquashfs javaBazniDelta bazni-modul/casper/java.squashfs -b 1048576
-sudo mksquashfs javaBazniDelta bazni-modul/casper/java.squashfs -comp xz -e edit/boot
-\end{lstlisting}
-
 \noindent
-Naredni korak je da ažuriramo mongodb.size datoteku:
+Generisnje java.squshfs datoteke na osnovu javaBazniDelta direktorija:
+\begin{lstlisting}[style=BashInputStyle]
+sudo mksquashfs javaBazniDelta bazni-modul/casper/java.squashfs -b 1048576
+\end{lstlisting}
+\noindent
+Ažuriranje java.size datoteke:
 \begin{lstlisting}[style=BashInputStyle]
 sudo su
 printf $(du -sx --block-size=1 javaBazniDelta | cut -f1) > bazni-modul/casper/java.size
 exit
 \end{lstlisting}
-
-\section*{Generisanje chrome.squashfs datoteke}
-\addcontentsline{toc}{section}{\numberline{}Generisanje chrome.squashfs datoteke}
-\indent
-Proces kreiranja chrome.squashfs datoteke će zahtijevati prije svega generisanje delta direktorija koji sadrži sve razlike između bazni-edit i chrome-edit direktorija. Također se podrazumijeva kreiranje status.diff datoteke koja će sadržati razliku između status datoteka bazni-edit i chrome-edit direktorija.\\
-
+Dovršena je procedura jreiranja java.squashfs modula. Slijedi opis procedure za chrome.squashfs modul.
+\section*{Generisanje chrome.squashfs modula}
+\addcontentsline{toc}{section}{\numberline{}Generisanje chrome.squashfs modula}
+\noindent
+Proces kreiranja chrome.squashfs modula zahtijeva generisanje delta direktorija koji sadrži sve razlike između bazni-edit i chrome-edit direktorija. Također se podrazumijeva kreiranje status.diff datoteke koja sadrži razliku između status datoteka bazni-edit chrome-edit direktorija.
 \subsection*{Kreiranje chromeBazniDelta direktorija}
 \addcontentsline{toc}{subsection}{\numberline{}Kreiranje chromeBazniDelta direktorija}
 \indent
-Koristićemo komandu rsync sa atributima -rvclm:\\
+Pomoću komande rsync sa atributima -rvclm, kreiran je sadržaj delta direktorija:\\
+\noindent
 -r = --recursive - rekurzivna pretraga po direktorijima\\
+\noindent
 -v = --verbose - detaljniji ispis informacija tokom izvršenja komande\\
+\noindent
 -c = --checksum - ne kopirati samo ako su checksum-i jednaki\\
+\noindent
 -l = --links - kopirati symbolic links\\
+\noindent
 -m = --prune-empty-dirs - ne kopirati prazne direktorije\\
 \begin{lstlisting}[style=BashInputStyle]
 mkdir chromeBazniDelta
 sudo rsync -rvclm --compare-dest=/home/user/zavrsni/livecdtmp/bazni-edit/ /home/user/zavrsni/livecdtmp/chrome-edit/ /home/user/zavrsni/livecdtmp/chromeBazniDelta/
 \end{lstlisting}
-\indent
-U chromeBazniDelta direktorij ćemo također ubaciti status.diff datoteku koja sadrži razliku između status datoteka bazni-edit i chrome-edit direktorija. Tu datoteku ćemo generisati koristeći komandu diff:
+\noindent
+Generisanje status.diff datoteke za chromeBazniDelta direktorij:
 \begin{lstlisting}[style=BashInputStyle]
 sudo diff bazni-edit/var/lib/dpkg/status chrome-edit/var/lib/dpkg/status > status.diff
 \end{lstlisting}
-Nakon uklanjanja neželjenih karaktera, status.diff datoteka treba da ima sljedeći sadržaj:
+\noindent
+Nakon uklanjanja neželjenih karaktera, status.diff datoteka ima sljedeći sadržaj:
 \begin{lstlisting}[style=BashInputStyle]
 Package: google-chrome-stable
 Status: install ok installed
@@ -1909,8 +1979,8 @@ Recommends: libu2f-udev, libvulkan1
 Description: The web browser from Google
  Google Chrome is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier.
 \end{lstlisting}
-
-Sljedeće je da se kopira status.diff datoteka u chromeBazniDelta/var/lib/dpkg direktorij. Prvobitno obrisati status datoteku iz ovog pomenutog chromeBazniDelta direktorija.\\
+\noindent
+Prebacivanje status.diff datoteke u odgovarajući direktorij:
 \begin{lstlisting}[style=BashInputStyle]
 sudo rm chromeBazniDelta/var/lib/dpkg/status
 sudo mv status.diff chromeBazniDelta/var/lib/dpkg/status
@@ -1918,8 +1988,8 @@ sudo mv status.diff chromeBazniDelta/var/lib/dpkg/status
 
 \subsection*{chrome.squashfs datoteka}
 \addcontentsline{toc}{subsection}{\numberline{}chrome.squashfs datoteka}
-\indent
-Prvo ćemo generisati chrome.manifest, slično kao kod generisanja nodejs.manifest i mongodb.manifest datoteka samo uz razliku što sad koristimo chrome prefix ispred .manifest nastavka:
+\noindent
+Generisana je datoteka chrome.manifest unutar bazni-modul direktorija na osnovu chrome-edit direktorija:
 \begin{lstlisting}[style=BashInputStyle]
 sudo su
 chroot chrome-edit dpkg-query -W --showformat='${Package} ${Version}\n' > bazni-modul/casper/chrome.manifest
@@ -1928,16 +1998,13 @@ sudo cp bazni-modul/casper/chrome.manifest bazni-modul/casper/chrome.manifest-de
 sudo sed -i '/ubiquity/d' bazni-modul/casper/chrome.manifest-desktop
 sudo sed -i '/casper/d' bazni-modul/casper/chrome.manifest-desktop
 \end{lstlisting}
-\indent
-Sljedeće je da se kreira chrome.squashfs datoteka. I u ovom slučaju važi napomena da će ova datoteka biti generisana na osnovu delta direktorija, a ne chrome-edit direktorija. Kao i u prethodnim slučajevima moguće je koristiti bilo koju od 3 alternative za generisanje .squashfs datoteke. Konkretno u ovom slučaju je korištena druga opcija, i ona je korištena u svakom prethodnom slučaju upotrebe mksquashfs funkcije.
-\begin{lstlisting}[style=BashInputStyle]
-sudo mksquashfs chromeBazniDelta bazni-modul/casper/chrome.squashfs -nolzma 
-sudo mksquashfs chromeBazniDelta bazni-modul/casper/chrome.squashfs -b 1048576
-sudo mksquashfs chromeBazniDelta bazni-modul/casper/chrome.squashfs -comp xz -e edit/boot
-\end{lstlisting}
-
 \noindent
-Naredni korak je da ažuriramo chrome.size datoteku:
+Pravljenje chrome.squashfs datoteke:
+\begin{lstlisting}[style=BashInputStyle]
+sudo mksquashfs chromeBazniDelta bazni-modul/casper/chrome.squashfs -b 1048576
+\end{lstlisting}
+\noindent
+Ažuriranje chrome.size datoteke:
 \begin{lstlisting}[style=BashInputStyle]
 sudo su
 printf $(du -sx --block-size=1 chromeBazniDelta | cut -f1) > bazni-modul/casper/chrome.size
@@ -1947,20 +2014,20 @@ exit
 \section*{Generisanje ubuntu-cjmn-18.04-amd64.iso datoteke}
 \addcontentsline{toc}{section}{\numberline{}Generisanje ubuntu-cjmn-18.04-amd64.iso datoteke}
 \indent
-Sada je na redu da se upiše naziv image-a unutar README.diskdefines. 
-Upisati 'Ubuntu with Chrome/Java/MongoDB/NodeJS 18.04.4 LTS "Bionic Beaver" - Release amd64' u polje DISKNAME:
+Ovo poglavle opisuje proces generisanja .iso datoteke, kao finalnog proizvoda praktičnog rada. Kreirana je .iso datoteka koja sadrži 5 .squashfs modula. Upotrijebljena je skraćenica cjmn u nazivu .iso datoteke. CJMN predstavlja skraćenicu za termine Chrome, Java, MongoDB i NodeJS zajedno.\\
+Upisan naziv unutar README.diskdefines u polje DISKNAME, je 'Ubuntu with Chrome/Java/MongoDB/NodeJS 18.04.4 LTS "Bionic Beaver" - Release amd64':
 \begin{lstlisting}[style=BashInputStyle]
 sudo gedit bazni-modul/README.diskdefines
 \end{lstlisting}
-
+\noindent
+Ažuriranje md5sum.txt:
 \begin{lstlisting}[style=BashInputStyle]
 cd bazni-modul
 sudo rm md5sum.txt
 find -type f -print0 | sudo xargs -0 md5sum | grep -v isolinux/boot.cat | sudo tee md5sum.txt
 \end{lstlisting}
-
 \noindent
-Napokon možemo napraviti iso datoteku koja će da sadrži Google Chrome, Java, MongoDB i NodeJS module zajedno. Za ovu operaciju koristimo funkciju genisoimage kao i u prethodnim slučajevima generisanja .iso datoteka. Neke linux distribucije nude mkisofs funkciju. Tako da ukoliko ne radi genisoimage trebala bi raditi funkcija mkisofs:
+Generisanje ubuntu-cjmn-18.04-amd64.iso datoteke:
 \begin{lstlisting}[style=BashInputStyle]
 sudo genisoimage -D -r -V "$IMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../ubuntu-cjmn-18.04-amd64.iso .
 \end{lstlisting}
@@ -1968,14 +2035,14 @@ sudo genisoimage -D -r -V "$IMAGE_NAME" -cache-inodes -J -l -b isolinux/isolinux
 \subsection*{Pokretanje iso image-a pomoću kvm biblioteke}
 \addcontentsline{toc}{subsection}{\numberline{}Pokretanje iso image-a pomoću kvm biblioteke}
 \indent
-Sada ćemo napraviti virtuelni hard disk pomoću qemu-img komande da bismo pokrenuli na njemu naš novi ubuntu-cjmn-18.04-amd64.iso.
+Kreiran je virtuelni tvrdi disk pomoću qemu-img komande za pokretanje ubuntu-cjmn-18.04-amd64.iso. Ovom virtuelnom disku je postavljena veličina od 10G, za razliku od prethodno kreiranih virtuelnih diskova sa veličinom od 5G:
 \begin{lstlisting}[style=BashInputStyle]
 cd ~
 qemu-img create ubuntucjmn.img 10G
 \end{lstlisting}
 
 \noindent 
-Pokrenućemo modul pomoću KVM-a:
+Pomoću KVM-a pokrenut je ubuntu-cjmn-18.04-amd64.iso:
 \begin{lstlisting}[style=BashInputStyle]
 sudo kvm -hda ubuntucjmn.img -cdrom ~/zavrsni/livecdtmp/ubuntu-cjmn-18.04-amd64.iso -boot d -m 2048
 \end{lstlisting}
@@ -1983,21 +2050,27 @@ sudo kvm -hda ubuntucjmn.img -cdrom ~/zavrsni/livecdtmp/ubuntu-cjmn-18.04-amd64.
 \subsection*{Rezultat ubuntu-cjmn-18.04-amd64.iso}
 \addcontentsline{toc}{subsection}{\numberline{}Rezultat ubuntu-cjmn-18.04-amd64.iso}
 \indent
-Nakon što se pokrene naš sistem u QEMU, odaberemo opciju Try Ubuntu. Možemo se uvjeriti da su instalirani moduli Google Chrome, Java, MongoDB, NodeJS, što pokazuju slike ispod:\\
-\includegraphics[width=\linewidth]{images/tryUbuntu.png}\\\\
-\includegraphics[width=\linewidth]{images/ubuntu-cjmn.png}\\
+Nakon pokretanja ubuntu-cjmn-18.04-amd64.iso datoteke, i odabira opcije Try Ubuntu, možem se provjeriti da su uspješno instalirani moduli Google Chrome, Java, MongoDB, NodeJS, što pokazuju slike ispod:
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{images/tryUbuntu.png}
+\caption{Try Ubuntu}
+\end{figure}
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\linewidth]{images/ubuntu-cjmn.png}
+\caption{Ubuntu CJMN}
+\end{figure}
 
 \chapter*{Zaključak}
 \addcontentsline{toc}{chapter}{\numberline{}Zaključak}
 \indent
-Svakako da bi prostor za poboljšanje bio u kreiranju skripte koja izvršava aktivaciju i deaktivaciju modula, koju bi korisnik mogao pozvati u pokrenutoj live distribuciji. Ova funkcija bi u pozadini trebala da mount-a .squashfs datotečni sistem u zavisnosti od modula koji se aktivira ili deaktivira. Pored toga morala bi i status datoteka biti ažurirana gdje bi se sadržaj status.diff datoteke nadodao u status datoteku ili bivao obrisan iz status datoteke.\\
-Ova tema je opširna dovoljno da se može proširiti u više smjerova. Demonstriran je proces kreiranja modifikovanih Linux distribucija. Na tu temu se može ići u nedogled jer je moguće modifikovati Linux distribuciju na beskonačno različitih načina.\\
+Kao jedan nedostatak rada izdvaja se nedostatak skripte koja izvršava aktivaciju i deaktivaciju modula, koju bi korisnik mogao pozvati u pokrenutoj live distribuciji. Ova skripta bi u pozadini trebala da uključi ili isključi .squashfs datotečni sistem u zavisnosti od modula koji se aktivira ili deaktivira. Pored toga morala bi i status datoteka biti ažurirana gdje bi se sadržaj status.diff datoteke nadodao u status datoteku ili bivao obrisan iz status datoteke.\\
+Ova tema je opširna dovoljno da se može proširiti u više smjerova. Demonstriran je proces kreiranja modifikovanih Linux distribucija, putem modifikacije i modularizacije squashfs datotečnog sistema. Može se zaključiti da je moguće modifikovati Linux distribucije na gotovo beskonačno različitih načina.\\
 Može se zaključiti da su Linux operativni sistemi podložni modifikaciji u raznim aspektima, vjerovatno u većoj razmjeri nego ostale familije operativnih sistema. To je zasigurno jedan od glavnih razloga za široku upotrebu Linux operativnih sistema, pored glavne činjenice da je Linux open-source.\\
 Da se zaključiti također da se Linux distribucije mogu modifikovati za posebne primjene određenoj skupini korisnika te na taj način postići veliku autonomnost i nezavisnost od licenciranih plaćenih softverskih sistema.\\
-Možemo zamisliti npr. da Elektrotehnički fakultet premjesti svoj infrastrukturalni sistem u potpunosti u Linux "svijet" počevši od samog nivoa operativnih sistema gdje bi fakultet imao svoj Linux operativni sistem u kom su sve aplikacije namjenski napravljene samo za upotrebu studentima, profesorima i ostatku fakultetskog osoblja. Također kompletan mrežni i aplikativni softver bi treba biti implementiran od pouzdanih inžinjera namjenski samo za potrebe fakulteta.\\
-Nedostatak ovog pristupa bi bilo veliko vrijeme izrade i planiranja izvedbe. Također kompleksnost implementacije ovakve infrastrukture je na prvi pogled nepredvidiva. Stoga se ovaj primjer može shvatiti kao imaginaran. Ali on dobro prikazuje upotrebu posebno modifikovanih operativnih sistema.\\
-\indent
-Tako bi se Linux distribucija mogla modularizirati putem .squashfs datotečnog sistema. Pa možemo zamisliti mogućnost da korisnik prilikom instalacije odabere vrstu korisničkog naloga, npr. student, profesor, ili osoblje, te nakon odabira bi se poseban modul učitao za svaku od ovih različitih uloga. Svakako da bi se dali kreirati različiti moduli za odsjeke i godine studija različitih studentskih grupa. Te bi se ovi moduli mogli učitavati u operativni sistem po potrebi ili po nekom željenom algoritmu.
+Kao jedan primjer koji prikazuje isti pristup opisan ovim radom, ali sa različitim modulima, može se navesti mogućnost kreiranja modifikovane Linux live distribucije, koja sadrži 4 squashfs modula unutar sebe. To su moduli KDE, GNOME, Xfce i LXDE. Korisnik u ovom slučaju ima džepni USB operativni sistem, u kojem pri pokretanju može odabrati koji grafički interfejs od navedenih želi.\\
+Kao drugi primjer možemo zamisliti modifikovanu Linux live distribuciju za Elektrotehnički fakultet u Sarajevu, namjenski kreiranu sa različitim modulima za upotrebu studentima, profesorima i ostatku fakultetskog osoblja. Korisnik bi pri pokretanju operativnog sistema sa USB uređaja, imao opciju odabira modula koji su mu potrebni za sesiju, te bi mu se isti učitali nakon odabira. Skripta za aktivaciju/deaktivaciju bi omogućila isključivanje modula po potrebi korisnika.\\
 
 \renewcommand*\bibname{Reference}
 \begin{thebibliography}{38}
@@ -2005,12 +2078,12 @@ Tako bi se Linux distribucija mogla modularizirati putem .squashfs datotečnog s
 \bibitem{operativni-sistemi}
 \textbf{Operativni sistemi}\\
 \textit{Autori: \textbf{Samir Ribić}, \textbf{Nazif Husović}, \textbf{Enisa Brka}}\\
-\textit{Februar 2017 [p.~282-285 -unix datotečni sistem] [p.~295]}
+\textit{Februar 2017}
 
 \bibitem{linux-bible}
 \textbf{Linux Bible 9th Edition}\\
 \textit{Autor: \textbf{Cristopher Negus}}\\
-\textit{4.2.2015 [p.~303 squashfs] [p.~302 filesystems] [p.~809 resolv.conf] [p.~186 resolv.conf hosts] [p.~183 administrative conf files]}
+\textit{4.2.2015}
 
 \bibitem{squashfs-howto}
 \textbf{SquashFS HOWTO}\\
@@ -2134,7 +2207,7 @@ Tako bi se Linux distribucija mogla modularizirati putem .squashfs datotečnog s
 \textit{Autor: \textbf{Mateusz Papiernik}}
 \textit{Verzija stranice od 7.6.2018}
 
-\bibitem{java-ubuntu-install}
+\bibitem{apt-java-ubuntu-install}
 \textbf{How To Install Java with Apt on Ubuntu 18.04}\\
 \url{https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04}\\
 \textit{Autor: \textbf{Koen Vlaswinkel}}

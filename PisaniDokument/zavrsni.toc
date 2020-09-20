@@ -6,43 +6,43 @@
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Postupak kreiranja live USB}{13}{section*.7}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Upotrebe live distribucija}{14}{section*.8}% 
 \contentsline {section}{\hbox to\@tempdima {\hfil }Datote\IeC {\v c}ni sistemi}{15}{section*.9}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }SquashFS datote\IeC {\v c}ni sistem}{15}{section*.10}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }SquashFS datote\IeC {\v c}ni sistem}{16}{section*.10}% 
 \contentsline {section}{\hbox to\@tempdima {\hfil }Slax}{16}{section*.11}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Primjer aktiviranja/deaktiviranja Slax modula}{16}{section*.12}% 
-\contentsline {section}{\hbox to\@tempdima {\hfil }NimbleX}{16}{section*.13}% 
-\contentsline {section}{\hbox to\@tempdima {\hfil }Ubuntu}{17}{section*.14}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }NimbleX}{17}{section*.13}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Ubuntu}{18}{section*.14}% 
 \contentsline {section}{\hbox to\@tempdima {\hfil }Za\IeC {\v s}to modifikovati instalacionu iso datoteku?}{19}{section*.15}% 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Sistemski zahtjevi}{20}{chapter*.16}% 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Priprema radnog okru\IeC {\v z}enja}{21}{chapter*.17}% 
-\contentsline {section}{\hbox to\@tempdima {\hfil }SquashFS paket}{21}{section*.18}% 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Proces kreiranja zasebnih modula}{22}{chapter*.19}% 
-\contentsline {section}{\hbox to\@tempdima {\hfil }Modul NodeJS}{23}{section*.20}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Kreiranje direktorija potrebnih za rad - NodeJS modul}{23}{section*.21}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }unsquashfs filesystem.squashfs datoteke - NodeJS modul}{24}{section*.22}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Konfiguracija paketa za chroot okru\IeC {\v z}enje - NodeJS modul}{24}{section*.23}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Instalacija nodeJS paketa unutar chroot okru\IeC {\v z}enja}{25}{section*.24}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje filesystem.squashfs datoteke - NodeJS modul}{26}{section*.25}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje Ubuntu .iso image sa nodeJS modulom}{27}{section*.26}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Pokretanje iso datoteke pomo\IeC {\'c}u KVM biblioteke}{28}{section*.27}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Rezultat Modul NodeJS}{28}{section*.28}% 
-\contentsline {section}{\hbox to\@tempdima {\hfil }Modul MongoDB}{31}{section*.29}% 
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Sistemski zahtjevi}{21}{chapter*.16}% 
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Priprema radnog okru\IeC {\v z}enja}{22}{chapter*.17}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }SquashFS paket}{22}{section*.18}% 
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Proces kreiranja zasebnih modula}{23}{chapter*.19}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Modul NodeJS}{24}{section*.20}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Kreiranje direktorija potrebnih za rad - NodeJS modul}{24}{section*.21}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }unsquashfs filesystem.squashfs datoteke - NodeJS modul}{25}{section*.22}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Konfiguracija paketa za chroot okru\IeC {\v z}enje - NodeJS modul}{25}{section*.23}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Instalacija nodeJS paketa unutar chroot okru\IeC {\v z}enja}{26}{section*.24}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje filesystem.squashfs datoteke - NodeJS modul}{27}{section*.25}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje Ubuntu .iso image sa nodeJS modulom}{28}{section*.26}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Pokretanje iso datoteke pomo\IeC {\'c}u KVM biblioteke}{29}{section*.27}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Rezultat Modul NodeJS}{29}{section*.28}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Modul MongoDB}{30}{section*.29}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Kreiranje direktorija potrebnih za rad - MongoDB modul}{31}{section*.30}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }unsquashfs filesystem.squashfs datoteke - MongoDB modul}{31}{section*.31}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }unsquashfs filesystem.squashfs datoteke - MongoDB modul}{32}{section*.31}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Konfiguracija paketa za chroot okru\IeC {\v z}enje - MongoDB modul}{32}{section*.32}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Instalacija mongoDB paketa unutar chroot okru\IeC {\v z}enja}{33}{section*.33}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje filesystem.squashfs datoteke - MongoDB modul}{35}{section*.34}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje Ubuntu .iso image sa mongoDB modulom}{36}{section*.35}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje filesystem.squashfs datoteke - MongoDB modul}{36}{section*.34}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje Ubuntu .iso image sa mongoDB modulom}{37}{section*.35}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Pokretanje iso datoteke pomo\IeC {\'c}u KVM biblioteke}{37}{section*.36}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Rezultat Modul MongoDB}{37}{section*.37}% 
 \contentsline {section}{\hbox to\@tempdima {\hfil }Modul Java}{38}{section*.38}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Kreiranje direktorija potrebnih za rad - Java modul}{38}{section*.39}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }unsquashfs filesystem.squashfs datoteke - Java modul}{38}{section*.40}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Kreiranje direktorija potrebnih za rad - Java modul}{39}{section*.39}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }unsquashfs filesystem.squashfs datoteke - Java modul}{39}{section*.40}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Konfiguracija paketa za chroot okru\IeC {\v z}enje - Java modul}{39}{section*.41}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Instalacija Java paketa unutar chroot okru\IeC {\v z}enja}{40}{section*.42}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje filesystem.squashfs datoteke - Java modul}{42}{section*.43}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje Ubuntu .iso image sa Java modulom}{42}{section*.44}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Generisanje Ubuntu .iso image sa Java modulom}{43}{section*.44}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Pokretanje iso datoteke pomo\IeC {\'c}u KVM biblioteke}{43}{section*.45}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Rezultat Modul Java}{43}{section*.46}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Rezultat Modul Java}{44}{section*.46}% 
 \contentsline {section}{\hbox to\@tempdima {\hfil }Modul Chrome}{46}{section*.47}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Kreiranje direktorija potrebnih za rad - Chrome modul}{46}{section*.48}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }unsquashfs filesystem.squashfs datoteke}{46}{section*.49}% 
@@ -59,21 +59,21 @@
 \contentsline {section}{\hbox to\@tempdima {\hfil }MongoDB edit}{58}{section*.60}% 
 \contentsline {section}{\hbox to\@tempdima {\hfil }Java edit}{60}{section*.61}% 
 \contentsline {section}{\hbox to\@tempdima {\hfil }Chrome edit}{62}{section*.62}% 
-\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje bazne filesystem.squashfs datoteke}{64}{section*.63}% 
-\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje nodejs.squashfs datoteke}{65}{section*.64}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje bazne filesystem.squashfs modula}{64}{section*.63}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje nodejs.squashfs modula}{65}{section*.64}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Kreiranje nodejsBazniDelta direktorija}{66}{section*.65}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }nodejs.squashfs datoteka}{69}{section*.66}% 
-\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje mongodb.squashfs datoteke}{70}{section*.67}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje mongodb.squashfs modula}{70}{section*.67}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Kreiranje mongodbBazniDelta direktorija}{70}{section*.68}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }mongodb.squashfs datoteka}{72}{section*.69}% 
-\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje java.squashfs datoteke}{73}{section*.70}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje java.squashfs modula}{73}{section*.70}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }Kreiranje javaBazniDelta direktorija}{73}{section*.71}% 
 \contentsline {subsection}{\hbox to\@tempdima {\hfil }java.squashfs datoteka}{74}{section*.72}% 
-\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje chrome.squashfs datoteke}{75}{section*.73}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Kreiranje chromeBazniDelta direktorija}{76}{section*.74}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }chrome.squashfs datoteka}{77}{section*.75}% 
-\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje ubuntu-cjmn-18.04-amd64.iso datoteke}{78}{section*.76}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Pokretanje iso image-a pomo\IeC {\'c}u kvm biblioteke}{79}{section*.77}% 
-\contentsline {subsection}{\hbox to\@tempdima {\hfil }Rezultat ubuntu-cjmn-18.04-amd64.iso}{79}{section*.78}% 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Zaklju\IeC {\v c}ak}{81}{chapter*.79}% 
-\contentsline {chapter}{\hbox to\@tempdima {\hfil }Reference}{83}{chapter*.80}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje chrome.squashfs modula}{74}{section*.73}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Kreiranje chromeBazniDelta direktorija}{75}{section*.74}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }chrome.squashfs datoteka}{76}{section*.75}% 
+\contentsline {section}{\hbox to\@tempdima {\hfil }Generisanje ubuntu-cjmn-18.04-amd64.iso datoteke}{77}{section*.76}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Pokretanje iso image-a pomo\IeC {\'c}u kvm biblioteke}{77}{section*.77}% 
+\contentsline {subsection}{\hbox to\@tempdima {\hfil }Rezultat ubuntu-cjmn-18.04-amd64.iso}{78}{section*.78}% 
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Zaklju\IeC {\v c}ak}{80}{chapter*.79}% 
+\contentsline {chapter}{\hbox to\@tempdima {\hfil }Reference}{82}{chapter*.80}% 

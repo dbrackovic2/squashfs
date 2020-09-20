@@ -59,17 +59,17 @@
 \BOOKMARK [1][-]{section*.60}{MongoDB edit}{chapter*.56}% 59
 \BOOKMARK [1][-]{section*.61}{Java edit}{chapter*.56}% 60
 \BOOKMARK [1][-]{section*.62}{Chrome edit}{chapter*.56}% 61
-\BOOKMARK [1][-]{section*.63}{Generisanje bazne filesystem.squashfs datoteke}{chapter*.56}% 62
-\BOOKMARK [1][-]{section*.64}{Generisanje nodejs.squashfs datoteke}{chapter*.56}% 63
+\BOOKMARK [1][-]{section*.63}{Generisanje bazne filesystem.squashfs modula}{chapter*.56}% 62
+\BOOKMARK [1][-]{section*.64}{Generisanje nodejs.squashfs modula}{chapter*.56}% 63
 \BOOKMARK [2][-]{section*.65}{Kreiranje nodejsBazniDelta direktorija}{section*.64}% 64
 \BOOKMARK [2][-]{section*.66}{nodejs.squashfs datoteka}{section*.64}% 65
-\BOOKMARK [1][-]{section*.67}{Generisanje mongodb.squashfs datoteke}{chapter*.56}% 66
+\BOOKMARK [1][-]{section*.67}{Generisanje mongodb.squashfs modula}{chapter*.56}% 66
 \BOOKMARK [2][-]{section*.68}{Kreiranje mongodbBazniDelta direktorija}{section*.67}% 67
 \BOOKMARK [2][-]{section*.69}{mongodb.squashfs datoteka}{section*.67}% 68
-\BOOKMARK [1][-]{section*.70}{Generisanje java.squashfs datoteke}{chapter*.56}% 69
+\BOOKMARK [1][-]{section*.70}{Generisanje java.squashfs modula}{chapter*.56}% 69
 \BOOKMARK [2][-]{section*.71}{Kreiranje javaBazniDelta direktorija}{section*.70}% 70
 \BOOKMARK [2][-]{section*.72}{java.squashfs datoteka}{section*.70}% 71
-\BOOKMARK [1][-]{section*.73}{Generisanje chrome.squashfs datoteke}{chapter*.56}% 72
+\BOOKMARK [1][-]{section*.73}{Generisanje chrome.squashfs modula}{chapter*.56}% 72
 \BOOKMARK [2][-]{section*.74}{Kreiranje chromeBazniDelta direktorija}{section*.73}% 73
 \BOOKMARK [2][-]{section*.75}{chrome.squashfs datoteka}{section*.73}% 74
 \BOOKMARK [1][-]{section*.76}{Generisanje ubuntu-cjmn-18.04-amd64.iso datoteke}{chapter*.56}% 75
