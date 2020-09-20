@@ -47,6 +47,7 @@ https://en.wikipedia.org/wiki/Slax
 https://en.wikipedia.org/wiki/NimbleX
 https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
 https://www.overleaf.com/learn/latex/bibliography_management_with_bibtex
+http://www.linuxfromscratch.org/lfs/
 https://en.wikipedia.org/wiki/Node.js
 https://itsfoss.com/install-software-from-source-code/
 https://regex101.com/
